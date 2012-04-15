@@ -159,22 +159,36 @@ extern void sweep2wake_setdev(struct input_dev * input_device) {
 EXPORT_SYMBOL(sweep2wake_setdev);
 
 static void sweep2wake_presspwr(struct work_struct * sweep2wake_presspwr_work) {
+<<<<<<< HEAD
 	if (!mutex_trylock(&pwrkeyworklock))
                 return;
+=======
+>>>>>>> d8d5c0b... sweep2wake: add initial sweep2wake support
 	input_event(sweep2wake_pwrdev, EV_KEY, KEY_POWER, 1);
 	input_event(sweep2wake_pwrdev, EV_SYN, 0, 0);
 	msleep(100);
 	input_event(sweep2wake_pwrdev, EV_KEY, KEY_POWER, 0);
 	input_event(sweep2wake_pwrdev, EV_SYN, 0, 0);
 	msleep(100);
+<<<<<<< HEAD
         mutex_unlock(&pwrkeyworklock);
+=======
+>>>>>>> d8d5c0b... sweep2wake: add initial sweep2wake support
 	return;
 }
 static DECLARE_WORK(sweep2wake_presspwr_work, sweep2wake_presspwr);
 
 void sweep2wake_pwrtrigger(void) {
+<<<<<<< HEAD
 	schedule_work(&sweep2wake_presspwr_work);
         return;
+=======
+	if (mutex_trylock(&pwrkeyworklock)) {
+		schedule_work(&sweep2wake_presspwr_work);
+		mutex_unlock(&pwrkeyworklock);
+	}
+	return;
+>>>>>>> d8d5c0b... sweep2wake: add initial sweep2wake support
 }
 #endif
 
@@ -1520,9 +1534,17 @@ static void synaptics_ts_finger_func(struct synaptics_ts_data *ts)
 {
 	int ret;
 	uint8_t buf[((ts->finger_support * 21 + 3) / 4)];
+<<<<<<< HEAD
 #ifdef CONFIG_TOUCHSCREEN_SYNAPTICS_SWEEP2WAKE
 	int prevx = 0, nextx = 0;
 #endif
+=======
+	uint8_t data;
+#ifdef CONFIG_TOUCHSCREEN_SYNAPTICS_SWEEP2WAKE
+	int prevx = 0, nextx = 0;
+#endif
+
+>>>>>>> d8d5c0b... sweep2wake: add initial sweep2wake support
 	memset(buf, 0x0, sizeof(buf));
 	ret = i2c_syn_read(ts->client,
 		get_address_base(ts, 0x01, DATA_BASE) + 2, buf, sizeof(buf));
@@ -1597,6 +1619,10 @@ static void synaptics_ts_finger_func(struct synaptics_ts_data *ts)
 				ts->tap_suppression = 0;
 			if (ts->debug_log_level & 0x2)
 				printk(KERN_INFO "[TP] Finger leave\n");
+<<<<<<< HEAD
+=======
+
+>>>>>>> d8d5c0b... sweep2wake: add initial sweep2wake support
 #ifdef CONFIG_TOUCHSCREEN_SYNAPTICS_SWEEP2WAKE
 				/* if finger released, reset count & barriers */
 				if ((((ts->finger_count > 0)?1:0) == 0) && (s2w_switch > 0)) {
@@ -1606,6 +1632,14 @@ static void synaptics_ts_finger_func(struct synaptics_ts_data *ts)
 					scr_on_touch = false;
 				}
 #endif
+<<<<<<< HEAD
+=======
+
+			if( (ts->notifyFinger != NULL) && (ts->withFinger==true) ) {
+				ts->notifyFinger(0);
+				ts->withFinger = false;
+			}
+>>>>>>> d8d5c0b... sweep2wake: add initial sweep2wake support
 		}
 
 		if (ts->pre_finger_data[0][0] < 2 || finger_pressed) {
@@ -1922,10 +1956,75 @@ static void synaptics_ts_finger_func(struct synaptics_ts_data *ts)
 						printk(KERN_INFO "[TP] %s: Touch Calibration Confirmed, rezero\n", __func__);
 					}
 #endif
-					if (!ts->finger_count)
-						ts->pre_finger_data[0][0] = 0;
+						if (!ts->finger_count)
+							ts->pre_finger_data[0][0] = 0;
+
 				}
 				base += 5;
+#ifdef CONFIG_TOUCHSCREEN_SYNAPTICS_SWEEP2WAKE
+				//left->right
+				if ((ts->finger_count == 1) && (scr_suspended == true) && (s2w_switch > 0)) {
+					prevx = 30;
+					nextx = 175;
+					if ((barrier[0] == true) ||
+					   ((finger_data[i][0] > prevx) &&
+					    (finger_data[i][0] < nextx) &&
+					    (finger_data[i][1] > 1290))) {
+						prevx = nextx;
+						nextx = 470;
+						barrier[0] = true;
+						if ((barrier[1] == true) ||
+						   ((finger_data[i][0] > prevx) &&
+						    (finger_data[i][0] < nextx) &&
+						    (finger_data[i][1] > 1290))) {
+							prevx = nextx;
+							barrier[1] = true;
+							if ((finger_data[i][0] > prevx) &&
+							    (finger_data[i][1] > 1290)) {
+								if (finger_data[i][0] > 600) {
+									if (exec_count) {
+										printk(KERN_INFO "[sweep2wake]: ON");
+										sweep2wake_pwrtrigger();
+										exec_count = false;
+										break;
+									}
+								}
+							}
+						}
+					}
+				//right->left
+				} else if ((ts->finger_count == 1) && (scr_suspended == false) && (s2w_switch > 0)) {
+					scr_on_touch=true;
+					prevx = 700;
+					nextx = 570;
+					if ((barrier[0] == true) ||
+					   ((finger_data[i][0] < prevx) &&
+					    (finger_data[i][0] > nextx) &&
+					    ( finger_data[i][1] > 1290))) {
+						prevx = nextx;
+						nextx = 290;
+						barrier[0] = true;
+						if ((barrier[1] == true) ||
+						   ((finger_data[i][0] < prevx) &&
+						    (finger_data[i][0] > nextx) &&
+						    (finger_data[i][1] > 1290))) {
+							prevx = nextx;
+							barrier[1] = true;
+							if ((finger_data[i][0] < prevx) &&
+							    (finger_data[i][1] > 1290)) {
+								if (finger_data[i][0] < 165) {
+									if (exec_count) {
+										printk(KERN_INFO "[sweep2wake]: OFF");
+										sweep2wake_pwrtrigger();
+										exec_count = false;
+										break;
+									}
+								}
+							}
+						}
+					}
+				}
+#endif
 			}
 #ifdef SYN_FILTER_CONTROL
 			if (ts->filter_level[0] && ts->grip_suppression) {
@@ -2708,7 +2807,11 @@ static int synaptics_ts_suspend(struct i2c_client *client, pm_message_t mesg)
 {
 	int ret;
 	struct synaptics_ts_data *ts = i2c_get_clientdata(client);
+<<<<<<< HEAD
 	
+=======
+
+>>>>>>> d8d5c0b... sweep2wake: add initial sweep2wake support
 #ifdef CONFIG_TOUCHSCREEN_SYNAPTICS_SWEEP2WAKE
 	if (s2w_switch > 0) {
 		//screen off, enable_irq_wake
@@ -2723,8 +2826,13 @@ static int synaptics_ts_suspend(struct i2c_client *client, pm_message_t mesg)
 #ifdef CONFIG_TOUCHSCREEN_SYNAPTICS_SWEEP2WAKE
 		if (s2w_switch == 0) {
 #endif
+<<<<<<< HEAD
 		disable_irq(client->irq);
 		ts->irq_enabled = 0;
+=======
+			disable_irq(client->irq);
+			ts->irq_enabled = 0;
+>>>>>>> d8d5c0b... sweep2wake: add initial sweep2wake support
 #ifdef CONFIG_TOUCHSCREEN_SYNAPTICS_SWEEP2WAKE
 		}
 #endif
@@ -2737,7 +2845,16 @@ static int synaptics_ts_suspend(struct i2c_client *client, pm_message_t mesg)
 			enable_irq(client->irq);
 	}
 #endif
+<<<<<<< HEAD
 	}
+=======
+	ret = cancel_work_sync(&ts->work);
+#ifdef CONFIG_TOUCHSCREEN_SYNAPTICS_SWEEP2WAKE
+	if (s2w_switch == 0) {
+		if (ret && ts->use_irq) /* if work was pending disable-count is now 2 */
+			enable_irq(client->irq);
+#endif
+>>>>>>> d8d5c0b... sweep2wake: add initial sweep2wake support
 
 	if (ts->psensor_status == 0) {
 		ts->pre_finger_data[0][0] = 0;
@@ -2816,10 +2933,20 @@ static int synaptics_ts_suspend(struct i2c_client *client, pm_message_t mesg)
 #endif
 
 #ifdef SYN_SUSPEND_RESUME_POWEROFF
+<<<<<<< HEAD
 		if (ts->power)
 			ts->power(0);
 		else 
 #endif
+=======
+#ifdef CONFIG_TOUCHSCREEN_SYNAPTICS_SWEEP2WAKE
+	if (s2w_switch == 0) {
+#endif
+		if (ts->power)
+			ts->power(0);
+		else 
+#endif
+>>>>>>> d8d5c0b... sweep2wake: add initial sweep2wake support
 		{
 			ret = i2c_syn_write_byte_data(client,
 				get_address_base(ts, 0x01, CONTROL_BASE), 0x01); /* sleep */
@@ -2842,6 +2969,7 @@ static int synaptics_ts_resume(struct i2c_client *client)
 {
 	int ret;
 	struct synaptics_ts_data *ts = i2c_get_clientdata(client);
+<<<<<<< HEAD
 	printk(KERN_INFO "[TP] %s: enter\n", __func__);
 	
 #ifdef CONFIG_TOUCHSCREEN_SYNAPTICS_SWEEP2WAKE
@@ -2871,6 +2999,68 @@ static int synaptics_ts_resume(struct i2c_client *client)
 			input_report_abs(ts->input_dev, ABS_MT_AMPLITUDE, 0);
 			input_report_abs(ts->input_dev, ABS_MT_POSITION, 1 << 31);
 			input_sync(ts->input_dev);
+=======
+	int i;
+#ifdef CONFIG_TOUCHSCREEN_SYNAPTICS_SWEEP2WAKE
+	if (s2w_switch > 0) {
+		/* HW revision fix, this is not needed for all touch controllers!
+		 * suspend me for a short while, so that resume can wake me up the right way
+		 *
+		 * --NO IDEA IF THIS IS NEEDED ON THE ONE X, INCLUDE IT TO BE SURE FOR NOW!--
+		 *
+		 */
+		ret = i2c_syn_write_byte_data(client,
+			get_address_base(ts, 0x01, CONTROL_BASE), 0x01); /* sleep */
+		if (ret < 0)
+			i2c_syn_error_handler(ts, 1, "sleep", __func__);
+		msleep(100);
+		ret = 0;
+		//screen on, disable_irq_wake
+		scr_suspended = false;
+		disable_irq_wake(client->irq);
+	}
+#endif
+
+	printk(KERN_INFO "[TP] %s: enter\n", __func__);
+
+#ifdef CONFIG_TOUCHSCREEN_SYNAPTICS_SWEEP2WAKE
+	if (s2w_switch == 0) {
+#endif
+		if (ts->power)
+			ts->power(11);
+
+#ifdef SYN_SUSPEND_RESUME_POWEROFF
+		if (ts->power) {
+			ts->power(1);
+			msleep(100);
+		} else 
+#endif
+		{
+			ret = i2c_syn_write_byte_data(client,
+				get_address_base(ts, 0x01, CONTROL_BASE), 0x00); /* wake */
+			if (ret < 0)
+				i2c_syn_error_handler(ts, 1, "wake up", __func__);
+		}
+#ifdef CONFIG_TOUCHSCREEN_SYNAPTICS_SWEEP2WAKE
+	}
+#endif
+/*	i2c_syn_write_byte_data(ts->client,
+		get_address_base(ts, 0x54, CONTROL_BASE) + 0x10, ts->relaxation);
+	i2c_syn_write_byte_data(ts->client,
+		get_address_base(ts, 0x54, COMMAND_BASE), 0x04);
+	printk("[%x]%d, [%x]",
+		get_address_base(ts, 0x54, CONTROL_BASE) + 0x10, ts->relaxation,
+		get_address_base(ts, 0x54, COMMAND_BASE));
+*/
+	ret = synaptics_init_panel(ts);
+	if (ret < 0)
+		printk(KERN_ERR "[TP]TOUCH_ERR: synaptics_ts_resume: synaptics init panel failed\n");
+
+	if (ts->htc_event == SYN_AND_REPORT_TYPE_B) {
+		for (i = 0; i < ABS_MT_TRACKING_ID_MAX; i++) {
+			input_mt_slot(ts->input_dev, i);
+			input_mt_report_slot_state(ts->input_dev, MT_TOOL_FINGER, 0);
+>>>>>>> d8d5c0b... sweep2wake: add initial sweep2wake support
 		}
 		input_report_abs(ts->input_dev, ABS_MT_TOUCH_MAJOR, 0);
 		input_sync(ts->input_dev);
@@ -2879,6 +3069,7 @@ static int synaptics_ts_resume(struct i2c_client *client)
 		input_report_abs(ts->input_dev, ABS_MT_POSITION, 1 << 31);
 	}
 
+<<<<<<< HEAD
 	
 #ifdef CONFIG_TOUCHSCREEN_SYNAPTICS_SWEEP2WAKE
 	if (s2w_switch == 0) {
@@ -2891,6 +3082,26 @@ static int synaptics_ts_resume(struct i2c_client *client)
 	else
 		hrtimer_start(&ts->timer, ktime_set(1, 0), HRTIMER_MODE_REL);
 #ifdef CONFIG_TOUCHSCREEN_SYNAPTICS_SWEEP2WAKE
+=======
+#ifdef CONFIG_TOUCHSCREEN_SYNAPTICS_SWEEP2WAKE
+	if (s2w_switch == 0) {
+#endif
+		if (ts->use_irq) {
+			enable_irq(client->irq);
+			ts->irq_enabled = 1;
+		}
+		else
+			hrtimer_start(&ts->timer, ktime_set(1, 0), HRTIMER_MODE_REL);
+#ifdef CONFIG_TOUCHSCREEN_SYNAPTICS_SWEEP2WAKE
+	}
+#endif
+
+#ifdef SYN_CABLE_CONTROL
+	if (ts->cable_support) {
+                if (usb_get_connect_type())
+			cable_tp_status_handler_func(1);
+		printk(KERN_INFO "[TP] %s: ts->cable_config: %x\n", __func__, ts->cable_config);
+>>>>>>> d8d5c0b... sweep2wake: add initial sweep2wake support
 	}
 #endif
 

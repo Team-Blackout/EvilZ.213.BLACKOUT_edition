@@ -31,6 +31,9 @@
 #ifdef CONFIG_TOUCHSCREEN_SYNAPTICS_SWEEP2WAKE
 #include <linux/synaptics_i2c_rmi.h>
 #endif
+<<<<<<< HEAD
+>>>>>>> d8d5c0b... sweep2wake: add initial sweep2wake support
+=======
 >>>>>>> d8d5c0b... sweep2wake: add initial sweep2wake support
 
 struct gpio_button_data {

@@ -26,6 +26,9 @@
 #include <linux/input.h>
 #endif
 
+<<<<<<< HEAD
+>>>>>>> d8d5c0b... sweep2wake: add initial sweep2wake support
+=======
 >>>>>>> d8d5c0b... sweep2wake: add initial sweep2wake support
 #define SYNAPTICS_I2C_RMI_NAME "synaptics-rmi-ts"
 #define SYNAPTICS_T1007_NAME "synaptics-t1007"
@@ -166,6 +169,11 @@ enum {
 	INTR_SOURCE,
 	FUNCTION
 };
+#ifdef CONFIG_TOUCHSCREEN_SYNAPTICS_SWEEP2WAKE
+/* Sweep2Wake */
+extern void sweep2wake_setdev(struct input_dev * input_device);
+#endif
+
 #ifdef CONFIG_TOUCHSCREEN_SYNAPTICS_SWEEP2WAKE
 /* Sweep2Wake */
 extern void sweep2wake_setdev(struct input_dev * input_device);

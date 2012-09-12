@@ -77,6 +77,7 @@
 #include <mach/htc_headset_mgr.h>
 #include <mach/htc_headset_pmic.h>
 #include <mach/cable_detect.h>
+#include <linux/msm_tsens.h>
 #include <linux/synaptics_i2c_rmi.h>
 
 #ifdef CONFIG_WCD9310_CODEC

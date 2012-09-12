@@ -36,7 +36,7 @@ config THERMAL_MSM_POPMEM
 	  application to make all policy decisions.
 
 config THERMAL_TSENS
-	tristate "Qualcomm Tsens Temperature Alarm"
+	tristate "Old Qualcomm Tsens Temperature Alarm"
 	depends on THERMAL
 	default n
 	help
@@ -47,7 +47,7 @@ config THERMAL_TSENS
 	  when a threshold is reached.
 
 config THERMAL_TSENS8960
-	tristate "Qualcomm 8960 Tsens Temperature Alarm"
+	tristate "New Qualcomm 8960 Tsens Temperature Alarm"
 	depends on THERMAL
 	help
 	  This enables the thermal sysfs driver for the Tsens device. It shows

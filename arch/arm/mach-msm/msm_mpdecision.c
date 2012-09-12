@@ -36,7 +36,7 @@
 #include <mach/board_htc.h>
 
 #define MPDEC_TAG                       "[MPDEC]: "
-#define MSM_MPDEC_STARTDELAY            60000
+#define MSM_MPDEC_STARTDELAY            40000
 #define MSM_MPDEC_DELAY                 500
 #define MSM_MPDEC_PAUSE                 10000
 #define MSM_MPDEC_IDLE_FREQ             486000
@@ -73,7 +73,7 @@ static struct msm_mpdec_tuners {
 	.idle_freq = MSM_MPDEC_IDLE_FREQ,
 };
 
-static unsigned int NwNs_Threshold[4] = {35, 0, 0, 5};
+static unsigned int NwNs_Threshold[4] = {20, 0, 0, 5};
 static unsigned int TwTs_Threshold[4] = {250, 0, 0, 250};
 
 extern unsigned int get_rq_info(void);
@@ -116,10 +116,10 @@ static int mp_decision(void)
 		if ((nr_cpu_online < 2) && (rq_depth >= NwNs_Threshold[index])) {
 			if (total_time >= TwTs_Threshold[index]) {
 				new_state = MSM_MPDEC_UP;
-                                if (acpuclk_get_rate((CONFIG_NR_CPUS - 2)) <=
+ if (acpuclk_get_rate((CONFIG_NR_CPUS - 2)) <=
                                     msm_mpdec_tuners_ins.idle_freq)
                                         new_state = MSM_MPDEC_IDLE;
-			}
+                                			}
 		} else if (rq_depth <= NwNs_Threshold[index+1]) {
 			if (total_time >= TwTs_Threshold[index+1] ) {
 				new_state = MSM_MPDEC_DOWN;
@@ -375,8 +375,7 @@ static ssize_t store_idle_freq(struct kobject *a, struct attribute *b,
 	ret = sscanf(buf, "%lu", &input);
 	if (ret != 1)
 		return -EINVAL;
-	msm_mpdec_tuners_ins.idle_freq = acpu_check_khz_value(input);
-
+	
 	return count;
 }
 

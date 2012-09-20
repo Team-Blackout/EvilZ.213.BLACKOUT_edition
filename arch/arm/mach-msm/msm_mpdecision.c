@@ -73,7 +73,7 @@ static struct msm_mpdec_tuners {
 	.idle_freq = MSM_MPDEC_IDLE_FREQ,
 };
 
-static unsigned int NwNs_Threshold[4] = {20, 0, 0, 5};
+static unsigned int NwNs_Threshold[4] = {30, 0, 0, 5};
 static unsigned int TwTs_Threshold[4] = {250, 0, 0, 250};
 
 extern unsigned int get_rq_info(void);

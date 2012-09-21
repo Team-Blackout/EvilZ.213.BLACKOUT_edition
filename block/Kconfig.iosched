@@ -73,7 +73,7 @@ config IOSCHED_VR
 	  Requests are chosen according to SSTF with a penalty of rev_penalty
 	  for switching head direction.
 
-config IOSCHED_SIO /* github wont let me commit without modifying this file */
+config IOSCHED_SIO
 	tristate "Simple I/O scheduler"
 	default y
 	---help---

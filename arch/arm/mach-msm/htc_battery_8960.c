@@ -750,13 +750,11 @@ static ssize_t htc_battery_show_batt_attr(struct device_attribute *attr,
 			"charging_source: %d;\n"
 			"charging_enabled: %d;\n"
 			"overload: %d;\n"
-			"Percentage(%%): %d;\n"
-			"Percentage_raw(%%): %d;\n",
+			"Percentage(%%): %d;\n",
 			htc_batt_info.rep.charging_source,
 			htc_batt_info.rep.charging_enabled,
 			htc_batt_info.rep.overload,
-			htc_batt_info.rep.level,
-			htc_batt_info.rep.level_raw
+			htc_batt_info.rep.level
 			);
 
 	/* collect gague vars */
@@ -853,7 +851,6 @@ static int htc_batt_get_battery_info(struct battery_info_reply *htc_batt_update)
 				htc_batt_info.rep.batt_discharg_current;
 #endif
 	htc_batt_update->level = htc_batt_info.rep.level;
-	htc_batt_update->level_raw = htc_batt_info.rep.level_raw;
 	htc_batt_update->charging_source =
 				htc_batt_info.rep.charging_source;
 	htc_batt_update->charging_enabled =
@@ -1059,8 +1056,7 @@ static void batt_update_info_from_gauge(void)
 		htc_batt_info.rep.full_bat = htc_battery_cell_get_cur_cell()->capacity;
 
 	htc_batt_info.igauge->get_battery_soc(
-		&htc_batt_info.rep.level_raw);
-	htc_batt_info.rep.level = htc_batt_info.rep.level_raw;
+		&htc_batt_info.rep.level);
 	/* get charger ovp state */
 	if (htc_batt_info.icharger->is_ovp)
 		htc_batt_info.icharger->is_ovp(&htc_batt_info.rep.over_vchg);
@@ -1252,13 +1248,6 @@ static void batt_worker(struct work_struct *work)
 	if (critical_shutdown) {
 		BATT_LOG("critical shutdown (set level=0 to force shutdown)");
 		htc_batt_info.rep.level = 0;
-		critical_shutdown = 0;
-	}
-	/* STEP: Set voltage alarm again if level is increased after charging */
-	if (critical_alarm_level < 0 && htc_batt_info.rep.level >= 5) {
-		pr_info("[BATT] critical_alarm_level: %d -> 2\n", critical_alarm_level);
-		critical_alarm_level = 2;
-		critical_alarm_level_set = critical_alarm_level + 1;
 	}
 
 	/* STEP: Check if overloading is happeneed during charging */
@@ -1936,7 +1925,6 @@ static int __init htc_battery_init(void)
 	htc_batt_info.rep.batt_id = 1;
 	htc_batt_info.rep.batt_temp = 250;
 	htc_batt_info.rep.level = 33;
-	htc_batt_info.rep.level_raw = 33;
 	htc_batt_info.rep.full_bat = 1579999;
 	htc_batt_info.rep.full_level = 100;
 	htc_batt_info.rep.batt_state = 0;

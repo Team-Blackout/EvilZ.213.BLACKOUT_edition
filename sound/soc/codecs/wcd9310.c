@@ -540,7 +540,7 @@ static void audio_vol_ramping_func(struct work_struct *work)
 {
 	struct tabla_priv *tabla = container_of(work, struct tabla_priv, audio_vol_ramp_work);
 	struct snd_soc_codec *codec = tabla->codec;
-
+	
 	int level = hp_ramp_vol_gain - hp_ramp_vol_control;
 	int i, index = level > 0 ? level: -level;
 
@@ -548,21 +548,21 @@ static void audio_vol_ramping_func(struct work_struct *work)
 		if (level > 0) {
 			hp_ramp_vol_control++;
 			snd_soc_update_bits(codec, TABLA_A_RX_HPH_L_GAIN, 0x0F,
-				(HPH_RX_GAIN_MAX - hp_ramp_vol_control));
+				(HPH_RX_GAIN_MAX - vol_control));
 			snd_soc_update_bits(codec, TABLA_A_RX_HPH_R_GAIN, 0x0F,
-				(HPH_RX_GAIN_MAX- hp_ramp_vol_control));
+				(HPH_RX_GAIN_MAX- vol_control));
 			usleep_range(50000, 50000);
 		} else {
 			hp_ramp_vol_control--;
 			snd_soc_update_bits(codec, TABLA_A_RX_HPH_L_GAIN, 0x0F,
-				(HPH_RX_GAIN_MAX - hp_ramp_vol_control));
+				(HPH_RX_GAIN_MAX - _vol_control));
 			snd_soc_update_bits(codec, TABLA_A_RX_HPH_R_GAIN, 0x0F,
-				(HPH_RX_GAIN_MAX- hp_ramp_vol_control));
+				(HPH_RX_GAIN_MAX- vol_control));
 			usleep_range(10000, 10000);
 		}
 	}
 
-	pr_info("%s, volume value =%d\n", __func__, hp_ramp_vol_control);
+	hp_ramp_vol_control = vol_control;
 	return;
 }
 
@@ -3464,7 +3464,9 @@ static void btn0_lpress_fn(struct work_struct *work)
 
 	delayed_work = to_delayed_work(work);
 	tabla = container_of(delayed_work, struct tabla_priv, btn0_dwork);
-	core = dev_get_drvdata(tabla->codec->dev->parent);
+	if (tabla && tabla->codec && tabla->codec->dev)
+	   core = dev_get_drvdata(tabla->codec->dev->parent);
+	/*HTC AUD, Klockwork*/
 
 	if (tabla) {
 		if (tabla->button_jack) {
@@ -4370,12 +4372,18 @@ static int tabla_handle_pdata(struct tabla_priv *tabla)
 	struct snd_soc_codec *codec = tabla->codec;
 	struct tabla_pdata *pdata = tabla->pdata;
 	int k1, k2, k3, rc = 0;
-	u8 leg_mode = pdata->amic_settings.legacy_mode;
-	u8 txfe_bypass = pdata->amic_settings.txfe_enable;
-	u8 txfe_buff = pdata->amic_settings.txfe_buff;
-	u8 flag = pdata->amic_settings.use_pdata;
+	u8 leg_mode = 0;
+	u8 txfe_bypass = 0;
+	u8 txfe_buff = 0;
+	u8 flag = 0;
 	u8 i = 0, j = 0;
 	u8 val_txfe = 0, value = 0;
+	/* HC AUD CLOCKWORK */
+	 if (pdata) {
+	  u8 leg_mode = pdata->amic_settings.legacy_mode;
+	  u8 txfe_bypass = pdata->amic_settings.txfe_enable;
+	  u8 txfe_buff = pdata->amic_settings.txfe_buff;
+	  u8 flag = pdata->amic_settings.use_pdata;
 
 	if (!pdata) {
 		rc = -ENODEV;

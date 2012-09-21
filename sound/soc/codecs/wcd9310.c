@@ -31,15 +31,8 @@
 #include <linux/pm_runtime.h>
 #include "wcd9310.h"
 
-//htc audio ++
-#undef pr_info
-#undef pr_err
-#define pr_info(fmt, ...) pr_aud_info(fmt, ##__VA_ARGS__)
-#define pr_err(fmt, ...) pr_aud_err(fmt, ##__VA_ARGS__)
-//htc audio --
-
 #define WCD9310_RATES (SNDRV_PCM_RATE_8000|SNDRV_PCM_RATE_16000|\
-			SNDRV_PCM_RATE_32000|SNDRV_PCM_RATE_48000)
+			SNDRV_PCM_RATE_32000|SNDRV_PCM_RATE_48000|SNDRV_PCM_RATE_96000)
 
 #define NUM_DECIMATORS 10
 #define NUM_INTERPOLATORS 7
@@ -548,33 +541,27 @@ static void audio_vol_ramping_func(struct work_struct *work)
 	struct tabla_priv *tabla = container_of(work, struct tabla_priv, audio_vol_ramp_work);
 	struct snd_soc_codec *codec = tabla->codec;
 
-	int vol_gain = hp_ramp_vol_gain;
-	int vol_control = hp_ramp_vol_control;
-	int level = vol_gain - vol_control;
+	int level = hp_ramp_vol_gain - hp_ramp_vol_control;
 	int i, index = level > 0 ? level: -level;
-
-	if (vol_gain == vol_control)
-		return;
 
 	for (i = 0; i < index; i++) {
 		if (level > 0) {
-			vol_control++;
+			hp_ramp_vol_control++;
 			snd_soc_update_bits(codec, TABLA_A_RX_HPH_L_GAIN, 0x0F,
-				(HPH_RX_GAIN_MAX - vol_control));
+				(HPH_RX_GAIN_MAX - hp_ramp_vol_control));
 			snd_soc_update_bits(codec, TABLA_A_RX_HPH_R_GAIN, 0x0F,
-				(HPH_RX_GAIN_MAX- vol_control));
+				(HPH_RX_GAIN_MAX- hp_ramp_vol_control));
 			usleep_range(50000, 50000);
 		} else {
-			vol_control--;
+			hp_ramp_vol_control--;
 			snd_soc_update_bits(codec, TABLA_A_RX_HPH_L_GAIN, 0x0F,
-				(HPH_RX_GAIN_MAX - vol_control));
+				(HPH_RX_GAIN_MAX - hp_ramp_vol_control));
 			snd_soc_update_bits(codec, TABLA_A_RX_HPH_R_GAIN, 0x0F,
-				(HPH_RX_GAIN_MAX- vol_control));
+				(HPH_RX_GAIN_MAX- hp_ramp_vol_control));
 			usleep_range(10000, 10000);
 		}
 	}
 
-	hp_ramp_vol_control = vol_control;
 	pr_info("%s, volume value =%d\n", __func__, hp_ramp_vol_control);
 	return;
 }
@@ -1219,12 +1206,9 @@ static int tabla_codec_enable_dmic(struct snd_soc_dapm_widget *w,
 	u16 tx_mux_ctl_reg, tx_dmic_ctl_reg;
 	u8 dmic_clk_sel, dmic_clk_en;
 	unsigned int dmic;
-/* HTC AUD, klocwork ++ */
-	int ret = 0;
-	char *tmp_str = strpbrk(w->name, "123456");
-	if (tmp_str)
-		ret = kstrtouint(tmp_str, 10, &dmic);
-/* HTC AUD, klocwork -- */
+	int ret;
+
+	ret = kstrtouint(strpbrk(w->name, "123456"), 10, &dmic);
 	if (ret < 0) {
 		pr_err("%s: Invalid DMIC line on the codec\n", __func__);
 		return -EINVAL;
@@ -3028,6 +3012,10 @@ static int tabla_hw_params(struct snd_pcm_substream *substream,
 		tx_fs_rate = 0x03;
 		rx_fs_rate = 0x60;
 		break;
+	case 96000:
+		tx_fs_rate = 0x04;
+		rx_fs_rate = 0x80;
+		break;
 	default:
 		pr_err("%s: Invalid sampling rate %d\n", __func__,
 				params_rate(params));
@@ -3470,16 +3458,14 @@ static void btn0_lpress_fn(struct work_struct *work)
 	struct tabla_priv *tabla;
 	short bias_value;
 	int dce_mv, sta_mv;
-/* HTC AUD, klocwork ++ */
-	struct tabla *core = NULL;
+	struct tabla *core;
 
 	pr_debug("%s:\n", __func__);
 
 	delayed_work = to_delayed_work(work);
 	tabla = container_of(delayed_work, struct tabla_priv, btn0_dwork);
-	if (tabla && tabla->codec && tabla->codec->dev)
-		core = dev_get_drvdata(tabla->codec->dev->parent);
-/* HTC AUD, klocwork ++ */
+	core = dev_get_drvdata(tabla->codec->dev->parent);
+
 	if (tabla) {
 		if (tabla->button_jack) {
 			bias_value = tabla_codec_read_sta_result(tabla->codec);
@@ -4384,20 +4370,12 @@ static int tabla_handle_pdata(struct tabla_priv *tabla)
 	struct snd_soc_codec *codec = tabla->codec;
 	struct tabla_pdata *pdata = tabla->pdata;
 	int k1, k2, k3, rc = 0;
-	u8 leg_mode = 0;
-	u8 txfe_bypass = 0;
-	u8 txfe_buff = 0;
-	u8 flag = 0;
+	u8 leg_mode = pdata->amic_settings.legacy_mode;
+	u8 txfe_bypass = pdata->amic_settings.txfe_enable;
+	u8 txfe_buff = pdata->amic_settings.txfe_buff;
+	u8 flag = pdata->amic_settings.use_pdata;
 	u8 i = 0, j = 0;
 	u8 val_txfe = 0, value = 0;
-/* HTC AUD, klocwork ++ */
-	if(pdata) {
-		leg_mode = pdata->amic_settings.legacy_mode;
-		txfe_bypass = pdata->amic_settings.txfe_enable;
-		txfe_buff = pdata->amic_settings.txfe_buff;
-		flag = pdata->amic_settings.use_pdata;
-	}
-/* HTC AUD, klocwork ++ */
 
 	if (!pdata) {
 		rc = -ENODEV;

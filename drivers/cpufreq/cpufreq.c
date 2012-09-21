@@ -54,7 +54,7 @@
 #ifdef CONFIG_MSM_CPU_MAX_CLK_1DOT5GHZ
 #define FREQ_STEPS	22
 #endif
-
+/* just cuz github sucks ass pretty much */
 static struct cpufreq_driver *cpufreq_driver;
 static DEFINE_PER_CPU(struct cpufreq_policy *, cpufreq_cpu_data);
 #ifdef CONFIG_HOTPLUG_CPU

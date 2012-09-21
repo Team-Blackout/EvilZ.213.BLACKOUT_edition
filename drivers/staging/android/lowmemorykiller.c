@@ -34,6 +34,7 @@
 #include <linux/mm.h>
 #include <linux/oom.h>
 #include <linux/sched.h>
+#include <linux/rcupdate.h>
 #include <linux/notifier.h>
 #include <linux/memory.h>
 #include <linux/memory_hotplug.h>
@@ -49,7 +50,7 @@ static int lowmem_adj[6] = {
 	12,
 };
 static int lowmem_adj_size = 4;
-static size_t lowmem_minfree[6] = {
+static int lowmem_minfree[6] = {
 	3 * 512,	/* 6MB */
 	2 * 1024,	/* 8MB */
 	4 * 1024,	/* 16MB */
@@ -85,10 +86,38 @@ static int last_min_adj = OOM_ADJUST_MAX + 1;;
 #define lowmem_print(level, x...)			\
 	do {						\
 		if (lowmem_debug_level >= (level))	\
-			printk("[K] "x);		\
+			printk(x);			\
 	} while (0)
 
-extern void show_meminfo(void);
+static void show_meminfo(void)
+{
+	struct vmalloc_info vmi;
+	unsigned long free = global_page_state(NR_FREE_PAGES) << 2;
+	unsigned long active_file = global_page_state(NR_ACTIVE_FILE) << 2;
+	unsigned long inactive_file = global_page_state(NR_INACTIVE_FILE) << 2;
+	unsigned long shem = global_page_state(NR_SHMEM) << 2;
+	unsigned long mlock = global_page_state(NR_MLOCK) << 2;
+	unsigned long anon = (global_page_state(NR_ACTIVE_ANON) + global_page_state(NR_INACTIVE_ANON)) << 2;
+	unsigned long mapped = global_page_state(NR_FILE_MAPPED) << 2;
+	unsigned long slab_reclaimable = global_page_state(NR_SLAB_RECLAIMABLE) << 2;
+	unsigned long slab_unreclaimable = global_page_state(NR_SLAB_UNRECLAIMABLE) << 2;
+	unsigned long pagetables = global_page_state(NR_PAGETABLE) << 2;
+	unsigned long kernelstack = global_page_state(NR_KERNEL_STACK) * THREAD_SIZE / 1024;
+	unsigned long subtotal = free + active_file + inactive_file + shem + mlock + anon + mapped
+		                               + slab_reclaimable + slab_unreclaimable + pagetables + kernelstack;
+	get_vmalloc_info(&vmi);
+
+	printk(" free:%lu \n"
+		" active_file:%luK inactive_file:%luK shem:%luK mlock:%luK [cache]\n"
+		" anon:%luK mapped:%luK [PSS]\n"
+		" slab_reclaimable:%luK slab_unreclaimable:%luK\n"
+		" pagetables:%luK kernelstack:%luK\n"
+		" vmalloc_alloc:%luK\n"
+		" subtotal:%luK(%luK)\n",
+		free, active_file, inactive_file, shem, mlock, anon, mapped, slab_reclaimable, slab_unreclaimable,
+		pagetables, kernelstack, (vmi.alloc >> 10), subtotal, subtotal + (vmi.alloc >> 10)
+		);
+}
 
 /**
  * dump_tasks - dump current memory state of all system tasks
@@ -128,7 +157,7 @@ static int shrink_cache_possible(gfp_t gfp_mask) {
 	ret = (gfp_mask & __GFP_FS) &&
 		(dentry_stat.nr_unused > 0 || inodes_stat.nr_unused > 0);
 	if (!ret)
-		lowmem_print(5, "%s: can't shrink page cache anymore\n", __func__);
+		lowmem_print(1, "%s: can't shrink page cache anymore\n", __func__);
 	return ret;
 }
 
@@ -193,7 +222,7 @@ static int lmk_hotplug_callback(struct notifier_block *self,
 
 static int lowmem_shrink(struct shrinker *s, struct shrink_control *sc)
 {
-	struct task_struct *p;
+	struct task_struct *tsk;
 	struct task_struct *selected = NULL;
 	int rem = 0;
 	int tasksize;
@@ -277,26 +306,25 @@ static int lowmem_shrink(struct shrinker *s, struct shrink_control *sc)
 	}
 	selected_oom_adj = min_adj;
 
-	read_lock(&tasklist_lock);
-	for_each_process(p) {
-		struct mm_struct *mm;
-		struct signal_struct *sig;
+	rcu_read_lock();
+	for_each_process(tsk) {
+		struct task_struct *p;
 		int oom_adj;
 
-		task_lock(p);
-		mm = p->mm;
-		sig = p->signal;
-		if (!mm || !sig) {
-			task_unlock(p);
+		if (tsk->flags & PF_KTHREAD)
 			continue;
-		}
-		oom_adj = sig->oom_adj;
+
+		p = find_lock_task_mm(tsk);
+		if (!p)
+			continue;
+
+		oom_adj = p->signal->oom_adj;
 
 		if (oom_adj < min_adj) {
 			task_unlock(p);
 			continue;
 		}
-		tasksize = get_mm_rss(mm);
+		tasksize = get_mm_rss(p->mm);
 		task_unlock(p);
 		if (tasksize <= 0)
 			continue;
@@ -335,12 +363,12 @@ static int lowmem_shrink(struct shrinker *s, struct shrink_control *sc)
 			show_meminfo();
 			dump_tasks();
 		}
-		force_sig(SIGKILL, selected);
+		send_sig(SIGKILL, selected, 0);
 		rem -= selected_tasksize;
 	}
 	lowmem_print(4, "lowmem_shrink %lu, %x, return %d\n",
 		     sc->nr_to_scan, sc->gfp_mask, rem);
-	read_unlock(&tasklist_lock);
+	rcu_read_unlock();
 	return rem;
 }
 

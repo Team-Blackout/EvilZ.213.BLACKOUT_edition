@@ -3,7 +3,7 @@
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License version 2 and
  * only version 2 as published by the Free Software Foundation.
- * Modified by Zarboz
+ * Modified by Zarboz for OC tables and UV selection
  * This program is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
@@ -172,7 +172,7 @@ static void set_acpuclk_L2_freq_foot_print(unsigned khz)
 #define STBY_KHZ		1
 
 #define MAX_VDD_SC    1350000 /* uV */	
-#define MIN_VDD_SC     400000 /* uV */
+#define MIN_VDD_SC     200000 /* uV */
 #define HFPLL_NOMINAL_VDD	1050000
 #define HFPLL_LOW_VDD		 800000
 #define HFPLL_LOW_VDD_PLL_L_MAX	0x28
@@ -564,24 +564,24 @@ static struct l2_level l2_freq_tbl_8960_kraitv2[] = {
 	[8]  = { {  756000, HFPLL, 1, 0, 0x1C }, 1150000, 1150000, 4 },
 	[9]  = { {  810000, HFPLL, 1, 0, 0x1E }, 1150000, 1150000, 4 },
 	[10] = { {  864000, HFPLL, 1, 0, 0x20 }, 1150000, 1150000, 4 },
-	[11] = { {  918000, HFPLL, 1, 0, 0x22 }, 1150000, 1150000, 7 },
-	[12] = { {  972000, HFPLL, 1, 0, 0x24 }, 1150000, 1150000, 7 },
-	[13] = { { 1026000, HFPLL, 1, 0, 0x26 }, 1150000, 1150000, 7 },
-	[14] = { { 1080000, HFPLL, 1, 0, 0x28 }, 1150000, 1150000, 7 },
-	[15] = { { 1134000, HFPLL, 1, 0, 0x2A }, 1150000, 1150000, 7 },
-	[16] = { { 1188000, HFPLL, 1, 0, 0x2C }, 1150000, 1150000, 7 },
-	[17] = { { 1242000, HFPLL, 1, 0, 0x2E }, 1150000, 1150000, 7 },
-	[18] = { { 1350000, HFPLL, 1, 0, 0x30 }, 1150000, 1150000, 7 },
-	[19] = { { 1458000, HFPLL, 1, 0, 0x32 }, 1150000, 1150000, 7 },
+	[11] = { {  918000, HFPLL, 1, 0, 0x22 }, 1150000, 1150000, 6 },
+	[12] = { {  972000, HFPLL, 1, 0, 0x24 }, 1150000, 1150000, 6 },
+	[13] = { { 1026000, HFPLL, 1, 0, 0x26 }, 1150000, 1150000, 6 },
+	[14] = { { 1080000, HFPLL, 1, 0, 0x28 }, 1150000, 1150000, 6 },
+	[15] = { { 1134000, HFPLL, 1, 0, 0x2A }, 1150000, 1150000, 6 },
+	[16] = { { 1188000, HFPLL, 1, 0, 0x2C }, 1150000, 1150000, 6 },
+	[17] = { { 1242000, HFPLL, 1, 0, 0x2E }, 1150000, 1150000, 6 },
+	[18] = { { 1350000, HFPLL, 1, 0, 0x30 }, 1150000, 1150000, 6 },
+	[19] = { { 1458000, HFPLL, 1, 0, 0x32 }, 1150000, 1150000, 6 },
 	[20] = { { 1512000, HFPLL, 1, 0, 0x34 }, 1150000, 1150000, 7 },
 	[21] = { { 1674000, HFPLL, 1, 0, 0x36 }, 1150000, 1150000, 7 },
 };
 
 static struct acpu_level acpu_freq_tbl_8960_kraitv2_slow[] = {
-	{ 0, { STBY_KHZ, QSB,   0, 0, 0x00 }, L2(0),   850000 },
-	{ 1, {   192000, PLL_8, 0, 2, 0x00 }, L2(1),   900000 },
-	{ 1, {   384000, HFPLL, 2, 0, 0x20 }, L2(7),   900000 },
-	{ 1, {   486000, HFPLL, 2, 0, 0x24 }, L2(7),   950000 },
+	{ 0, { STBY_KHZ, QSB,   0, 0, 0x00 }, L2(0),   950000 },
+	{ 1, {   192000, PLL_8, 0, 2, 0x00 }, L2(1),   950000 },
+	{ 1, {   384000, HFPLL, 2, 0, 0x20 }, L2(7),   950000 },
+	{ 1, {   486000, HFPLL, 2, 0, 0x24 }, L2(7),   975000 },
 	{ 0, {   540000, HFPLL, 2, 0, 0x28 }, L2(7),  1000000 },
 	{ 1, {   594000, HFPLL, 1, 0, 0x16 }, L2(7),  1000000 },
 	{ 0, {   648000, HFPLL, 1, 0, 0x18 }, L2(7),  1025000 },
@@ -608,20 +608,19 @@ static struct acpu_level acpu_freq_tbl_8960_kraitv2_slow[] = {
 	{ 1, {  1809000, HFPLL, 1, 0, 0x3E }, L2(19), 1325000 },
 	{ 1, {  1890000, HFPLL, 1, 0, 0x40 }, L2(19), 1350000 },
 #ifndef CONFIG_MSM_CPU_MAX_CLK_1DOT89GHZ
-	{ 1, {  1998000, HFPLL, 1, 0, 0x42 }, L2(19), 1350000 },
-	{ 1, {  2106000, HFPLL, 1, 0, 0x44 }, L2(19), 1350000 },
+	{ 1, {  1998000, HFPLL, 1, 0, 0x42 }, L2(20), 1350000 },
+	{ 1, {  2106000, HFPLL, 1, 0, 0x44 }, L2(21), 1350000 },
 #endif
 #endif
 #endif
-
 	{ 0, { 0 } }
 };
 
 static struct acpu_level acpu_freq_tbl_8960_kraitv2_nom[] = {
-	{ 0, { STBY_KHZ, QSB,   0, 0, 0x00 }, L2(0),   800000 },
-	{ 1, {   192000, PLL_8, 0, 2, 0x00 }, L2(1),   800000 },
-	{ 1, {   384000, HFPLL, 2, 0, 0x20 }, L2(7),   850000 },
-	{ 1, {   486000, HFPLL, 2, 0, 0x24 }, L2(7),   900000 },
+	{ 0, { STBY_KHZ, QSB,   0, 0, 0x00 }, L2(0),   900000 },
+	{ 1, {   192000, PLL_8, 0, 2, 0x00 }, L2(1),   900000 },
+	{ 1, {   384000, HFPLL, 2, 0, 0x20 }, L2(7),   925000 },
+	{ 1, {   486000, HFPLL, 2, 0, 0x24 }, L2(7),   925000 },
 	{ 0, {   540000, HFPLL, 2, 0, 0x28 }, L2(7),   950000 },
 	{ 1, {   594000, HFPLL, 1, 0, 0x16 }, L2(7),   950000 },
 	{ 0, {   648000, HFPLL, 1, 0, 0x18 }, L2(7),   975000 },
@@ -648,8 +647,8 @@ static struct acpu_level acpu_freq_tbl_8960_kraitv2_nom[] = {
 	{ 1, {  1809000, HFPLL, 1, 0, 0x3E }, L2(19), 1275000 },
 	{ 1, {  1890000, HFPLL, 1, 0, 0x40 }, L2(19), 1300000 },
 #ifndef CONFIG_MSM_CPU_MAX_CLK_1DOT89GHZ
-	{ 1, {  1998000, HFPLL, 1, 0, 0x42 }, L2(19), 1325000 },
-	{ 1, {  2106000, HFPLL, 1, 0, 0x44 }, L2(19), 1350000 },
+	{ 1, {  1998000, HFPLL, 1, 0, 0x42 }, L2(20), 1325000 },
+	{ 1, {  2106000, HFPLL, 1, 0, 0x44 }, L2(21), 1350000 },
 #endif
 #endif
 #endif
@@ -657,10 +656,10 @@ static struct acpu_level acpu_freq_tbl_8960_kraitv2_nom[] = {
 };
 
 static struct acpu_level acpu_freq_tbl_8960_kraitv2_fast[] = {
-	{ 0, { STBY_KHZ, QSB,   0, 0, 0x00 }, L2(0),   800000 },
-	{ 1, {   192000, PLL_8, 0, 2, 0x00 }, L2(1),   800000 },
-	{ 1, {   384000, HFPLL, 2, 0, 0x20 }, L2(7),   800000 },
-	{ 1, {   486000, HFPLL, 2, 0, 0x24 }, L2(7),   850000 },
+	{ 0, { STBY_KHZ, QSB,   0, 0, 0x00 }, L2(0),   850000 },
+	{ 1, {   192000, PLL_8, 0, 2, 0x00 }, L2(1),   850000 },
+	{ 1, {   384000, HFPLL, 2, 0, 0x20 }, L2(7),   875000 },
+	{ 1, {   486000, HFPLL, 2, 0, 0x24 }, L2(7),   875000 },
 	{ 0, {   540000, HFPLL, 2, 0, 0x28 }, L2(7),   900000 },
 	{ 1, {   594000, HFPLL, 1, 0, 0x16 }, L2(7),   900000 },
 	{ 0, {   648000, HFPLL, 1, 0, 0x18 }, L2(7),   925000 },
@@ -687,8 +686,8 @@ static struct acpu_level acpu_freq_tbl_8960_kraitv2_fast[] = {
 	{ 1, {  1809000, HFPLL, 1, 0, 0x3E }, L2(19), 1250000 },
 	{ 1, {  1890000, HFPLL, 1, 0, 0x40 }, L2(19), 1275000 },
 #ifndef CONFIG_MSM_CPU_MAX_CLK_1DOT89GHZ
-	{ 1, {  1998000, HFPLL, 1, 0, 0x42 }, L2(19), 1300000 },
-	{ 1, {  2106000, HFPLL, 1, 0, 0x44 }, L2(19), 1325000 },
+	{ 1, {  1998000, HFPLL, 1, 0, 0x42 }, L2(20), 1300000 },
+	{ 1, {  2106000, HFPLL, 1, 0, 0x44 }, L2(21), 1325000 },
 #endif
 #endif
 #endif
@@ -826,7 +825,7 @@ static struct acpu_level acpu_freq_tbl_8627[] = {
 	{ 0, { 0 } }
 };
 
-static unsigned long acpuclk_8960_get_rate(int cpu)
+unsigned long acpuclk_8960_get_rate(int cpu)
 {
 	return scalable[cpu].current_speed->khz;
 }
@@ -1567,15 +1566,6 @@ static struct notifier_block __cpuinitdata acpuclock_cpu_notifier = {
 	.notifier_call = acpuclock_cpu_callback,
 };
 
-#ifdef CONFIG_CMDLINE_OPTIONS
-/* start cmdline_khz */
-uint32_t acpu_check_khz_value(unsigned long khz)
-{
-        return 0;
-}
-EXPORT_SYMBOL(acpu_check_khz_value);
-/* end cmdline_khz */
-#endif
 static const int krait_needs_vmin(void)
 {
 	switch (read_cpuid_id()) {
@@ -1595,6 +1585,48 @@ static void kraitv2_apply_vmin(struct acpu_level *tbl)
 			tbl->vdd_core = MIN_VDD_SC;
 }
 
+/*#ifdef CONFIG_CMDLINE_OPTIONS
+uint32_t acpu_check_khz_value(unsigned long khz)
+{
+	struct acpu_level *f;
+
+	if (khz > 1944000)
+		return CONFIG_MSM_CPU_FREQ_MAX;
+
+	if (khz < 192)
+		return CONFIG_MSM_CPU_FREQ_MIN;
+
+	for (f = acpu_freq_tbl_8960_kraitv2_fast; f->speed.khz != 0; f++) {
+		if (khz < 192000) {
+			if (f->speed.khz == (khz*1000))
+				return f->speed.khz;
+			if ((khz*1000) > f->speed.khz) {
+				f++;
+				if ((khz*1000) < f->speed.khz) {
+					f--;
+					return f->speed.khz;
+				}
+				f--;
+			}
+		}
+		if (f->speed.khz == khz) {
+			return 1;
+		}
+		if (khz > f->speed.khz) {
+			f++;
+			if (khz < f->speed.khz) {
+				f--;
+				return f->speed.khz;
+			}
+			f--;
+		}
+	}
+
+	return 0;
+}
+EXPORT_SYMBOL(acpu_check_khz_value);
+#endif
+*/
 static struct acpu_level * __init select_freq_plan(void)
 {
 	struct acpu_level *l, *max_acpu_level = NULL;

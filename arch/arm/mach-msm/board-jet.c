@@ -77,7 +77,6 @@
 #include <mach/htc_headset_mgr.h>
 #include <mach/htc_headset_pmic.h>
 #include <mach/cable_detect.h>
-#include <linux/msm_tsens.h>
 #include <linux/synaptics_i2c_rmi.h>
 
 #ifdef CONFIG_WCD9310_CODEC
@@ -1603,7 +1602,7 @@ static struct camera_flash_info msm_camera_sensor_s5k3h2yx_flash_info = {
 
 static struct camera_flash_cfg msm_camera_sensor_s5k3h2yx_flash_cfg = {
 	.low_temp_limit		= 5,
-	.low_cap_limit		= 2,
+	.low_cap_limit		= 15,
 	.flash_info             = &msm_camera_sensor_s5k3h2yx_flash_info,
 };
 /* Andrew_Cheng linear led 20111205 ME */
@@ -5570,7 +5569,7 @@ static struct pm8xxx_led_configure pm8921_led_info[] = {
 		.duites_size 	= 8,
 		.duty_time_ms 	= 64,
 		.lut_flag 	= PM_PWM_LUT_RAMP_UP | PM_PWM_LUT_PAUSE_HI_EN,
-		.out_current    = 25,
+		.out_current    = 40,
 		.duties		= {0, 15, 30, 45, 60, 75, 90, 100,
 				100, 90, 75, 60, 45, 30, 15, 0,
 				0, 0, 0, 0, 0, 0, 0, 0,

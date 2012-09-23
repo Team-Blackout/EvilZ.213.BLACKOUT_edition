@@ -50,6 +50,7 @@ void hold_module_trace_bprintk_format(const char **start, const char **end)
 {
 	const char **iter;
 	char *fmt;
+	fmt = 0;
 
 	mutex_lock(&btrace_mutex);
 	for (iter = start; iter < end; iter++) {

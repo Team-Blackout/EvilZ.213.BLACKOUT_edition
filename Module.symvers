@@ -5339,7 +5339,6 @@
 0x929b6e70	device_schedule_callback_owner	vmlinux	EXPORT_SYMBOL_GPL
 0xc6b7827c	vm_insert_pfn	vmlinux	EXPORT_SYMBOL
 0xfcaa04a0	out_of_line_wait_on_bit_lock	vmlinux	EXPORT_SYMBOL
-0xdc1d9b1e	acpu_check_khz_value	vmlinux	EXPORT_SYMBOL
 0xb3265458	register_net_sysctl_table	vmlinux	EXPORT_SYMBOL_GPL
 0xdd4ddbbf	rfkill_pause_polling	vmlinux	EXPORT_SYMBOL
 0xb7c2a345	hci_le_start_enc	vmlinux	EXPORT_SYMBOL

@@ -1265,7 +1265,7 @@ static void if_tag_stat_update(const char *ifname, uid_t uid,
 	struct data_counters *uid_tag_counters;
 	struct sock_tag *sock_tag_entry;
 	struct iface_stat *iface_entry;
-	struct tag_stat *new_tag_stat;
+	struct tag_stat *new_tag_stat=0;
 	MT_DEBUG("qtaguid: if_tag_stat_update(ifname=%s "
 		"uid=%u sk=%p dir=%d proto=%d bytes=%d)\n",
 		 ifname, uid, sk, direction, proto, bytes);
@@ -1273,7 +1273,7 @@ static void if_tag_stat_update(const char *ifname, uid_t uid,
 
 	iface_entry = get_iface_entry(ifname);
 	if (!iface_entry) {
-		pr_info("qtaguid: iface_stat: stat_update() %s not found\n",
+		pr_err("qtaguid: iface_stat: stat_update() %s not found\n",
 		       ifname);
 		return;
 	}

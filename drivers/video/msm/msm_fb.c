@@ -84,7 +84,7 @@ static int pdev_list_cnt;
 static struct wake_lock idlelock;
 
 
-int vsync_mode = 1;
+int vsync_mode = 0;
 
 #define MAX_BLIT_REQ 256
 

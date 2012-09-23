@@ -113,6 +113,7 @@ static void compr_event_handler(uint32_t opcode,
 	struct audio_buffer *buf = NULL;
 	int i = 0;
 
+<<<<<<< HEAD
 	/*HTC AUDIO Start*/
 	if (!(prtd->substream && prtd->substream->runtime)) {
 		printk(KERN_WARNING "[AUD] compr_event_handler(), no substream instance, return\n");
@@ -122,7 +123,22 @@ static void compr_event_handler(uint32_t opcode,
 		runtime = substream->runtime;
 	}
 	/*HTC AUDIO End*/
+=======
+<<<<<<< HEAD
+>>>>>>> 4950382... linaro compilable
 	pr_debug("[AUD]%s opcode =%08x, start %d +++\n", __func__, opcode, ((&prtd!=NULL)?atomic_read(&prtd->start):-1));
+=======
+	/*HTC AUDIO Start*/
+	if (!(prtd->substream && prtd->substream->runtime)) {
+		printk(KERN_WARNING "[AUD] compr_event_handler(), no substream instance, return\n");
+		return;
+	} else {
+		substream = prtd->substream;
+		runtime = substream->runtime;
+	}
+	/*HTC AUDIO End*/
+	//pr_debug("[AUD]%s opcode =%08x, start %d +++\n", __func__, opcode, ((&prtd!=NULL)?atomic_read(&prtd->start):-1));
+>>>>>>> 8b6e8db... linaro compilable
 	switch (opcode) {
 	case ASM_DATA_EVENT_WRITE_DONE: {
 		uint32_t *ptrmem = (uint32_t *)&param;
@@ -221,7 +237,7 @@ static void compr_event_handler(uint32_t opcode,
 		pr_debug("[AUD]%s: Not Supported Event opcode[0x%x]\n", __func__, opcode);
 		break;
 	}
-	pr_debug("[AUD]%s opcode =%08x, start %d ---\n", __func__, opcode, ((&prtd!=NULL)?atomic_read(&prtd->start):-1));
+//	pr_debug("[AUD]%s opcode =%08x, start %d ---\n", __func__, opcode, ((&prtd!=NULL)?atomic_read(&prtd->start):-1));
 }
 
 static int msm_compr_playback_prepare(struct snd_pcm_substream *substream)

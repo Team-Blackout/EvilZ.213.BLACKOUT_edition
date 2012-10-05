@@ -2539,34 +2539,25 @@ static struct resource kgsl_3d0_resources[] = {
 static struct kgsl_device_platform_data kgsl_3d0_pdata = {
 	.pwrlevel = {
 		{
-			.gpu_freq = 400000000,
-			.bus_freq = 4,
+			.gpu_freq = 500000000,
+			.bus_freq = 2,
 			.io_fraction = 0,
 		},
 		{
 			.gpu_freq = 300000000,
-			.bus_freq = 3,
+			.bus_freq = 1,
 			.io_fraction = 33,
 		},
 		{
 			.gpu_freq = 200000000,
-			.bus_freq = 2,
-			.io_fraction = 100,
-		},
-		{
-			.gpu_freq = 128000000,
-			.bus_freq = 1,
-			.io_fraction = 100,
-		},
-		{
-			.gpu_freq = 27000000,
 			.bus_freq = 0,
+			.io_fraction = 100,
 		},
 	},
 	.init_level = 0,
-	.num_levels = 5,
+	.num_levels = 3,
 	.set_grp_async = NULL,
-	.idle_timeout = HZ/12,
+	.idle_timeout = HZ/5,
 	.nap_allowed = true,
 	.clk_map = KGSL_CLK_CORE | KGSL_CLK_IFACE | KGSL_CLK_MEM_IFACE,
 #ifdef CONFIG_MSM_BUS_SCALING
@@ -2576,6 +2567,7 @@ static struct kgsl_device_platform_data kgsl_3d0_pdata = {
 	.iommu_priv_ctx_name = NULL,
 	.snapshot_address = MSM_GPU_SNAP_SHOT_3D0_PHYS,
 };
+
 
 struct platform_device msm_kgsl_3d0 = {
 	.name = "kgsl-3d0",
@@ -2605,22 +2597,18 @@ static struct resource kgsl_2d0_resources[] = {
 static struct kgsl_device_platform_data kgsl_2d0_pdata = {
 	.pwrlevel = {
 		{
-			.gpu_freq = 200000000,
-			.bus_freq = 2,
-		},
-		{
-			.gpu_freq = 96000000,
+			.gpu_freq = 300000000,
 			.bus_freq = 1,
 		},
 		{
-			.gpu_freq = 27000000,
+			.gpu_freq = 200000000,
 			.bus_freq = 0,
 		},
 	},
 	.init_level = 0,
-	.num_levels = 3,
+	.num_levels = 2,
 	.set_grp_async = NULL,
-	.idle_timeout = HZ/5,
+	.idle_timeout = HZ/10,
 	.nap_allowed = true,
 	.clk_map = KGSL_CLK_CORE | KGSL_CLK_IFACE,
 #ifdef CONFIG_MSM_BUS_SCALING

@@ -540,7 +540,7 @@ static void audio_vol_ramping_func(struct work_struct *work)
 {
 	struct tabla_priv *tabla = container_of(work, struct tabla_priv, audio_vol_ramp_work);
 	struct snd_soc_codec *codec = tabla->codec;
-	
+
 	int level = hp_ramp_vol_gain - hp_ramp_vol_control;
 	int i, index = level > 0 ? level: -level;
 
@@ -548,21 +548,21 @@ static void audio_vol_ramping_func(struct work_struct *work)
 		if (level > 0) {
 			hp_ramp_vol_control++;
 			snd_soc_update_bits(codec, TABLA_A_RX_HPH_L_GAIN, 0x0F,
-				(HPH_RX_GAIN_MAX - vol_control));
+				(HPH_RX_GAIN_MAX - hp_ramp_vol_control));
 			snd_soc_update_bits(codec, TABLA_A_RX_HPH_R_GAIN, 0x0F,
-				(HPH_RX_GAIN_MAX- vol_control));
+				(HPH_RX_GAIN_MAX- hp_ramp_vol_control));
 			usleep_range(50000, 50000);
 		} else {
 			hp_ramp_vol_control--;
 			snd_soc_update_bits(codec, TABLA_A_RX_HPH_L_GAIN, 0x0F,
-				(HPH_RX_GAIN_MAX - _vol_control));
+				(HPH_RX_GAIN_MAX - hp_ramp_vol_control));
 			snd_soc_update_bits(codec, TABLA_A_RX_HPH_R_GAIN, 0x0F,
-				(HPH_RX_GAIN_MAX- vol_control));
+				(HPH_RX_GAIN_MAX- hp_ramp_vol_control));
 			usleep_range(10000, 10000);
 		}
 	}
 
-	hp_ramp_vol_control = vol_control;
+	pr_info("%s, volume value =%d\n", __func__, hp_ramp_vol_control);
 	return;
 }
 
@@ -3133,7 +3133,7 @@ static struct snd_soc_dai_driver tabla_dai[] = {
 			.stream_name = "AIF1 Playback",
 			.rates = WCD9310_RATES,
 			.formats = TABLA_FORMATS,
-			.rate_max = 48000,
+			.rate_max = 96000,
 			.rate_min = 8000,
 			.channels_min = 1,
 			.channels_max = 2,
@@ -3147,7 +3147,7 @@ static struct snd_soc_dai_driver tabla_dai[] = {
 			.stream_name = "AIF1 Capture",
 			.rates = WCD9310_RATES,
 			.formats = TABLA_FORMATS,
-			.rate_max = 48000,
+			.rate_max = 96000,
 			.rate_min = 8000,
 			.channels_min = 1,
 			.channels_max = 4,
@@ -3164,7 +3164,7 @@ static struct snd_soc_dai_driver tabla_i2s_dai[] = {
 			.stream_name = "AIF1 Playback",
 			.rates = WCD9310_RATES,
 			.formats = TABLA_FORMATS,
-			.rate_max = 48000,
+			.rate_max = 96000,
 			.rate_min = 8000,
 			.channels_min = 1,
 			.channels_max = 4,
@@ -3178,7 +3178,7 @@ static struct snd_soc_dai_driver tabla_i2s_dai[] = {
 			.stream_name = "AIF1 Capture",
 			.rates = WCD9310_RATES,
 			.formats = TABLA_FORMATS,
-			.rate_max = 48000,
+			.rate_max = 96000,
 			.rate_min = 8000,
 			.channels_min = 1,
 			.channels_max = 4,
@@ -3464,9 +3464,7 @@ static void btn0_lpress_fn(struct work_struct *work)
 
 	delayed_work = to_delayed_work(work);
 	tabla = container_of(delayed_work, struct tabla_priv, btn0_dwork);
-	if (tabla && tabla->codec && tabla->codec->dev)
-	   core = dev_get_drvdata(tabla->codec->dev->parent);
-	/*HTC AUD, Klockwork*/
+	core = dev_get_drvdata(tabla->codec->dev->parent);
 
 	if (tabla) {
 		if (tabla->button_jack) {
@@ -4372,18 +4370,12 @@ static int tabla_handle_pdata(struct tabla_priv *tabla)
 	struct snd_soc_codec *codec = tabla->codec;
 	struct tabla_pdata *pdata = tabla->pdata;
 	int k1, k2, k3, rc = 0;
-	u8 leg_mode = 0;
-	u8 txfe_bypass = 0;
-	u8 txfe_buff = 0;
-	u8 flag = 0;
+	u8 leg_mode = pdata->amic_settings.legacy_mode;
+	u8 txfe_bypass = pdata->amic_settings.txfe_enable;
+	u8 txfe_buff = pdata->amic_settings.txfe_buff;
+	u8 flag = pdata->amic_settings.use_pdata;
 	u8 i = 0, j = 0;
 	u8 val_txfe = 0, value = 0;
-	/* HC AUD CLOCKWORK */
-	 if (pdata) {
-	  u8 leg_mode = pdata->amic_settings.legacy_mode;
-	  u8 txfe_bypass = pdata->amic_settings.txfe_enable;
-	  u8 txfe_buff = pdata->amic_settings.txfe_buff;
-	  u8 flag = pdata->amic_settings.use_pdata;
 
 	if (!pdata) {
 		rc = -ENODEV;

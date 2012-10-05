@@ -1,0 +1,1 @@
+cmd_drivers/media/radio/radio-iris-transport.ko := /home/zarboz/android/arm-eabi-4.4.3/bin/arm-eabi-ld -EL -r  -T /home/zarboz/EvilZ-213/scripts/module-common.lds --build-id  -o drivers/media/radio/radio-iris-transport.ko drivers/media/radio/radio-iris-transport.o drivers/media/radio/radio-iris-transport.mod.o

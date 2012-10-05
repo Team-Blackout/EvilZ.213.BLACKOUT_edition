@@ -19,7 +19,7 @@ obj-$(CONFIG_CPU_FREQ_GOV_ONDEMANDX)    += cpufreq_ondemandx.o
 obj-$(CONFIG_CPU_FREQ_GOV_LULZACTIVE)    += cpufreq_lulzactive.o
 obj-$(CONFIG_CPU_FREQ_GOV_INTERACTIVEX) += cpufreq_interactivex.o
 obj-$(CONFIG_CPU_FREQ_GOV_SavagedZen)   += cpufreq_savagedzen.o
-obj-$(CONFIG_CPU_FREQ_GOV_INTELLIDEMAND)+= cpufreq_intellidemand.o
+obj-$(CONFIG_CPU_FREQ_GOV_INTELLIDEMAND) += cpufreq_intellidemand.o
 obj-$(CONFIG_CPU_FREQ_GOV_BRAZILIANWAX) += cpufreq_brazilianwax.o
 
 # CPUfreq cross-arch helpers

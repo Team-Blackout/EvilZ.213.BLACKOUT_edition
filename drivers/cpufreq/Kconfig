@@ -38,11 +38,7 @@ config CPU_FREQ_STAT_DETAILS
 	depends on CPU_FREQ_STAT
 	help
 	  This will show detail CPU frequency translation table in sysfs file
-	  system.	bool "CPU Max 2.1Ghz clk support"
-	default n
-	help
-	  To support the Max 2.1Ghz.
-
+	  system.
 
 	  If in doubt, say N.
 
@@ -83,7 +79,7 @@ config CPU_FREQ_DEFAULT_GOV_USERSPACE
 config CPU_FREQ_DEFAULT_GOV_ONDEMAND
 	bool "ondemand"
 	select CPU_FREQ_GOV_ONDEMAND
-	select CPU_FREQ_GOV_PERFORMANCEconfig
+	select CPU_FREQ_GOV_PERFORMANCE
 	help
 	  Use the CPUFreq governor 'ondemand' as default. This allows
 	  you to get a full dynamic frequency capable system by simply
@@ -103,7 +99,8 @@ config CPU_FREQ_DEFAULT_GOV_CONSERVATIVE
 	  Be aware that not all cpufreq drivers support the conservative
 	  governor. If unsure have a look at the help section of the
 	  driver. Fallback governor will be the performance governor.
-	  
+
+
 config CPU_FREQ_DEFAULT_GOV_LAGFREE
         bool "lagfree"
         select CPU_FREQ_GOV_LAGFREE
@@ -304,7 +301,7 @@ config CPU_FREQ_GOV_INTERACTIVE
 	  For details, take a look at linux/Documentation/cpu-freq.
 
 	  If in doubt, say N.
-	  
+
 config CPU_FREQ_GOV_SMARTASS2
 	tristate "'smartassV2' cpufreq governor"
 	depends on CPU_FREQ

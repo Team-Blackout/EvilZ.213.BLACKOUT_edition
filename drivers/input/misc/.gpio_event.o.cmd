@@ -3,6 +3,7 @@ cmd_drivers/input/misc/gpio_event.o := /home/zarboz/EvilZ-213/scripts/gcc-wrappe
 source_drivers/input/misc/gpio_event.o := drivers/input/misc/gpio_event.c
 
 deps_drivers/input/misc/gpio_event.o := \
+    $(wildcard include/config/touchscreen/ville/sweep2wake.h) \
     $(wildcard include/config/has/earlysuspend.h) \
   include/linux/earlysuspend.h \
     $(wildcard include/config/htc/onmode/charging.h) \

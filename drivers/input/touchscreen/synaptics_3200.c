@@ -122,6 +122,56 @@ static int syn_pdt_scan(struct synaptics_ts_data *ts, int num_page);
 static int synaptics_init_panel(struct synaptics_ts_data *ts);
 
 static irqreturn_t synaptics_irq_thread(int irq, void *ptr);
+#ifdef CONFIG_TOUCHSCREEN_SYNAPTICS_SWEEP2WAKE
+int s2w_switch = 1;
+bool scr_suspended = false, exec_count = true;
+bool scr_on_touch = false, barrier[2] = {false, false};
+static struct input_dev * sweep2wake_pwrdev;
+static DEFINE_MUTEX(pwrkeyworklock);
+
+#ifdef CONFIG_CMDLINE_OPTIONS
+static int __init cy8c_read_s2w_cmdline(char *s2w)
+{
+	if (strcmp(s2w, "1") == 0) {
+		printk(KERN_INFO "[cmdline_s2w]: Sweep2Wake enabled. | s2w='%s'", s2w);
+		s2w_switch = 1;
+	} else if (strcmp(s2w, "0") == 0) {
+		printk(KERN_INFO "[cmdline_s2w]: Sweep2Wake disabled. | s2w='%s'", s2w);
+		s2w_switch = 0;
+	} else {
+		printk(KERN_INFO "[cmdline_s2w]: No valid input found. Sweep2Wake disabled. | s2w='%s'", s2w);
+		s2w_switch = 0;
+	}
+	return 1;
+}
+__setup("s2w=", cy8c_read_s2w_cmdline);
+#endif
+
+extern void sweep2wake_setdev(struct input_dev * input_device) {
+	sweep2wake_pwrdev = input_device;
+	return;
+}
+EXPORT_SYMBOL(sweep2wake_setdev);
+
+static void sweep2wake_presspwr(struct work_struct * sweep2wake_presspwr_work) {
+	if (!mutex_trylock(&pwrkeyworklock))
+                return;
+	input_event(sweep2wake_pwrdev, EV_KEY, KEY_POWER, 1);
+	input_event(sweep2wake_pwrdev, EV_SYN, 0, 0);
+	msleep(100);
+	input_event(sweep2wake_pwrdev, EV_KEY, KEY_POWER, 0);
+	input_event(sweep2wake_pwrdev, EV_SYN, 0, 0);
+	msleep(100);
+        mutex_unlock(&pwrkeyworklock);
+	return;
+}
+static DECLARE_WORK(sweep2wake_presspwr_work, sweep2wake_presspwr);
+
+void sweep2wake_pwrtrigger(void) {
+	schedule_work(&sweep2wake_presspwr_work);
+        return;
+}
+#endif
 
 static void syn_page_select(struct i2c_client *client, uint8_t page)
 {

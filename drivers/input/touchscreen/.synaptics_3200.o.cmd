@@ -6,6 +6,8 @@ deps_drivers/input/touchscreen/synaptics_3200.o := \
     $(wildcard include/config/update.h) \
     $(wildcard include/config/size.h) \
     $(wildcard include/config/has/earlysuspend.h) \
+    $(wildcard include/config/touchscreen/synaptics/sweep2wake.h) \
+    $(wildcard include/config/cmdline/options.h) \
   include/linux/module.h \
     $(wildcard include/config/sysfs.h) \
     $(wildcard include/config/modules.h) \

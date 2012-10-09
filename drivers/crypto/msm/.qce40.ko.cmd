@@ -1,1 +1,1 @@
-cmd_drivers/crypto/msm/qce40.ko := /home/zarboz/android/arm-eabi-4.4.3/bin/arm-eabi-ld -EL -r  -T /home/zarboz/EvilZ-213/scripts/module-common.lds --build-id  -o drivers/crypto/msm/qce40.ko drivers/crypto/msm/qce40.o drivers/crypto/msm/qce40.mod.o
+cmd_drivers/crypto/msm/qce40.ko := /home/zarboz/android/arm-eabi-4.4.3/bin/arm-eabi-ld -EL -r  -T /home/zarboz/kernel/projects/jewel/213/scripts/module-common.lds --build-id  -o drivers/crypto/msm/qce40.ko drivers/crypto/msm/qce40.o drivers/crypto/msm/qce40.mod.o

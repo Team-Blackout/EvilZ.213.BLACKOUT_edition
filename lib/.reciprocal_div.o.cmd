@@ -1,10 +1,10 @@
-cmd_lib/reciprocal_div.o := /home/zarboz/EvilZ-213/scripts/gcc-wrapper.py /home/zarboz/android/arm-eabi-4.4.3/bin/arm-eabi-gcc -Wp,-MD,lib/.reciprocal_div.o.d  -nostdinc -isystem /home/zarboz/android/arm-eabi-4.4.3/bin/../lib/gcc/arm-eabi/4.4.3/include -I/home/zarboz/EvilZ-213/arch/arm/include -Iarch/arm/include/generated -Iinclude  -include include/generated/autoconf.h -D__KERNEL__ -mlittle-endian -Iarch/arm/mach-msm/include -Wall -Wundef -Wstrict-prototypes -Wno-trigraphs -fno-strict-aliasing -fno-common -Werror-implicit-function-declaration -Wno-format-security -fno-delete-null-pointer-checks -Os -marm -fno-dwarf2-cfi-asm -fstack-protector -mabi=aapcs-linux -mno-thumb-interwork -funwind-tables -D__LINUX_ARM_ARCH__=7 -march=armv7-a -msoft-float -Uarm -Wframe-larger-than=1024 -fomit-frame-pointer -g -Wdeclaration-after-statement -Wno-pointer-sign -fno-strict-overflow -fconserve-stack    -D"KBUILD_STR(s)=\#s" -D"KBUILD_BASENAME=KBUILD_STR(reciprocal_div)"  -D"KBUILD_MODNAME=KBUILD_STR(reciprocal_div)" -c -o lib/.tmp_reciprocal_div.o lib/reciprocal_div.c
+cmd_lib/reciprocal_div.o := /home/zarboz/kernel/projects/jewel/213/scripts/gcc-wrapper.py /home/zarboz/android/arm-eabi-4.4.3/bin/arm-eabi-gcc -Wp,-MD,lib/.reciprocal_div.o.d  -nostdinc -isystem /home/zarboz/android/arm-eabi-4.4.3/bin/../lib/gcc/arm-eabi/4.4.3/include -I/home/zarboz/kernel/projects/jewel/213/arch/arm/include -Iarch/arm/include/generated -Iinclude  -include include/generated/autoconf.h -D__KERNEL__ -mlittle-endian -Iarch/arm/mach-msm/include -Wall -Wundef -Wstrict-prototypes -Wno-trigraphs -fno-strict-aliasing -fno-common -Werror-implicit-function-declaration -Wno-format-security -fno-delete-null-pointer-checks -Os -marm -fno-dwarf2-cfi-asm -fstack-protector -mabi=aapcs-linux -mno-thumb-interwork -funwind-tables -D__LINUX_ARM_ARCH__=7 -march=armv7-a -msoft-float -Uarm -Wframe-larger-than=1024 -fomit-frame-pointer -g -Wdeclaration-after-statement -Wno-pointer-sign -fno-strict-overflow -fconserve-stack    -D"KBUILD_STR(s)=\#s" -D"KBUILD_BASENAME=KBUILD_STR(reciprocal_div)"  -D"KBUILD_MODNAME=KBUILD_STR(reciprocal_div)" -c -o lib/.tmp_reciprocal_div.o lib/reciprocal_div.c
 
 source_lib/reciprocal_div.o := lib/reciprocal_div.c
 
 deps_lib/reciprocal_div.o := \
-  /home/zarboz/EvilZ-213/arch/arm/include/asm/div64.h \
-  /home/zarboz/EvilZ-213/arch/arm/include/asm/system.h \
+  /home/zarboz/kernel/projects/jewel/213/arch/arm/include/asm/div64.h \
+  /home/zarboz/kernel/projects/jewel/213/arch/arm/include/asm/system.h \
     $(wildcard include/config/cpu/32v6k.h) \
     $(wildcard include/config/cpu/xsc3.h) \
     $(wildcard include/config/cpu/fa526.h) \
@@ -25,18 +25,18 @@ deps_lib/reciprocal_div.o := \
     $(wildcard include/config/arch/supports/optimized/inlining.h) \
     $(wildcard include/config/optimize/inlining.h) \
   include/linux/compiler-gcc4.h \
-  /home/zarboz/EvilZ-213/arch/arm/include/asm/linkage.h \
+  /home/zarboz/kernel/projects/jewel/213/arch/arm/include/asm/linkage.h \
   include/linux/irqflags.h \
     $(wildcard include/config/trace/irqflags.h) \
     $(wildcard include/config/irqsoff/tracer.h) \
     $(wildcard include/config/preempt/tracer.h) \
     $(wildcard include/config/trace/irqflags/support.h) \
   include/linux/typecheck.h \
-  /home/zarboz/EvilZ-213/arch/arm/include/asm/irqflags.h \
-  /home/zarboz/EvilZ-213/arch/arm/include/asm/ptrace.h \
+  /home/zarboz/kernel/projects/jewel/213/arch/arm/include/asm/irqflags.h \
+  /home/zarboz/kernel/projects/jewel/213/arch/arm/include/asm/ptrace.h \
     $(wildcard include/config/cpu/endian/be8.h) \
     $(wildcard include/config/arm/thumb.h) \
-  /home/zarboz/EvilZ-213/arch/arm/include/asm/hwcap.h \
+  /home/zarboz/kernel/projects/jewel/213/arch/arm/include/asm/hwcap.h \
   include/linux/stddef.h \
   include/linux/types.h \
     $(wildcard include/config/uid16.h) \
@@ -44,17 +44,17 @@ deps_lib/reciprocal_div.o := \
     $(wildcard include/config/arch/dma/addr/t/64bit.h) \
     $(wildcard include/config/phys/addr/t/64bit.h) \
     $(wildcard include/config/64bit.h) \
-  /home/zarboz/EvilZ-213/arch/arm/include/asm/types.h \
+  /home/zarboz/kernel/projects/jewel/213/arch/arm/include/asm/types.h \
   include/asm-generic/int-ll64.h \
-  /home/zarboz/EvilZ-213/arch/arm/include/asm/bitsperlong.h \
+  /home/zarboz/kernel/projects/jewel/213/arch/arm/include/asm/bitsperlong.h \
   include/asm-generic/bitsperlong.h \
   include/linux/posix_types.h \
-  /home/zarboz/EvilZ-213/arch/arm/include/asm/posix_types.h \
-  /home/zarboz/EvilZ-213/arch/arm/include/asm/outercache.h \
+  /home/zarboz/kernel/projects/jewel/213/arch/arm/include/asm/posix_types.h \
+  /home/zarboz/kernel/projects/jewel/213/arch/arm/include/asm/outercache.h \
     $(wildcard include/config/outer/cache/sync.h) \
     $(wildcard include/config/outer/cache.h) \
   include/asm-generic/cmpxchg-local.h \
-  /home/zarboz/EvilZ-213/arch/arm/include/asm/bug.h \
+  /home/zarboz/kernel/projects/jewel/213/arch/arm/include/asm/bug.h \
     $(wildcard include/config/bug.h) \
     $(wildcard include/config/thumb2/kernel.h) \
     $(wildcard include/config/debug/bugverbose.h) \

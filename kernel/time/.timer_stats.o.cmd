@@ -1,4 +1,4 @@
-cmd_kernel/time/timer_stats.o := /home/zarboz/EvilZ-213/scripts/gcc-wrapper.py /home/zarboz/android/arm-eabi-4.4.3/bin/arm-eabi-gcc -Wp,-MD,kernel/time/.timer_stats.o.d  -nostdinc -isystem /home/zarboz/android/arm-eabi-4.4.3/bin/../lib/gcc/arm-eabi/4.4.3/include -I/home/zarboz/EvilZ-213/arch/arm/include -Iarch/arm/include/generated -Iinclude  -include include/generated/autoconf.h -D__KERNEL__ -mlittle-endian -Iarch/arm/mach-msm/include -Wall -Wundef -Wstrict-prototypes -Wno-trigraphs -fno-strict-aliasing -fno-common -Werror-implicit-function-declaration -Wno-format-security -fno-delete-null-pointer-checks -Os -marm -fno-dwarf2-cfi-asm -fstack-protector -mabi=aapcs-linux -mno-thumb-interwork -funwind-tables -D__LINUX_ARM_ARCH__=7 -march=armv7-a -msoft-float -Uarm -Wframe-larger-than=1024 -fomit-frame-pointer -g -Wdeclaration-after-statement -Wno-pointer-sign -fno-strict-overflow -fconserve-stack    -D"KBUILD_STR(s)=\#s" -D"KBUILD_BASENAME=KBUILD_STR(timer_stats)"  -D"KBUILD_MODNAME=KBUILD_STR(timer_stats)" -c -o kernel/time/.tmp_timer_stats.o kernel/time/timer_stats.c
+cmd_kernel/time/timer_stats.o := /home/zarboz/kernel/projects/jewel/213/scripts/gcc-wrapper.py /home/zarboz/android/arm-eabi-4.4.3/bin/arm-eabi-gcc -Wp,-MD,kernel/time/.timer_stats.o.d  -nostdinc -isystem /home/zarboz/android/arm-eabi-4.4.3/bin/../lib/gcc/arm-eabi/4.4.3/include -I/home/zarboz/kernel/projects/jewel/213/arch/arm/include -Iarch/arm/include/generated -Iinclude  -include include/generated/autoconf.h -D__KERNEL__ -mlittle-endian -Iarch/arm/mach-msm/include -Wall -Wundef -Wstrict-prototypes -Wno-trigraphs -fno-strict-aliasing -fno-common -Werror-implicit-function-declaration -Wno-format-security -fno-delete-null-pointer-checks -Os -marm -fno-dwarf2-cfi-asm -fstack-protector -mabi=aapcs-linux -mno-thumb-interwork -funwind-tables -D__LINUX_ARM_ARCH__=7 -march=armv7-a -msoft-float -Uarm -Wframe-larger-than=1024 -fomit-frame-pointer -g -Wdeclaration-after-statement -Wno-pointer-sign -fno-strict-overflow -fconserve-stack    -D"KBUILD_STR(s)=\#s" -D"KBUILD_BASENAME=KBUILD_STR(timer_stats)"  -D"KBUILD_MODNAME=KBUILD_STR(timer_stats)" -c -o kernel/time/.tmp_timer_stats.o kernel/time/timer_stats.c
 
 source_kernel/time/timer_stats.o := kernel/time/timer_stats.c
 
@@ -62,9 +62,9 @@ deps_kernel/time/timer_stats.o := \
     $(wildcard include/config/arch/dma/addr/t/64bit.h) \
     $(wildcard include/config/phys/addr/t/64bit.h) \
     $(wildcard include/config/64bit.h) \
-  /home/zarboz/EvilZ-213/arch/arm/include/asm/types.h \
+  /home/zarboz/kernel/projects/jewel/213/arch/arm/include/asm/types.h \
   include/asm-generic/int-ll64.h \
-  /home/zarboz/EvilZ-213/arch/arm/include/asm/bitsperlong.h \
+  /home/zarboz/kernel/projects/jewel/213/arch/arm/include/asm/bitsperlong.h \
   include/asm-generic/bitsperlong.h \
   include/linux/posix_types.h \
   include/linux/stddef.h \
@@ -78,10 +78,10 @@ deps_kernel/time/timer_stats.o := \
     $(wildcard include/config/arch/supports/optimized/inlining.h) \
     $(wildcard include/config/optimize/inlining.h) \
   include/linux/compiler-gcc4.h \
-  /home/zarboz/EvilZ-213/arch/arm/include/asm/posix_types.h \
+  /home/zarboz/kernel/projects/jewel/213/arch/arm/include/asm/posix_types.h \
   include/linux/bitops.h \
-  /home/zarboz/EvilZ-213/arch/arm/include/asm/bitops.h \
-  /home/zarboz/EvilZ-213/arch/arm/include/asm/system.h \
+  /home/zarboz/kernel/projects/jewel/213/arch/arm/include/asm/bitops.h \
+  /home/zarboz/kernel/projects/jewel/213/arch/arm/include/asm/system.h \
     $(wildcard include/config/cpu/32v6k.h) \
     $(wildcard include/config/cpu/xsc3.h) \
     $(wildcard include/config/cpu/fa526.h) \
@@ -91,17 +91,17 @@ deps_kernel/time/timer_stats.o := \
     $(wildcard include/config/cpu/sa110.h) \
     $(wildcard include/config/cpu/v6.h) \
   include/linux/linkage.h \
-  /home/zarboz/EvilZ-213/arch/arm/include/asm/linkage.h \
+  /home/zarboz/kernel/projects/jewel/213/arch/arm/include/asm/linkage.h \
   include/linux/irqflags.h \
     $(wildcard include/config/trace/irqflags.h) \
     $(wildcard include/config/irqsoff/tracer.h) \
     $(wildcard include/config/trace/irqflags/support.h) \
-  /home/zarboz/EvilZ-213/arch/arm/include/asm/irqflags.h \
-  /home/zarboz/EvilZ-213/arch/arm/include/asm/ptrace.h \
+  /home/zarboz/kernel/projects/jewel/213/arch/arm/include/asm/irqflags.h \
+  /home/zarboz/kernel/projects/jewel/213/arch/arm/include/asm/ptrace.h \
     $(wildcard include/config/cpu/endian/be8.h) \
     $(wildcard include/config/arm/thumb.h) \
-  /home/zarboz/EvilZ-213/arch/arm/include/asm/hwcap.h \
-  /home/zarboz/EvilZ-213/arch/arm/include/asm/outercache.h \
+  /home/zarboz/kernel/projects/jewel/213/arch/arm/include/asm/hwcap.h \
+  /home/zarboz/kernel/projects/jewel/213/arch/arm/include/asm/outercache.h \
     $(wildcard include/config/outer/cache/sync.h) \
     $(wildcard include/config/outer/cache.h) \
   include/asm-generic/cmpxchg-local.h \
@@ -113,17 +113,17 @@ deps_kernel/time/timer_stats.o := \
   include/asm-generic/bitops/const_hweight.h \
   include/asm-generic/bitops/lock.h \
   include/asm-generic/bitops/le.h \
-  /home/zarboz/EvilZ-213/arch/arm/include/asm/byteorder.h \
+  /home/zarboz/kernel/projects/jewel/213/arch/arm/include/asm/byteorder.h \
   include/linux/byteorder/little_endian.h \
   include/linux/swab.h \
-  /home/zarboz/EvilZ-213/arch/arm/include/asm/swab.h \
+  /home/zarboz/kernel/projects/jewel/213/arch/arm/include/asm/swab.h \
   include/linux/byteorder/generic.h \
-  /home/zarboz/EvilZ-213/arch/arm/include/asm/thread_info.h \
+  /home/zarboz/kernel/projects/jewel/213/arch/arm/include/asm/thread_info.h \
     $(wildcard include/config/arm/thumbee.h) \
-  /home/zarboz/EvilZ-213/arch/arm/include/asm/fpstate.h \
+  /home/zarboz/kernel/projects/jewel/213/arch/arm/include/asm/fpstate.h \
     $(wildcard include/config/vfpv3.h) \
     $(wildcard include/config/iwmmxt.h) \
-  /home/zarboz/EvilZ-213/arch/arm/include/asm/domain.h \
+  /home/zarboz/kernel/projects/jewel/213/arch/arm/include/asm/domain.h \
     $(wildcard include/config/verify/permission/fault.h) \
     $(wildcard include/config/io/36.h) \
     $(wildcard include/config/cpu/use/domains.h) \
@@ -150,30 +150,30 @@ deps_kernel/time/timer_stats.o := \
     $(wildcard include/config/modules.h) \
     $(wildcard include/config/hotplug.h) \
   include/linux/dynamic_debug.h \
-  /home/zarboz/EvilZ-213/arch/arm/include/asm/bug.h \
+  /home/zarboz/kernel/projects/jewel/213/arch/arm/include/asm/bug.h \
     $(wildcard include/config/bug.h) \
     $(wildcard include/config/thumb2/kernel.h) \
     $(wildcard include/config/debug/bugverbose.h) \
   include/asm-generic/bug.h \
     $(wildcard include/config/generic/bug.h) \
     $(wildcard include/config/generic/bug/relative/pointers.h) \
-  /home/zarboz/EvilZ-213/arch/arm/include/asm/div64.h \
+  /home/zarboz/kernel/projects/jewel/213/arch/arm/include/asm/div64.h \
   include/linux/stringify.h \
   include/linux/bottom_half.h \
   include/linux/spinlock_types.h \
-  /home/zarboz/EvilZ-213/arch/arm/include/asm/spinlock_types.h \
+  /home/zarboz/kernel/projects/jewel/213/arch/arm/include/asm/spinlock_types.h \
   include/linux/lockdep.h \
     $(wildcard include/config/lockdep.h) \
     $(wildcard include/config/lock/stat.h) \
     $(wildcard include/config/prove/rcu.h) \
   include/linux/rwlock_types.h \
-  /home/zarboz/EvilZ-213/arch/arm/include/asm/spinlock.h \
+  /home/zarboz/kernel/projects/jewel/213/arch/arm/include/asm/spinlock.h \
     $(wildcard include/config/arm/ticket/locks.h) \
-  /home/zarboz/EvilZ-213/arch/arm/include/asm/processor.h \
+  /home/zarboz/kernel/projects/jewel/213/arch/arm/include/asm/processor.h \
     $(wildcard include/config/have/hw/breakpoint.h) \
     $(wildcard include/config/mmu.h) \
     $(wildcard include/config/arm/errata/754327.h) \
-  /home/zarboz/EvilZ-213/arch/arm/include/asm/hw_breakpoint.h \
+  /home/zarboz/kernel/projects/jewel/213/arch/arm/include/asm/hw_breakpoint.h \
   include/linux/rwlock.h \
   include/linux/spinlock_api_smp.h \
     $(wildcard include/config/inline/spin/lock.h) \
@@ -205,14 +205,14 @@ deps_kernel/time/timer_stats.o := \
     $(wildcard include/config/inline/write/unlock/irq.h) \
     $(wildcard include/config/inline/read/unlock/irqrestore.h) \
     $(wildcard include/config/inline/write/unlock/irqrestore.h) \
-  /home/zarboz/EvilZ-213/arch/arm/include/asm/atomic.h \
+  /home/zarboz/kernel/projects/jewel/213/arch/arm/include/asm/atomic.h \
     $(wildcard include/config/generic/atomic64.h) \
   include/asm-generic/atomic-long.h \
   include/linux/wait.h \
-  /home/zarboz/EvilZ-213/arch/arm/include/asm/current.h \
+  /home/zarboz/kernel/projects/jewel/213/arch/arm/include/asm/current.h \
   include/linux/cache.h \
     $(wildcard include/config/arch/has/cache/line/size.h) \
-  /home/zarboz/EvilZ-213/arch/arm/include/asm/cache.h \
+  /home/zarboz/kernel/projects/jewel/213/arch/arm/include/asm/cache.h \
     $(wildcard include/config/arm/l1/cache/shift.h) \
     $(wildcard include/config/aeabi.h) \
   include/linux/threads.h \
@@ -225,12 +225,12 @@ deps_kernel/time/timer_stats.o := \
   include/linux/bitmap.h \
   include/linux/string.h \
     $(wildcard include/config/binary/printf.h) \
-  /home/zarboz/EvilZ-213/arch/arm/include/asm/string.h \
+  /home/zarboz/kernel/projects/jewel/213/arch/arm/include/asm/string.h \
   include/linux/pageblock-flags.h \
     $(wildcard include/config/hugetlb/page.h) \
     $(wildcard include/config/hugetlb/page/size/variable.h) \
   include/generated/bounds.h \
-  /home/zarboz/EvilZ-213/arch/arm/include/asm/page.h \
+  /home/zarboz/kernel/projects/jewel/213/arch/arm/include/asm/page.h \
     $(wildcard include/config/cpu/copy/v3.h) \
     $(wildcard include/config/cpu/copy/v4wt.h) \
     $(wildcard include/config/cpu/copy/v4wb.h) \
@@ -239,8 +239,8 @@ deps_kernel/time/timer_stats.o := \
     $(wildcard include/config/cpu/xscale.h) \
     $(wildcard include/config/cpu/copy/v6.h) \
     $(wildcard include/config/memory/hotplug/sparse.h) \
-  /home/zarboz/EvilZ-213/arch/arm/include/asm/glue.h \
-  /home/zarboz/EvilZ-213/arch/arm/include/asm/memory.h \
+  /home/zarboz/kernel/projects/jewel/213/arch/arm/include/asm/glue.h \
+  /home/zarboz/kernel/projects/jewel/213/arch/arm/include/asm/memory.h \
     $(wildcard include/config/page/offset.h) \
     $(wildcard include/config/dram/size.h) \
     $(wildcard include/config/dram/base.h) \
@@ -260,7 +260,7 @@ deps_kernel/time/timer_stats.o := \
     $(wildcard include/config/arch/msm/scorpion.h) \
     $(wildcard include/config/arch/msm/krait.h) \
     $(wildcard include/config/arch/msm7x27.h) \
-  /home/zarboz/EvilZ-213/arch/arm/include/asm/sizes.h \
+  /home/zarboz/kernel/projects/jewel/213/arch/arm/include/asm/sizes.h \
   include/asm-generic/sizes.h \
   include/asm-generic/memory_model.h \
     $(wildcard include/config/sparsemem/vmemmap.h) \
@@ -270,7 +270,7 @@ deps_kernel/time/timer_stats.o := \
     $(wildcard include/config/have/arch/nodedata/extension.h) \
   include/linux/notifier.h \
   include/linux/errno.h \
-  /home/zarboz/EvilZ-213/arch/arm/include/asm/errno.h \
+  /home/zarboz/kernel/projects/jewel/213/arch/arm/include/asm/errno.h \
   include/asm-generic/errno.h \
   include/asm-generic/errno-base.h \
   include/linux/mutex.h \
@@ -292,17 +292,17 @@ deps_kernel/time/timer_stats.o := \
     $(wildcard include/config/disable/obsolete/cpumask/functions.h) \
   include/linux/smp.h \
     $(wildcard include/config/use/generic/smp/helpers.h) \
-  /home/zarboz/EvilZ-213/arch/arm/include/asm/smp.h \
+  /home/zarboz/kernel/projects/jewel/213/arch/arm/include/asm/smp.h \
   include/linux/percpu.h \
     $(wildcard include/config/need/per/cpu/embed/first/chunk.h) \
     $(wildcard include/config/need/per/cpu/page/first/chunk.h) \
     $(wildcard include/config/have/setup/per/cpu/area.h) \
   include/linux/pfn.h \
-  /home/zarboz/EvilZ-213/arch/arm/include/asm/percpu.h \
+  /home/zarboz/kernel/projects/jewel/213/arch/arm/include/asm/percpu.h \
   include/asm-generic/percpu.h \
   include/linux/percpu-defs.h \
     $(wildcard include/config/debug/force/weak/per/cpu.h) \
-  /home/zarboz/EvilZ-213/arch/arm/include/asm/topology.h \
+  /home/zarboz/kernel/projects/jewel/213/arch/arm/include/asm/topology.h \
   include/asm-generic/topology.h \
   include/linux/mmdebug.h \
     $(wildcard include/config/debug/vm.h) \
@@ -325,9 +325,9 @@ deps_kernel/time/timer_stats.o := \
   include/linux/jiffies.h \
   include/linux/timex.h \
   include/linux/param.h \
-  /home/zarboz/EvilZ-213/arch/arm/include/asm/param.h \
+  /home/zarboz/kernel/projects/jewel/213/arch/arm/include/asm/param.h \
     $(wildcard include/config/hz.h) \
-  /home/zarboz/EvilZ-213/arch/arm/include/asm/timex.h \
+  /home/zarboz/kernel/projects/jewel/213/arch/arm/include/asm/timex.h \
   arch/arm/mach-msm/include/mach/timex.h \
     $(wildcard include/config/msm/smp.h) \
   include/linux/debugobjects.h \
@@ -353,7 +353,7 @@ deps_kernel/time/timer_stats.o := \
     $(wildcard include/config/migration.h) \
   include/linux/limits.h \
   include/linux/ioctl.h \
-  /home/zarboz/EvilZ-213/arch/arm/include/asm/ioctl.h \
+  /home/zarboz/kernel/projects/jewel/213/arch/arm/include/asm/ioctl.h \
   include/asm-generic/ioctl.h \
   include/linux/blk_types.h \
     $(wildcard include/config/blk/dev/integrity.h) \
@@ -377,7 +377,7 @@ deps_kernel/time/timer_stats.o := \
   include/linux/bit_spinlock.h \
   include/linux/path.h \
   include/linux/stat.h \
-  /home/zarboz/EvilZ-213/arch/arm/include/asm/stat.h \
+  /home/zarboz/kernel/projects/jewel/213/arch/arm/include/asm/stat.h \
   include/linux/radix-tree.h \
   include/linux/prio_tree.h \
   include/linux/pid.h \
@@ -396,7 +396,7 @@ deps_kernel/time/timer_stats.o := \
   include/linux/sunrpc/msg_prot.h \
   include/linux/inet.h \
   include/linux/fcntl.h \
-  /home/zarboz/EvilZ-213/arch/arm/include/asm/fcntl.h \
+  /home/zarboz/kernel/projects/jewel/213/arch/arm/include/asm/fcntl.h \
   include/asm-generic/fcntl.h \
   include/linux/err.h \
   include/linux/magic.h \
@@ -412,8 +412,8 @@ deps_kernel/time/timer_stats.o := \
   include/linux/sysctl.h \
   include/linux/elf.h \
   include/linux/elf-em.h \
-  /home/zarboz/EvilZ-213/arch/arm/include/asm/elf.h \
-  /home/zarboz/EvilZ-213/arch/arm/include/asm/user.h \
+  /home/zarboz/kernel/projects/jewel/213/arch/arm/include/asm/elf.h \
+  /home/zarboz/kernel/projects/jewel/213/arch/arm/include/asm/user.h \
   include/linux/moduleparam.h \
     $(wildcard include/config/alpha.h) \
     $(wildcard include/config/ia64.h) \
@@ -424,7 +424,7 @@ deps_kernel/time/timer_stats.o := \
   include/linux/export.h \
     $(wildcard include/config/symbol/prefix.h) \
     $(wildcard include/config/modversions.h) \
-  /home/zarboz/EvilZ-213/arch/arm/include/asm/module.h \
+  /home/zarboz/kernel/projects/jewel/213/arch/arm/include/asm/module.h \
     $(wildcard include/config/arm/unwind.h) \
   include/trace/events/module.h \
   include/trace/define_trace.h \
@@ -475,23 +475,23 @@ deps_kernel/time/timer_stats.o := \
     $(wildcard include/config/mmu/notifier.h) \
     $(wildcard include/config/transparent/hugepage.h) \
   include/linux/auxvec.h \
-  /home/zarboz/EvilZ-213/arch/arm/include/asm/auxvec.h \
+  /home/zarboz/kernel/projects/jewel/213/arch/arm/include/asm/auxvec.h \
   include/linux/page-debug-flags.h \
     $(wildcard include/config/page/poisoning.h) \
     $(wildcard include/config/page/debug/something/else.h) \
-  /home/zarboz/EvilZ-213/arch/arm/include/asm/mmu.h \
+  /home/zarboz/kernel/projects/jewel/213/arch/arm/include/asm/mmu.h \
     $(wildcard include/config/cpu/has/asid.h) \
-  /home/zarboz/EvilZ-213/arch/arm/include/asm/cputime.h \
+  /home/zarboz/kernel/projects/jewel/213/arch/arm/include/asm/cputime.h \
   include/asm-generic/cputime.h \
   include/linux/sem.h \
   include/linux/ipc.h \
-  /home/zarboz/EvilZ-213/arch/arm/include/asm/ipcbuf.h \
-  /home/zarboz/EvilZ-213/arch/arm/include/asm/sembuf.h \
+  /home/zarboz/kernel/projects/jewel/213/arch/arm/include/asm/ipcbuf.h \
+  /home/zarboz/kernel/projects/jewel/213/arch/arm/include/asm/sembuf.h \
   include/linux/signal.h \
-  /home/zarboz/EvilZ-213/arch/arm/include/asm/signal.h \
+  /home/zarboz/kernel/projects/jewel/213/arch/arm/include/asm/signal.h \
   include/asm-generic/signal-defs.h \
-  /home/zarboz/EvilZ-213/arch/arm/include/asm/sigcontext.h \
-  /home/zarboz/EvilZ-213/arch/arm/include/asm/siginfo.h \
+  /home/zarboz/kernel/projects/jewel/213/arch/arm/include/asm/sigcontext.h \
+  /home/zarboz/kernel/projects/jewel/213/arch/arm/include/asm/siginfo.h \
   include/asm-generic/siginfo.h \
   include/linux/proportions.h \
   include/linux/seccomp.h \
@@ -501,7 +501,7 @@ deps_kernel/time/timer_stats.o := \
   include/linux/plist.h \
     $(wildcard include/config/debug/pi/list.h) \
   include/linux/resource.h \
-  /home/zarboz/EvilZ-213/arch/arm/include/asm/resource.h \
+  /home/zarboz/kernel/projects/jewel/213/arch/arm/include/asm/resource.h \
   include/asm-generic/resource.h \
   include/linux/hrtimer.h \
     $(wildcard include/config/high/res/timers.h) \
@@ -522,8 +522,8 @@ deps_kernel/time/timer_stats.o := \
   include/linux/uio.h \
   include/linux/seq_file.h \
   include/linux/kallsyms.h \
-  /home/zarboz/EvilZ-213/arch/arm/include/asm/uaccess.h \
-  /home/zarboz/EvilZ-213/arch/arm/include/asm/unified.h \
+  /home/zarboz/kernel/projects/jewel/213/arch/arm/include/asm/uaccess.h \
+  /home/zarboz/kernel/projects/jewel/213/arch/arm/include/asm/unified.h \
     $(wildcard include/config/arm/asm/unified.h) \
 
 kernel/time/timer_stats.o: $(deps_kernel/time/timer_stats.o)

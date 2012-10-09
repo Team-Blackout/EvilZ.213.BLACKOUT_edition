@@ -3,10 +3,6 @@ cmd_arch/arm/mach-msm/acpuclock-8960.o := /home/zarboz/kernel/projects/jewel/213
 source_arch/arm/mach-msm/acpuclock-8960.o := arch/arm/mach-msm/acpuclock-8960.c
 
 deps_arch/arm/mach-msm/acpuclock-8960.o := \
-    $(wildcard include/config/msm/cpu/max/clk/1dot89ghz.h) \
-    $(wildcard include/config/msm/cpu/max/clk/1dot7ghz.h) \
-    $(wildcard include/config/msm/cpu/max/clk/2dot1ghz.h) \
-    $(wildcard include/config/msm/cpu/max/clk/1dot5ghz.h) \
     $(wildcard include/config/ctl.h) \
     $(wildcard include/config/cpu/freq/msm.h) \
   include/linux/kernel.h \

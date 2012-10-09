@@ -3,6 +3,10 @@ cmd_drivers/cpufreq/cpufreq.o := /home/zarboz/kernel/projects/jewel/213/scripts/
 source_drivers/cpufreq/cpufreq.o := drivers/cpufreq/cpufreq.c
 
 deps_drivers/cpufreq/cpufreq.o := \
+    $(wildcard include/config/msm/cpu/max/clk/2dot1ghz.h) \
+    $(wildcard include/config/msm/cpu/max/clk/1dot89ghz.h) \
+    $(wildcard include/config/msm/cpu/max/clk/1dot7ghz.h) \
+    $(wildcard include/config/msm/cpu/max/clk/1dot5ghz.h) \
     $(wildcard include/config/hotplug/cpu.h) \
     $(wildcard include/config/smp.h) \
     $(wildcard include/config/cpu/freq/gov/performance.h) \

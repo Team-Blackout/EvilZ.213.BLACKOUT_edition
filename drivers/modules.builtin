@@ -19,6 +19,11 @@ kernel/drivers/cpufreq/cpufreq_lionheart.ko
 kernel/drivers/cpufreq/cpufreq_smartass.ko
 kernel/drivers/cpufreq/cpufreq_lazy.ko
 kernel/drivers/cpufreq/cpufreq_intellidemand.ko
+kernel/drivers/cpufreq/cpufreq_wheatley.ko
+kernel/drivers/cpufreq/cpufreq_scary.ko
+kernel/drivers/cpufreq/cpufreq_smoothass.ko
+kernel/drivers/cpufreq/cpufreq_scary.ko
+kernel/drivers/cpufreq/cpufreq_asswax.ko
 kernel/drivers/cpufreq/freq_table.ko
 kernel/drivers/gpio/pm8xxx-gpio.ko
 kernel/drivers/gpio/pm8xxx-mpp.ko

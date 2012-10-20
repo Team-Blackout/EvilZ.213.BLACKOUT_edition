@@ -1,4 +1,4 @@
-cmd_arch/arm/kernel/vmlinux.lds := /home/zarboz/kernel/projects/jewel/213/scripts/gcc-wrapper.py /home/zarboz/android/arm-eabi-4.4.3/bin/arm-eabi-gcc -E -Wp,-MD,arch/arm/kernel/.vmlinux.lds.d  -nostdinc -isystem /home/zarboz/android/arm-eabi-4.4.3/bin/../lib/gcc/arm-eabi/4.4.3/include -I/home/zarboz/kernel/projects/jewel/213/arch/arm/include -Iarch/arm/include/generated -Iinclude  -include include/generated/autoconf.h -D__KERNEL__ -mlittle-endian -Iarch/arm/mach-msm/include   -DTEXT_OFFSET=0x00008000 -P -C -Uarm -D__ASSEMBLY__ -DLINKER_SCRIPT -o arch/arm/kernel/vmlinux.lds arch/arm/kernel/vmlinux.lds.S
+cmd_arch/arm/kernel/vmlinux.lds := /mnt/sdb1/kernel/projects/jewel/213/scripts/gcc-wrapper.py /home/zarboz/android/arm-eabi-4.4.3/bin/arm-eabi-gcc -E -Wp,-MD,arch/arm/kernel/.vmlinux.lds.d  -nostdinc -isystem /home/zarboz/android/arm-eabi-4.4.3/bin/../lib/gcc/arm-eabi/4.4.3/include -I/mnt/sdb1/kernel/projects/jewel/213/arch/arm/include -Iarch/arm/include/generated -Iinclude  -include include/generated/autoconf.h -D__KERNEL__ -mlittle-endian -Iarch/arm/mach-msm/include   -DTEXT_OFFSET=0x00008000 -P -C -Uarm -D__ASSEMBLY__ -DLINKER_SCRIPT -o arch/arm/kernel/vmlinux.lds arch/arm/kernel/vmlinux.lds.S
 
 source_arch/arm/kernel/vmlinux.lds := arch/arm/kernel/vmlinux.lds.S
 
@@ -26,20 +26,20 @@ deps_arch/arm/kernel/vmlinux.lds := \
     $(wildcard include/config/constructors.h) \
     $(wildcard include/config/pm/trace.h) \
     $(wildcard include/config/blk/dev/initrd.h) \
-  /home/zarboz/kernel/projects/jewel/213/arch/arm/include/asm/cache.h \
+  /mnt/sdb1/kernel/projects/jewel/213/arch/arm/include/asm/cache.h \
     $(wildcard include/config/arm/l1/cache/shift.h) \
     $(wildcard include/config/aeabi.h) \
-  /home/zarboz/kernel/projects/jewel/213/arch/arm/include/asm/thread_info.h \
+  /mnt/sdb1/kernel/projects/jewel/213/arch/arm/include/asm/thread_info.h \
     $(wildcard include/config/arm/thumbee.h) \
   include/linux/compiler.h \
     $(wildcard include/config/sparse/rcu/pointer.h) \
     $(wildcard include/config/enable/must/check.h) \
     $(wildcard include/config/enable/warn/deprecated.h) \
-  /home/zarboz/kernel/projects/jewel/213/arch/arm/include/asm/fpstate.h \
+  /mnt/sdb1/kernel/projects/jewel/213/arch/arm/include/asm/fpstate.h \
     $(wildcard include/config/vfpv3.h) \
     $(wildcard include/config/smp.h) \
     $(wildcard include/config/iwmmxt.h) \
-  /home/zarboz/kernel/projects/jewel/213/arch/arm/include/asm/memory.h \
+  /mnt/sdb1/kernel/projects/jewel/213/arch/arm/include/asm/memory.h \
     $(wildcard include/config/page/offset.h) \
     $(wildcard include/config/thumb2/kernel.h) \
     $(wildcard include/config/highmem.h) \
@@ -54,9 +54,9 @@ deps_arch/arm/kernel/vmlinux.lds := \
     $(wildcard include/config/arch/dma/addr/t/64bit.h) \
     $(wildcard include/config/phys/addr/t/64bit.h) \
     $(wildcard include/config/64bit.h) \
-  /home/zarboz/kernel/projects/jewel/213/arch/arm/include/asm/types.h \
+  /mnt/sdb1/kernel/projects/jewel/213/arch/arm/include/asm/types.h \
   include/asm-generic/int-ll64.h \
-  /home/zarboz/kernel/projects/jewel/213/arch/arm/include/asm/bitsperlong.h \
+  /mnt/sdb1/kernel/projects/jewel/213/arch/arm/include/asm/bitsperlong.h \
   include/asm-generic/bitsperlong.h \
   arch/arm/mach-msm/include/mach/memory.h \
     $(wildcard include/config/phys/offset.h) \
@@ -72,13 +72,13 @@ deps_arch/arm/kernel/vmlinux.lds := \
     $(wildcard include/config/arch/msm/scorpion.h) \
     $(wildcard include/config/arch/msm/krait.h) \
     $(wildcard include/config/arch/msm7x27.h) \
-  /home/zarboz/kernel/projects/jewel/213/arch/arm/include/asm/sizes.h \
+  /mnt/sdb1/kernel/projects/jewel/213/arch/arm/include/asm/sizes.h \
   include/asm-generic/sizes.h \
   include/asm-generic/memory_model.h \
     $(wildcard include/config/flatmem.h) \
     $(wildcard include/config/discontigmem.h) \
     $(wildcard include/config/sparsemem/vmemmap.h) \
-  /home/zarboz/kernel/projects/jewel/213/arch/arm/include/asm/page.h \
+  /mnt/sdb1/kernel/projects/jewel/213/arch/arm/include/asm/page.h \
     $(wildcard include/config/cpu/copy/v3.h) \
     $(wildcard include/config/cpu/copy/v4wt.h) \
     $(wildcard include/config/cpu/copy/v4wb.h) \
@@ -91,12 +91,12 @@ deps_arch/arm/kernel/vmlinux.lds := \
     $(wildcard include/config/have/arch/pfn/valid.h) \
     $(wildcard include/config/memory/hotplug/sparse.h) \
   include/asm-generic/getorder.h \
-  /home/zarboz/kernel/projects/jewel/213/arch/arm/include/asm/pgtable.h \
+  /mnt/sdb1/kernel/projects/jewel/213/arch/arm/include/asm/pgtable.h \
     $(wildcard include/config/arm/dma/mem/bufferable.h) \
     $(wildcard include/config/highpte.h) \
   include/asm-generic/4level-fixup.h \
-  /home/zarboz/kernel/projects/jewel/213/arch/arm/include/asm/proc-fns.h \
-  /home/zarboz/kernel/projects/jewel/213/arch/arm/include/asm/glue-proc.h \
+  /mnt/sdb1/kernel/projects/jewel/213/arch/arm/include/asm/proc-fns.h \
+  /mnt/sdb1/kernel/projects/jewel/213/arch/arm/include/asm/glue-proc.h \
     $(wildcard include/config/cpu/arm610.h) \
     $(wildcard include/config/cpu/arm7tdmi.h) \
     $(wildcard include/config/cpu/arm710.h) \
@@ -120,11 +120,11 @@ deps_arch/arm/kernel/vmlinux.lds := \
     $(wildcard include/config/cpu/v6.h) \
     $(wildcard include/config/cpu/v6k.h) \
     $(wildcard include/config/cpu/v7.h) \
-  /home/zarboz/kernel/projects/jewel/213/arch/arm/include/asm/glue.h \
+  /mnt/sdb1/kernel/projects/jewel/213/arch/arm/include/asm/glue.h \
   arch/arm/mach-msm/include/mach/vmalloc.h \
     $(wildcard include/config/vmsplit/2g.h) \
-  /home/zarboz/kernel/projects/jewel/213/arch/arm/include/asm/pgtable-hwdef.h \
-  /home/zarboz/kernel/projects/jewel/213/arch/arm/include/asm/tlbflush.h \
+  /mnt/sdb1/kernel/projects/jewel/213/arch/arm/include/asm/pgtable-hwdef.h \
+  /mnt/sdb1/kernel/projects/jewel/213/arch/arm/include/asm/tlbflush.h \
     $(wildcard include/config/cpu/tlb/v3.h) \
     $(wildcard include/config/cpu/tlb/v4wt.h) \
     $(wildcard include/config/cpu/tlb/fa.h) \

@@ -1,4 +1,4 @@
-cmd_net/netfilter/xt_tcpmss.o := /home/zarboz/kernel/projects/jewel/213/scripts/gcc-wrapper.py /home/zarboz/android/arm-eabi-4.4.3/bin/arm-eabi-gcc -Wp,-MD,net/netfilter/.xt_tcpmss.o.d  -nostdinc -isystem /home/zarboz/android/arm-eabi-4.4.3/bin/../lib/gcc/arm-eabi/4.4.3/include -I/home/zarboz/kernel/projects/jewel/213/arch/arm/include -Iarch/arm/include/generated -Iinclude  -include include/generated/autoconf.h -D__KERNEL__ -mlittle-endian -Iarch/arm/mach-msm/include -Wall -Wundef -Wstrict-prototypes -Wno-trigraphs -fno-strict-aliasing -fno-common -Werror-implicit-function-declaration -Wno-format-security -fno-delete-null-pointer-checks -Os -marm -fno-dwarf2-cfi-asm -fstack-protector -mabi=aapcs-linux -mno-thumb-interwork -funwind-tables -D__LINUX_ARM_ARCH__=7 -march=armv7-a -msoft-float -Uarm -Wframe-larger-than=1024 -fomit-frame-pointer -g -Wdeclaration-after-statement -Wno-pointer-sign -fno-strict-overflow -fconserve-stack    -D"KBUILD_STR(s)=\#s" -D"KBUILD_BASENAME=KBUILD_STR(xt_tcpmss)"  -D"KBUILD_MODNAME=KBUILD_STR(xt_tcpmss)" -c -o net/netfilter/.tmp_xt_tcpmss.o net/netfilter/xt_tcpmss.c
+cmd_net/netfilter/xt_tcpmss.o := /mnt/sdb1/kernel/projects/jewel/213/scripts/gcc-wrapper.py /home/zarboz/android/arm-eabi-4.4.3/bin/arm-eabi-gcc -Wp,-MD,net/netfilter/.xt_tcpmss.o.d  -nostdinc -isystem /home/zarboz/android/arm-eabi-4.4.3/bin/../lib/gcc/arm-eabi/4.4.3/include -I/mnt/sdb1/kernel/projects/jewel/213/arch/arm/include -Iarch/arm/include/generated -Iinclude  -include include/generated/autoconf.h -D__KERNEL__ -mlittle-endian -Iarch/arm/mach-msm/include -Wall -Wundef -Wstrict-prototypes -Wno-trigraphs -fno-strict-aliasing -fno-common -Werror-implicit-function-declaration -Wno-format-security -fno-delete-null-pointer-checks -Os -marm -fno-dwarf2-cfi-asm -fstack-protector -mabi=aapcs-linux -mno-thumb-interwork -funwind-tables -D__LINUX_ARM_ARCH__=7 -march=armv7-a -msoft-float -Uarm -Wframe-larger-than=1024 -fomit-frame-pointer -g -Wdeclaration-after-statement -Wno-pointer-sign -fno-strict-overflow -fconserve-stack    -D"KBUILD_STR(s)=\#s" -D"KBUILD_BASENAME=KBUILD_STR(xt_tcpmss)"  -D"KBUILD_MODNAME=KBUILD_STR(xt_tcpmss)" -c -o net/netfilter/.tmp_xt_tcpmss.o net/netfilter/xt_tcpmss.c
 
 source_net/netfilter/xt_tcpmss.o := net/netfilter/xt_tcpmss.c
 
@@ -25,9 +25,9 @@ deps_net/netfilter/xt_tcpmss.o := \
     $(wildcard include/config/arch/dma/addr/t/64bit.h) \
     $(wildcard include/config/phys/addr/t/64bit.h) \
     $(wildcard include/config/64bit.h) \
-  /home/zarboz/kernel/projects/jewel/213/arch/arm/include/asm/types.h \
+  /mnt/sdb1/kernel/projects/jewel/213/arch/arm/include/asm/types.h \
   include/asm-generic/int-ll64.h \
-  /home/zarboz/kernel/projects/jewel/213/arch/arm/include/asm/bitsperlong.h \
+  /mnt/sdb1/kernel/projects/jewel/213/arch/arm/include/asm/bitsperlong.h \
   include/asm-generic/bitsperlong.h \
   include/linux/posix_types.h \
   include/linux/stddef.h \
@@ -41,12 +41,12 @@ deps_net/netfilter/xt_tcpmss.o := \
     $(wildcard include/config/arch/supports/optimized/inlining.h) \
     $(wildcard include/config/optimize/inlining.h) \
   include/linux/compiler-gcc4.h \
-  /home/zarboz/kernel/projects/jewel/213/arch/arm/include/asm/posix_types.h \
+  /mnt/sdb1/kernel/projects/jewel/213/arch/arm/include/asm/posix_types.h \
   include/linux/poison.h \
     $(wildcard include/config/illegal/pointer/value.h) \
   include/linux/const.h \
   include/linux/stat.h \
-  /home/zarboz/kernel/projects/jewel/213/arch/arm/include/asm/stat.h \
+  /mnt/sdb1/kernel/projects/jewel/213/arch/arm/include/asm/stat.h \
   include/linux/time.h \
     $(wildcard include/config/arch/uses/gettimeoffset.h) \
   include/linux/cache.h \
@@ -60,10 +60,10 @@ deps_net/netfilter/xt_tcpmss.o := \
     $(wildcard include/config/compaction.h) \
   /home/zarboz/android/arm-eabi-4.4.3/bin/../lib/gcc/arm-eabi/4.4.3/include/stdarg.h \
   include/linux/linkage.h \
-  /home/zarboz/kernel/projects/jewel/213/arch/arm/include/asm/linkage.h \
+  /mnt/sdb1/kernel/projects/jewel/213/arch/arm/include/asm/linkage.h \
   include/linux/bitops.h \
-  /home/zarboz/kernel/projects/jewel/213/arch/arm/include/asm/bitops.h \
-  /home/zarboz/kernel/projects/jewel/213/arch/arm/include/asm/system.h \
+  /mnt/sdb1/kernel/projects/jewel/213/arch/arm/include/asm/bitops.h \
+  /mnt/sdb1/kernel/projects/jewel/213/arch/arm/include/asm/system.h \
     $(wildcard include/config/cpu/32v6k.h) \
     $(wildcard include/config/cpu/xsc3.h) \
     $(wildcard include/config/cpu/fa526.h) \
@@ -78,12 +78,12 @@ deps_net/netfilter/xt_tcpmss.o := \
     $(wildcard include/config/preempt/tracer.h) \
     $(wildcard include/config/trace/irqflags/support.h) \
   include/linux/typecheck.h \
-  /home/zarboz/kernel/projects/jewel/213/arch/arm/include/asm/irqflags.h \
-  /home/zarboz/kernel/projects/jewel/213/arch/arm/include/asm/ptrace.h \
+  /mnt/sdb1/kernel/projects/jewel/213/arch/arm/include/asm/irqflags.h \
+  /mnt/sdb1/kernel/projects/jewel/213/arch/arm/include/asm/ptrace.h \
     $(wildcard include/config/cpu/endian/be8.h) \
     $(wildcard include/config/arm/thumb.h) \
-  /home/zarboz/kernel/projects/jewel/213/arch/arm/include/asm/hwcap.h \
-  /home/zarboz/kernel/projects/jewel/213/arch/arm/include/asm/outercache.h \
+  /mnt/sdb1/kernel/projects/jewel/213/arch/arm/include/asm/hwcap.h \
+  /mnt/sdb1/kernel/projects/jewel/213/arch/arm/include/asm/outercache.h \
     $(wildcard include/config/outer/cache/sync.h) \
     $(wildcard include/config/outer/cache.h) \
   include/asm-generic/cmpxchg-local.h \
@@ -95,10 +95,10 @@ deps_net/netfilter/xt_tcpmss.o := \
   include/asm-generic/bitops/const_hweight.h \
   include/asm-generic/bitops/lock.h \
   include/asm-generic/bitops/le.h \
-  /home/zarboz/kernel/projects/jewel/213/arch/arm/include/asm/byteorder.h \
+  /mnt/sdb1/kernel/projects/jewel/213/arch/arm/include/asm/byteorder.h \
   include/linux/byteorder/little_endian.h \
   include/linux/swab.h \
-  /home/zarboz/kernel/projects/jewel/213/arch/arm/include/asm/swab.h \
+  /mnt/sdb1/kernel/projects/jewel/213/arch/arm/include/asm/swab.h \
   include/linux/byteorder/generic.h \
   include/linux/log2.h \
     $(wildcard include/config/arch/has/ilog2/u32.h) \
@@ -109,14 +109,14 @@ deps_net/netfilter/xt_tcpmss.o := \
   include/linux/init.h \
     $(wildcard include/config/hotplug.h) \
   include/linux/dynamic_debug.h \
-  /home/zarboz/kernel/projects/jewel/213/arch/arm/include/asm/bug.h \
+  /mnt/sdb1/kernel/projects/jewel/213/arch/arm/include/asm/bug.h \
     $(wildcard include/config/bug.h) \
     $(wildcard include/config/thumb2/kernel.h) \
     $(wildcard include/config/debug/bugverbose.h) \
   include/asm-generic/bug.h \
     $(wildcard include/config/generic/bug/relative/pointers.h) \
-  /home/zarboz/kernel/projects/jewel/213/arch/arm/include/asm/div64.h \
-  /home/zarboz/kernel/projects/jewel/213/arch/arm/include/asm/cache.h \
+  /mnt/sdb1/kernel/projects/jewel/213/arch/arm/include/asm/div64.h \
+  /mnt/sdb1/kernel/projects/jewel/213/arch/arm/include/asm/cache.h \
     $(wildcard include/config/arm/l1/cache/shift.h) \
     $(wildcard include/config/aeabi.h) \
   include/linux/seqlock.h \
@@ -130,12 +130,12 @@ deps_net/netfilter/xt_tcpmss.o := \
     $(wildcard include/config/preempt/notifiers.h) \
   include/linux/thread_info.h \
     $(wildcard include/config/compat.h) \
-  /home/zarboz/kernel/projects/jewel/213/arch/arm/include/asm/thread_info.h \
+  /mnt/sdb1/kernel/projects/jewel/213/arch/arm/include/asm/thread_info.h \
     $(wildcard include/config/arm/thumbee.h) \
-  /home/zarboz/kernel/projects/jewel/213/arch/arm/include/asm/fpstate.h \
+  /mnt/sdb1/kernel/projects/jewel/213/arch/arm/include/asm/fpstate.h \
     $(wildcard include/config/vfpv3.h) \
     $(wildcard include/config/iwmmxt.h) \
-  /home/zarboz/kernel/projects/jewel/213/arch/arm/include/asm/domain.h \
+  /mnt/sdb1/kernel/projects/jewel/213/arch/arm/include/asm/domain.h \
     $(wildcard include/config/verify/permission/fault.h) \
     $(wildcard include/config/io/36.h) \
     $(wildcard include/config/cpu/use/domains.h) \
@@ -143,19 +143,19 @@ deps_net/netfilter/xt_tcpmss.o := \
   include/linux/stringify.h \
   include/linux/bottom_half.h \
   include/linux/spinlock_types.h \
-  /home/zarboz/kernel/projects/jewel/213/arch/arm/include/asm/spinlock_types.h \
+  /mnt/sdb1/kernel/projects/jewel/213/arch/arm/include/asm/spinlock_types.h \
   include/linux/lockdep.h \
     $(wildcard include/config/lockdep.h) \
     $(wildcard include/config/lock/stat.h) \
     $(wildcard include/config/prove/rcu.h) \
   include/linux/rwlock_types.h \
-  /home/zarboz/kernel/projects/jewel/213/arch/arm/include/asm/spinlock.h \
+  /mnt/sdb1/kernel/projects/jewel/213/arch/arm/include/asm/spinlock.h \
     $(wildcard include/config/arm/ticket/locks.h) \
-  /home/zarboz/kernel/projects/jewel/213/arch/arm/include/asm/processor.h \
+  /mnt/sdb1/kernel/projects/jewel/213/arch/arm/include/asm/processor.h \
     $(wildcard include/config/have/hw/breakpoint.h) \
     $(wildcard include/config/mmu.h) \
     $(wildcard include/config/arm/errata/754327.h) \
-  /home/zarboz/kernel/projects/jewel/213/arch/arm/include/asm/hw_breakpoint.h \
+  /mnt/sdb1/kernel/projects/jewel/213/arch/arm/include/asm/hw_breakpoint.h \
   include/linux/rwlock.h \
   include/linux/spinlock_api_smp.h \
     $(wildcard include/config/inline/spin/lock.h) \
@@ -187,7 +187,7 @@ deps_net/netfilter/xt_tcpmss.o := \
     $(wildcard include/config/inline/write/unlock/irq.h) \
     $(wildcard include/config/inline/read/unlock/irqrestore.h) \
     $(wildcard include/config/inline/write/unlock/irqrestore.h) \
-  /home/zarboz/kernel/projects/jewel/213/arch/arm/include/asm/atomic.h \
+  /mnt/sdb1/kernel/projects/jewel/213/arch/arm/include/asm/atomic.h \
     $(wildcard include/config/generic/atomic64.h) \
   include/asm-generic/atomic-long.h \
   include/linux/math64.h \
@@ -218,7 +218,7 @@ deps_net/netfilter/xt_tcpmss.o := \
     $(wildcard include/config/holes/in/zone.h) \
     $(wildcard include/config/arch/has/holes/memorymodel.h) \
   include/linux/wait.h \
-  /home/zarboz/kernel/projects/jewel/213/arch/arm/include/asm/current.h \
+  /mnt/sdb1/kernel/projects/jewel/213/arch/arm/include/asm/current.h \
   include/linux/threads.h \
     $(wildcard include/config/nr/cpus.h) \
     $(wildcard include/config/base/small.h) \
@@ -228,12 +228,12 @@ deps_net/netfilter/xt_tcpmss.o := \
   include/linux/bitmap.h \
   include/linux/string.h \
     $(wildcard include/config/binary/printf.h) \
-  /home/zarboz/kernel/projects/jewel/213/arch/arm/include/asm/string.h \
+  /mnt/sdb1/kernel/projects/jewel/213/arch/arm/include/asm/string.h \
   include/linux/pageblock-flags.h \
     $(wildcard include/config/hugetlb/page.h) \
     $(wildcard include/config/hugetlb/page/size/variable.h) \
   include/generated/bounds.h \
-  /home/zarboz/kernel/projects/jewel/213/arch/arm/include/asm/page.h \
+  /mnt/sdb1/kernel/projects/jewel/213/arch/arm/include/asm/page.h \
     $(wildcard include/config/cpu/copy/v3.h) \
     $(wildcard include/config/cpu/copy/v4wt.h) \
     $(wildcard include/config/cpu/copy/v4wb.h) \
@@ -242,8 +242,8 @@ deps_net/netfilter/xt_tcpmss.o := \
     $(wildcard include/config/cpu/xscale.h) \
     $(wildcard include/config/cpu/copy/v6.h) \
     $(wildcard include/config/memory/hotplug/sparse.h) \
-  /home/zarboz/kernel/projects/jewel/213/arch/arm/include/asm/glue.h \
-  /home/zarboz/kernel/projects/jewel/213/arch/arm/include/asm/memory.h \
+  /mnt/sdb1/kernel/projects/jewel/213/arch/arm/include/asm/glue.h \
+  /mnt/sdb1/kernel/projects/jewel/213/arch/arm/include/asm/memory.h \
     $(wildcard include/config/page/offset.h) \
     $(wildcard include/config/dram/size.h) \
     $(wildcard include/config/dram/base.h) \
@@ -263,7 +263,7 @@ deps_net/netfilter/xt_tcpmss.o := \
     $(wildcard include/config/arch/msm/scorpion.h) \
     $(wildcard include/config/arch/msm/krait.h) \
     $(wildcard include/config/arch/msm7x27.h) \
-  /home/zarboz/kernel/projects/jewel/213/arch/arm/include/asm/sizes.h \
+  /mnt/sdb1/kernel/projects/jewel/213/arch/arm/include/asm/sizes.h \
   include/asm-generic/sizes.h \
   include/asm-generic/memory_model.h \
     $(wildcard include/config/sparsemem/vmemmap.h) \
@@ -273,7 +273,7 @@ deps_net/netfilter/xt_tcpmss.o := \
     $(wildcard include/config/have/arch/nodedata/extension.h) \
   include/linux/notifier.h \
   include/linux/errno.h \
-  /home/zarboz/kernel/projects/jewel/213/arch/arm/include/asm/errno.h \
+  /mnt/sdb1/kernel/projects/jewel/213/arch/arm/include/asm/errno.h \
   include/asm-generic/errno.h \
   include/asm-generic/errno-base.h \
   include/linux/mutex.h \
@@ -295,17 +295,17 @@ deps_net/netfilter/xt_tcpmss.o := \
     $(wildcard include/config/disable/obsolete/cpumask/functions.h) \
   include/linux/smp.h \
     $(wildcard include/config/use/generic/smp/helpers.h) \
-  /home/zarboz/kernel/projects/jewel/213/arch/arm/include/asm/smp.h \
+  /mnt/sdb1/kernel/projects/jewel/213/arch/arm/include/asm/smp.h \
   include/linux/percpu.h \
     $(wildcard include/config/need/per/cpu/embed/first/chunk.h) \
     $(wildcard include/config/need/per/cpu/page/first/chunk.h) \
     $(wildcard include/config/have/setup/per/cpu/area.h) \
   include/linux/pfn.h \
-  /home/zarboz/kernel/projects/jewel/213/arch/arm/include/asm/percpu.h \
+  /mnt/sdb1/kernel/projects/jewel/213/arch/arm/include/asm/percpu.h \
   include/asm-generic/percpu.h \
   include/linux/percpu-defs.h \
     $(wildcard include/config/debug/force/weak/per/cpu.h) \
-  /home/zarboz/kernel/projects/jewel/213/arch/arm/include/asm/topology.h \
+  /mnt/sdb1/kernel/projects/jewel/213/arch/arm/include/asm/topology.h \
   include/asm-generic/topology.h \
   include/linux/mmdebug.h \
     $(wildcard include/config/debug/vm.h) \
@@ -321,9 +321,9 @@ deps_net/netfilter/xt_tcpmss.o := \
   include/linux/jiffies.h \
   include/linux/timex.h \
   include/linux/param.h \
-  /home/zarboz/kernel/projects/jewel/213/arch/arm/include/asm/param.h \
+  /mnt/sdb1/kernel/projects/jewel/213/arch/arm/include/asm/param.h \
     $(wildcard include/config/hz.h) \
-  /home/zarboz/kernel/projects/jewel/213/arch/arm/include/asm/timex.h \
+  /mnt/sdb1/kernel/projects/jewel/213/arch/arm/include/asm/timex.h \
   arch/arm/mach-msm/include/mach/timex.h \
     $(wildcard include/config/msm/smp.h) \
   include/linux/debugobjects.h \
@@ -344,8 +344,8 @@ deps_net/netfilter/xt_tcpmss.o := \
   include/linux/rcutree.h \
   include/linux/elf.h \
   include/linux/elf-em.h \
-  /home/zarboz/kernel/projects/jewel/213/arch/arm/include/asm/elf.h \
-  /home/zarboz/kernel/projects/jewel/213/arch/arm/include/asm/user.h \
+  /mnt/sdb1/kernel/projects/jewel/213/arch/arm/include/asm/elf.h \
+  /mnt/sdb1/kernel/projects/jewel/213/arch/arm/include/asm/user.h \
   include/linux/kobject.h \
   include/linux/sysfs.h \
   include/linux/kobject_ns.h \
@@ -360,7 +360,7 @@ deps_net/netfilter/xt_tcpmss.o := \
   include/linux/export.h \
     $(wildcard include/config/symbol/prefix.h) \
     $(wildcard include/config/modversions.h) \
-  /home/zarboz/kernel/projects/jewel/213/arch/arm/include/asm/module.h \
+  /mnt/sdb1/kernel/projects/jewel/213/arch/arm/include/asm/module.h \
     $(wildcard include/config/arm/unwind.h) \
   include/trace/events/module.h \
   include/trace/define_trace.h \
@@ -385,29 +385,29 @@ deps_net/netfilter/xt_tcpmss.o := \
     $(wildcard include/config/mmu/notifier.h) \
     $(wildcard include/config/transparent/hugepage.h) \
   include/linux/auxvec.h \
-  /home/zarboz/kernel/projects/jewel/213/arch/arm/include/asm/auxvec.h \
+  /mnt/sdb1/kernel/projects/jewel/213/arch/arm/include/asm/auxvec.h \
   include/linux/prio_tree.h \
   include/linux/rbtree.h \
   include/linux/page-debug-flags.h \
     $(wildcard include/config/page/poisoning.h) \
     $(wildcard include/config/page/debug/something/else.h) \
-  /home/zarboz/kernel/projects/jewel/213/arch/arm/include/asm/mmu.h \
+  /mnt/sdb1/kernel/projects/jewel/213/arch/arm/include/asm/mmu.h \
     $(wildcard include/config/cpu/has/asid.h) \
   include/linux/net.h \
   include/linux/socket.h \
     $(wildcard include/config/proc/fs.h) \
-  /home/zarboz/kernel/projects/jewel/213/arch/arm/include/asm/socket.h \
-  /home/zarboz/kernel/projects/jewel/213/arch/arm/include/asm/sockios.h \
+  /mnt/sdb1/kernel/projects/jewel/213/arch/arm/include/asm/socket.h \
+  /mnt/sdb1/kernel/projects/jewel/213/arch/arm/include/asm/sockios.h \
   include/linux/sockios.h \
   include/linux/uio.h \
   include/linux/random.h \
   include/linux/ioctl.h \
-  /home/zarboz/kernel/projects/jewel/213/arch/arm/include/asm/ioctl.h \
+  /mnt/sdb1/kernel/projects/jewel/213/arch/arm/include/asm/ioctl.h \
   include/asm-generic/ioctl.h \
   include/linux/irqnr.h \
     $(wildcard include/config/generic/hardirqs.h) \
   include/linux/fcntl.h \
-  /home/zarboz/kernel/projects/jewel/213/arch/arm/include/asm/fcntl.h \
+  /mnt/sdb1/kernel/projects/jewel/213/arch/arm/include/asm/fcntl.h \
   include/asm-generic/fcntl.h \
   include/linux/textsearch.h \
   include/linux/err.h \
@@ -424,10 +424,10 @@ deps_net/netfilter/xt_tcpmss.o := \
   include/linux/kmemleak.h \
     $(wildcard include/config/debug/kmemleak.h) \
   include/net/checksum.h \
-  /home/zarboz/kernel/projects/jewel/213/arch/arm/include/asm/uaccess.h \
-  /home/zarboz/kernel/projects/jewel/213/arch/arm/include/asm/unified.h \
+  /mnt/sdb1/kernel/projects/jewel/213/arch/arm/include/asm/uaccess.h \
+  /mnt/sdb1/kernel/projects/jewel/213/arch/arm/include/asm/unified.h \
     $(wildcard include/config/arm/asm/unified.h) \
-  /home/zarboz/kernel/projects/jewel/213/arch/arm/include/asm/checksum.h \
+  /mnt/sdb1/kernel/projects/jewel/213/arch/arm/include/asm/checksum.h \
   include/linux/in6.h \
   include/linux/dmaengine.h \
     $(wildcard include/config/async/tx/enable/channel/switch.h) \
@@ -443,7 +443,7 @@ deps_net/netfilter/xt_tcpmss.o := \
     $(wildcard include/config/pm.h) \
     $(wildcard include/config/pm/sleep.h) \
     $(wildcard include/config/pm/runtime.h) \
-  /home/zarboz/kernel/projects/jewel/213/arch/arm/include/asm/device.h \
+  /mnt/sdb1/kernel/projects/jewel/213/arch/arm/include/asm/device.h \
     $(wildcard include/config/dmabounce.h) \
   include/linux/pm_wakeup.h \
   include/linux/dma-mapping.h \
@@ -454,7 +454,7 @@ deps_net/netfilter/xt_tcpmss.o := \
   include/linux/bug.h \
   include/linux/scatterlist.h \
     $(wildcard include/config/debug/sg.h) \
-  /home/zarboz/kernel/projects/jewel/213/arch/arm/include/asm/scatterlist.h \
+  /mnt/sdb1/kernel/projects/jewel/213/arch/arm/include/asm/scatterlist.h \
   include/asm-generic/scatterlist.h \
     $(wildcard include/config/need/sg/dma/length.h) \
   include/linux/mm.h \
@@ -469,11 +469,11 @@ deps_net/netfilter/xt_tcpmss.o := \
     $(wildcard include/config/debug/locking/api/selftests.h) \
   include/linux/range.h \
   include/linux/bit_spinlock.h \
-  /home/zarboz/kernel/projects/jewel/213/arch/arm/include/asm/pgtable.h \
+  /mnt/sdb1/kernel/projects/jewel/213/arch/arm/include/asm/pgtable.h \
     $(wildcard include/config/highpte.h) \
   include/asm-generic/4level-fixup.h \
-  /home/zarboz/kernel/projects/jewel/213/arch/arm/include/asm/proc-fns.h \
-  /home/zarboz/kernel/projects/jewel/213/arch/arm/include/asm/glue-proc.h \
+  /mnt/sdb1/kernel/projects/jewel/213/arch/arm/include/asm/proc-fns.h \
+  /mnt/sdb1/kernel/projects/jewel/213/arch/arm/include/asm/glue-proc.h \
     $(wildcard include/config/cpu/arm610.h) \
     $(wildcard include/config/cpu/arm7tdmi.h) \
     $(wildcard include/config/cpu/arm710.h) \
@@ -496,8 +496,8 @@ deps_net/netfilter/xt_tcpmss.o := \
     $(wildcard include/config/cpu/v7.h) \
   arch/arm/mach-msm/include/mach/vmalloc.h \
     $(wildcard include/config/vmsplit/2g.h) \
-  /home/zarboz/kernel/projects/jewel/213/arch/arm/include/asm/pgtable-hwdef.h \
-  /home/zarboz/kernel/projects/jewel/213/arch/arm/include/asm/tlbflush.h \
+  /mnt/sdb1/kernel/projects/jewel/213/arch/arm/include/asm/pgtable-hwdef.h \
+  /mnt/sdb1/kernel/projects/jewel/213/arch/arm/include/asm/tlbflush.h \
     $(wildcard include/config/smp/on/up.h) \
     $(wildcard include/config/cpu/tlb/v3.h) \
     $(wildcard include/config/cpu/tlb/v4wt.h) \
@@ -548,17 +548,17 @@ deps_net/netfilter/xt_tcpmss.o := \
     $(wildcard include/config/debug/stack/usage.h) \
     $(wildcard include/config/cgroup/sched.h) \
   include/linux/capability.h \
-  /home/zarboz/kernel/projects/jewel/213/arch/arm/include/asm/cputime.h \
+  /mnt/sdb1/kernel/projects/jewel/213/arch/arm/include/asm/cputime.h \
   include/asm-generic/cputime.h \
   include/linux/sem.h \
   include/linux/ipc.h \
-  /home/zarboz/kernel/projects/jewel/213/arch/arm/include/asm/ipcbuf.h \
-  /home/zarboz/kernel/projects/jewel/213/arch/arm/include/asm/sembuf.h \
+  /mnt/sdb1/kernel/projects/jewel/213/arch/arm/include/asm/ipcbuf.h \
+  /mnt/sdb1/kernel/projects/jewel/213/arch/arm/include/asm/sembuf.h \
   include/linux/signal.h \
-  /home/zarboz/kernel/projects/jewel/213/arch/arm/include/asm/signal.h \
+  /mnt/sdb1/kernel/projects/jewel/213/arch/arm/include/asm/signal.h \
   include/asm-generic/signal-defs.h \
-  /home/zarboz/kernel/projects/jewel/213/arch/arm/include/asm/sigcontext.h \
-  /home/zarboz/kernel/projects/jewel/213/arch/arm/include/asm/siginfo.h \
+  /mnt/sdb1/kernel/projects/jewel/213/arch/arm/include/asm/sigcontext.h \
+  /mnt/sdb1/kernel/projects/jewel/213/arch/arm/include/asm/siginfo.h \
   include/asm-generic/siginfo.h \
   include/linux/pid.h \
   include/linux/proportions.h \
@@ -571,7 +571,7 @@ deps_net/netfilter/xt_tcpmss.o := \
   include/linux/plist.h \
     $(wildcard include/config/debug/pi/list.h) \
   include/linux/resource.h \
-  /home/zarboz/kernel/projects/jewel/213/arch/arm/include/asm/resource.h \
+  /mnt/sdb1/kernel/projects/jewel/213/arch/arm/include/asm/resource.h \
   include/asm-generic/resource.h \
   include/linux/hrtimer.h \
     $(wildcard include/config/high/res/timers.h) \
@@ -600,11 +600,11 @@ deps_net/netfilter/xt_tcpmss.o := \
   include/linux/vmstat.h \
     $(wildcard include/config/vm/event/counters.h) \
   include/linux/vm_event_item.h \
-  /home/zarboz/kernel/projects/jewel/213/arch/arm/include/asm/io.h \
+  /mnt/sdb1/kernel/projects/jewel/213/arch/arm/include/asm/io.h \
   arch/arm/mach-msm/include/mach/msm_rtb.h \
     $(wildcard include/config/msm/rtb.h) \
   arch/arm/mach-msm/include/mach/io.h \
-  /home/zarboz/kernel/projects/jewel/213/arch/arm/include/asm/dma-mapping.h \
+  /mnt/sdb1/kernel/projects/jewel/213/arch/arm/include/asm/dma-mapping.h \
   include/linux/dma-debug.h \
     $(wildcard include/config/dma/api/debug.h) \
   include/asm-generic/dma-coherent.h \
@@ -648,7 +648,7 @@ deps_net/netfilter/xt_tcpmss.o := \
   include/linux/miscdevice.h \
   include/linux/major.h \
   include/linux/delay.h \
-  /home/zarboz/kernel/projects/jewel/213/arch/arm/include/asm/delay.h \
+  /mnt/sdb1/kernel/projects/jewel/213/arch/arm/include/asm/delay.h \
   include/linux/ethtool.h \
   include/linux/compat.h \
     $(wildcard include/config/nfsd.h) \
@@ -731,8 +731,8 @@ deps_net/netfilter/xt_tcpmss.o := \
   include/linux/hardirq.h \
   include/linux/ftrace_irq.h \
     $(wildcard include/config/ftrace/nmi/enter.h) \
-  /home/zarboz/kernel/projects/jewel/213/arch/arm/include/asm/hardirq.h \
-  /home/zarboz/kernel/projects/jewel/213/arch/arm/include/asm/irq.h \
+  /mnt/sdb1/kernel/projects/jewel/213/arch/arm/include/asm/hardirq.h \
+  /mnt/sdb1/kernel/projects/jewel/213/arch/arm/include/asm/irq.h \
   arch/arm/mach-msm/include/mach/irqs.h \
     $(wildcard include/config/arch/apq8064.h) \
     $(wildcard include/config/arch/msm8930.h) \
@@ -758,16 +758,16 @@ deps_net/netfilter/xt_tcpmss.o := \
     $(wildcard include/config/change.h) \
   include/linux/binfmts.h \
   include/linux/shm.h \
-  /home/zarboz/kernel/projects/jewel/213/arch/arm/include/asm/shmparam.h \
-  /home/zarboz/kernel/projects/jewel/213/arch/arm/include/asm/shmbuf.h \
+  /mnt/sdb1/kernel/projects/jewel/213/arch/arm/include/asm/shmparam.h \
+  /mnt/sdb1/kernel/projects/jewel/213/arch/arm/include/asm/shmbuf.h \
   include/linux/msg.h \
-  /home/zarboz/kernel/projects/jewel/213/arch/arm/include/asm/msgbuf.h \
+  /mnt/sdb1/kernel/projects/jewel/213/arch/arm/include/asm/msgbuf.h \
   include/linux/uaccess.h \
   include/linux/filter.h \
     $(wildcard include/config/bpf/jit.h) \
   include/linux/rculist_nulls.h \
   include/linux/poll.h \
-  /home/zarboz/kernel/projects/jewel/213/arch/arm/include/asm/poll.h \
+  /mnt/sdb1/kernel/projects/jewel/213/arch/arm/include/asm/poll.h \
   include/asm-generic/poll.h \
   include/linux/atomic.h \
     $(wildcard include/config/arch/has/atomic/or.h) \

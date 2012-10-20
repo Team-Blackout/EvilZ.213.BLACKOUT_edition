@@ -13,7 +13,6 @@ kernel/drivers/cpufreq/cpufreq_lazy.ko
 kernel/drivers/cpufreq/cpufreq_intellidemand.ko
 kernel/drivers/cpufreq/cpufreq_wheatley.ko
 kernel/drivers/cpufreq/cpufreq_scary.ko
-kernel/drivers/cpufreq/cpufreq_smoothass.ko
 kernel/drivers/cpufreq/cpufreq_scary.ko
 kernel/drivers/cpufreq/cpufreq_asswax.ko
 kernel/drivers/cpufreq/freq_table.ko

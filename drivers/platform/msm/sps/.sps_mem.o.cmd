@@ -1,4 +1,4 @@
-cmd_drivers/platform/msm/sps/sps_mem.o := /home/zarboz/kernel/projects/jewel/213/scripts/gcc-wrapper.py /home/zarboz/android/arm-eabi-4.4.3/bin/arm-eabi-gcc -Wp,-MD,drivers/platform/msm/sps/.sps_mem.o.d  -nostdinc -isystem /home/zarboz/android/arm-eabi-4.4.3/bin/../lib/gcc/arm-eabi/4.4.3/include -I/home/zarboz/kernel/projects/jewel/213/arch/arm/include -Iarch/arm/include/generated -Iinclude  -include include/generated/autoconf.h -D__KERNEL__ -mlittle-endian -Iarch/arm/mach-msm/include -Wall -Wundef -Wstrict-prototypes -Wno-trigraphs -fno-strict-aliasing -fno-common -Werror-implicit-function-declaration -Wno-format-security -fno-delete-null-pointer-checks -Os -marm -fno-dwarf2-cfi-asm -fstack-protector -mabi=aapcs-linux -mno-thumb-interwork -funwind-tables -D__LINUX_ARM_ARCH__=7 -march=armv7-a -msoft-float -Uarm -Wframe-larger-than=1024 -fomit-frame-pointer -g -Wdeclaration-after-statement -Wno-pointer-sign -fno-strict-overflow -fconserve-stack    -D"KBUILD_STR(s)=\#s" -D"KBUILD_BASENAME=KBUILD_STR(sps_mem)"  -D"KBUILD_MODNAME=KBUILD_STR(sps_mem)" -c -o drivers/platform/msm/sps/.tmp_sps_mem.o drivers/platform/msm/sps/sps_mem.c
+cmd_drivers/platform/msm/sps/sps_mem.o := /mnt/sdb1/kernel/projects/jewel/213/scripts/gcc-wrapper.py /home/zarboz/android/arm-eabi-4.4.3/bin/arm-eabi-gcc -Wp,-MD,drivers/platform/msm/sps/.sps_mem.o.d  -nostdinc -isystem /home/zarboz/android/arm-eabi-4.4.3/bin/../lib/gcc/arm-eabi/4.4.3/include -I/mnt/sdb1/kernel/projects/jewel/213/arch/arm/include -Iarch/arm/include/generated -Iinclude  -include include/generated/autoconf.h -D__KERNEL__ -mlittle-endian -Iarch/arm/mach-msm/include -Wall -Wundef -Wstrict-prototypes -Wno-trigraphs -fno-strict-aliasing -fno-common -Werror-implicit-function-declaration -Wno-format-security -fno-delete-null-pointer-checks -Os -marm -fno-dwarf2-cfi-asm -fstack-protector -mabi=aapcs-linux -mno-thumb-interwork -funwind-tables -D__LINUX_ARM_ARCH__=7 -march=armv7-a -msoft-float -Uarm -Wframe-larger-than=1024 -fomit-frame-pointer -g -Wdeclaration-after-statement -Wno-pointer-sign -fno-strict-overflow -fconserve-stack    -D"KBUILD_STR(s)=\#s" -D"KBUILD_BASENAME=KBUILD_STR(sps_mem)"  -D"KBUILD_MODNAME=KBUILD_STR(sps_mem)" -c -o drivers/platform/msm/sps/.tmp_sps_mem.o drivers/platform/msm/sps/sps_mem.c
 
 source_drivers/platform/msm/sps/sps_mem.o := drivers/platform/msm/sps/sps_mem.c
 
@@ -9,9 +9,9 @@ deps_drivers/platform/msm/sps/sps_mem.o := \
     $(wildcard include/config/arch/dma/addr/t/64bit.h) \
     $(wildcard include/config/phys/addr/t/64bit.h) \
     $(wildcard include/config/64bit.h) \
-  /home/zarboz/kernel/projects/jewel/213/arch/arm/include/asm/types.h \
+  /mnt/sdb1/kernel/projects/jewel/213/arch/arm/include/asm/types.h \
   include/asm-generic/int-ll64.h \
-  /home/zarboz/kernel/projects/jewel/213/arch/arm/include/asm/bitsperlong.h \
+  /mnt/sdb1/kernel/projects/jewel/213/arch/arm/include/asm/bitsperlong.h \
   include/asm-generic/bitsperlong.h \
   include/linux/posix_types.h \
   include/linux/stddef.h \
@@ -25,7 +25,7 @@ deps_drivers/platform/msm/sps/sps_mem.o := \
     $(wildcard include/config/arch/supports/optimized/inlining.h) \
     $(wildcard include/config/optimize/inlining.h) \
   include/linux/compiler-gcc4.h \
-  /home/zarboz/kernel/projects/jewel/213/arch/arm/include/asm/posix_types.h \
+  /mnt/sdb1/kernel/projects/jewel/213/arch/arm/include/asm/posix_types.h \
   include/linux/kernel.h \
     $(wildcard include/config/preempt/voluntary.h) \
     $(wildcard include/config/debug/spinlock/sleep.h) \
@@ -37,11 +37,11 @@ deps_drivers/platform/msm/sps/sps_mem.o := \
     $(wildcard include/config/ftrace/mcount/record.h) \
   /home/zarboz/android/arm-eabi-4.4.3/bin/../lib/gcc/arm-eabi/4.4.3/include/stdarg.h \
   include/linux/linkage.h \
-  /home/zarboz/kernel/projects/jewel/213/arch/arm/include/asm/linkage.h \
+  /mnt/sdb1/kernel/projects/jewel/213/arch/arm/include/asm/linkage.h \
   include/linux/bitops.h \
-  /home/zarboz/kernel/projects/jewel/213/arch/arm/include/asm/bitops.h \
+  /mnt/sdb1/kernel/projects/jewel/213/arch/arm/include/asm/bitops.h \
     $(wildcard include/config/smp.h) \
-  /home/zarboz/kernel/projects/jewel/213/arch/arm/include/asm/system.h \
+  /mnt/sdb1/kernel/projects/jewel/213/arch/arm/include/asm/system.h \
     $(wildcard include/config/cpu/32v6k.h) \
     $(wildcard include/config/cpu/xsc3.h) \
     $(wildcard include/config/cpu/fa526.h) \
@@ -56,12 +56,12 @@ deps_drivers/platform/msm/sps/sps_mem.o := \
     $(wildcard include/config/preempt/tracer.h) \
     $(wildcard include/config/trace/irqflags/support.h) \
   include/linux/typecheck.h \
-  /home/zarboz/kernel/projects/jewel/213/arch/arm/include/asm/irqflags.h \
-  /home/zarboz/kernel/projects/jewel/213/arch/arm/include/asm/ptrace.h \
+  /mnt/sdb1/kernel/projects/jewel/213/arch/arm/include/asm/irqflags.h \
+  /mnt/sdb1/kernel/projects/jewel/213/arch/arm/include/asm/ptrace.h \
     $(wildcard include/config/cpu/endian/be8.h) \
     $(wildcard include/config/arm/thumb.h) \
-  /home/zarboz/kernel/projects/jewel/213/arch/arm/include/asm/hwcap.h \
-  /home/zarboz/kernel/projects/jewel/213/arch/arm/include/asm/outercache.h \
+  /mnt/sdb1/kernel/projects/jewel/213/arch/arm/include/asm/hwcap.h \
+  /mnt/sdb1/kernel/projects/jewel/213/arch/arm/include/asm/outercache.h \
     $(wildcard include/config/outer/cache/sync.h) \
     $(wildcard include/config/outer/cache.h) \
   include/asm-generic/cmpxchg-local.h \
@@ -73,10 +73,10 @@ deps_drivers/platform/msm/sps/sps_mem.o := \
   include/asm-generic/bitops/const_hweight.h \
   include/asm-generic/bitops/lock.h \
   include/asm-generic/bitops/le.h \
-  /home/zarboz/kernel/projects/jewel/213/arch/arm/include/asm/byteorder.h \
+  /mnt/sdb1/kernel/projects/jewel/213/arch/arm/include/asm/byteorder.h \
   include/linux/byteorder/little_endian.h \
   include/linux/swab.h \
-  /home/zarboz/kernel/projects/jewel/213/arch/arm/include/asm/swab.h \
+  /mnt/sdb1/kernel/projects/jewel/213/arch/arm/include/asm/swab.h \
   include/linux/byteorder/generic.h \
   include/linux/log2.h \
     $(wildcard include/config/arch/has/ilog2/u32.h) \
@@ -88,19 +88,19 @@ deps_drivers/platform/msm/sps/sps_mem.o := \
     $(wildcard include/config/modules.h) \
     $(wildcard include/config/hotplug.h) \
   include/linux/dynamic_debug.h \
-  /home/zarboz/kernel/projects/jewel/213/arch/arm/include/asm/bug.h \
+  /mnt/sdb1/kernel/projects/jewel/213/arch/arm/include/asm/bug.h \
     $(wildcard include/config/bug.h) \
     $(wildcard include/config/thumb2/kernel.h) \
     $(wildcard include/config/debug/bugverbose.h) \
   include/asm-generic/bug.h \
     $(wildcard include/config/generic/bug.h) \
     $(wildcard include/config/generic/bug/relative/pointers.h) \
-  /home/zarboz/kernel/projects/jewel/213/arch/arm/include/asm/div64.h \
+  /mnt/sdb1/kernel/projects/jewel/213/arch/arm/include/asm/div64.h \
   include/linux/io.h \
     $(wildcard include/config/mmu.h) \
     $(wildcard include/config/has/ioport.h) \
-  /home/zarboz/kernel/projects/jewel/213/arch/arm/include/asm/io.h \
-  /home/zarboz/kernel/projects/jewel/213/arch/arm/include/asm/memory.h \
+  /mnt/sdb1/kernel/projects/jewel/213/arch/arm/include/asm/io.h \
+  /mnt/sdb1/kernel/projects/jewel/213/arch/arm/include/asm/memory.h \
     $(wildcard include/config/page/offset.h) \
     $(wildcard include/config/highmem.h) \
     $(wildcard include/config/dram/size.h) \
@@ -123,7 +123,7 @@ deps_drivers/platform/msm/sps/sps_mem.o := \
     $(wildcard include/config/arch/msm/scorpion.h) \
     $(wildcard include/config/arch/msm/krait.h) \
     $(wildcard include/config/arch/msm7x27.h) \
-  /home/zarboz/kernel/projects/jewel/213/arch/arm/include/asm/sizes.h \
+  /mnt/sdb1/kernel/projects/jewel/213/arch/arm/include/asm/sizes.h \
   include/asm-generic/sizes.h \
   include/asm-generic/memory_model.h \
     $(wildcard include/config/flatmem.h) \
@@ -132,7 +132,7 @@ deps_drivers/platform/msm/sps/sps_mem.o := \
   arch/arm/mach-msm/include/mach/msm_rtb.h \
     $(wildcard include/config/msm/rtb.h) \
   arch/arm/mach-msm/include/mach/io.h \
-  /home/zarboz/kernel/projects/jewel/213/arch/arm/include/asm/page.h \
+  /mnt/sdb1/kernel/projects/jewel/213/arch/arm/include/asm/page.h \
     $(wildcard include/config/cpu/copy/v3.h) \
     $(wildcard include/config/cpu/copy/v4wt.h) \
     $(wildcard include/config/cpu/copy/v4wb.h) \
@@ -142,7 +142,7 @@ deps_drivers/platform/msm/sps/sps_mem.o := \
     $(wildcard include/config/cpu/copy/v6.h) \
     $(wildcard include/config/have/arch/pfn/valid.h) \
     $(wildcard include/config/memory/hotplug/sparse.h) \
-  /home/zarboz/kernel/projects/jewel/213/arch/arm/include/asm/glue.h \
+  /mnt/sdb1/kernel/projects/jewel/213/arch/arm/include/asm/glue.h \
   include/asm-generic/getorder.h \
   include/linux/mutex.h \
     $(wildcard include/config/debug/mutexes.h) \
@@ -155,18 +155,18 @@ deps_drivers/platform/msm/sps/sps_mem.o := \
   include/linux/spinlock_types.h \
     $(wildcard include/config/generic/lockbreak.h) \
     $(wildcard include/config/debug/spinlock.h) \
-  /home/zarboz/kernel/projects/jewel/213/arch/arm/include/asm/spinlock_types.h \
+  /mnt/sdb1/kernel/projects/jewel/213/arch/arm/include/asm/spinlock_types.h \
   include/linux/lockdep.h \
     $(wildcard include/config/lockdep.h) \
     $(wildcard include/config/lock/stat.h) \
     $(wildcard include/config/prove/rcu.h) \
   include/linux/rwlock_types.h \
-  /home/zarboz/kernel/projects/jewel/213/arch/arm/include/asm/atomic.h \
+  /mnt/sdb1/kernel/projects/jewel/213/arch/arm/include/asm/atomic.h \
     $(wildcard include/config/generic/atomic64.h) \
   include/asm-generic/atomic-long.h \
   include/linux/genalloc.h \
   include/linux/errno.h \
-  /home/zarboz/kernel/projects/jewel/213/arch/arm/include/asm/errno.h \
+  /mnt/sdb1/kernel/projects/jewel/213/arch/arm/include/asm/errno.h \
   include/asm-generic/errno.h \
   include/asm-generic/errno-base.h \
   drivers/platform/msm/sps/sps_bam.h \
@@ -179,24 +179,24 @@ deps_drivers/platform/msm/sps/sps_mem.o := \
     $(wildcard include/config/preempt/notifiers.h) \
   include/linux/thread_info.h \
     $(wildcard include/config/compat.h) \
-  /home/zarboz/kernel/projects/jewel/213/arch/arm/include/asm/thread_info.h \
+  /mnt/sdb1/kernel/projects/jewel/213/arch/arm/include/asm/thread_info.h \
     $(wildcard include/config/arm/thumbee.h) \
-  /home/zarboz/kernel/projects/jewel/213/arch/arm/include/asm/fpstate.h \
+  /mnt/sdb1/kernel/projects/jewel/213/arch/arm/include/asm/fpstate.h \
     $(wildcard include/config/vfpv3.h) \
     $(wildcard include/config/iwmmxt.h) \
-  /home/zarboz/kernel/projects/jewel/213/arch/arm/include/asm/domain.h \
+  /mnt/sdb1/kernel/projects/jewel/213/arch/arm/include/asm/domain.h \
     $(wildcard include/config/verify/permission/fault.h) \
     $(wildcard include/config/io/36.h) \
     $(wildcard include/config/cpu/use/domains.h) \
     $(wildcard include/config/emulate/domain/manager/v7.h) \
   include/linux/stringify.h \
   include/linux/bottom_half.h \
-  /home/zarboz/kernel/projects/jewel/213/arch/arm/include/asm/spinlock.h \
+  /mnt/sdb1/kernel/projects/jewel/213/arch/arm/include/asm/spinlock.h \
     $(wildcard include/config/arm/ticket/locks.h) \
-  /home/zarboz/kernel/projects/jewel/213/arch/arm/include/asm/processor.h \
+  /mnt/sdb1/kernel/projects/jewel/213/arch/arm/include/asm/processor.h \
     $(wildcard include/config/have/hw/breakpoint.h) \
     $(wildcard include/config/arm/errata/754327.h) \
-  /home/zarboz/kernel/projects/jewel/213/arch/arm/include/asm/hw_breakpoint.h \
+  /mnt/sdb1/kernel/projects/jewel/213/arch/arm/include/asm/hw_breakpoint.h \
   include/linux/rwlock.h \
   include/linux/spinlock_api_smp.h \
     $(wildcard include/config/inline/spin/lock.h) \
@@ -228,7 +228,7 @@ deps_drivers/platform/msm/sps/sps_mem.o := \
     $(wildcard include/config/inline/write/unlock/irq.h) \
     $(wildcard include/config/inline/read/unlock/irqrestore.h) \
     $(wildcard include/config/inline/write/unlock/irqrestore.h) \
-  /home/zarboz/kernel/projects/jewel/213/arch/arm/include/asm/current.h \
+  /mnt/sdb1/kernel/projects/jewel/213/arch/arm/include/asm/current.h \
   drivers/platform/msm/sps/spsi.h \
     $(wildcard include/config/debug/fs.h) \
   arch/arm/mach-msm/include/mach/sps.h \

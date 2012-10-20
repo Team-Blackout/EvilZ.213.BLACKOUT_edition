@@ -1,4 +1,4 @@
-cmd_arch/arm/boot/compressed/misc.o := /home/zarboz/kernel/projects/jewel/213/scripts/gcc-wrapper.py /home/zarboz/android/arm-eabi-4.4.3/bin/arm-eabi-gcc -Wp,-MD,arch/arm/boot/compressed/.misc.o.d  -nostdinc -isystem /home/zarboz/android/arm-eabi-4.4.3/bin/../lib/gcc/arm-eabi/4.4.3/include -I/home/zarboz/kernel/projects/jewel/213/arch/arm/include -Iarch/arm/include/generated -Iinclude  -include include/generated/autoconf.h -D__KERNEL__ -mlittle-endian -Iarch/arm/mach-msm/include -Wall -Wundef -Wstrict-prototypes -Wno-trigraphs -fno-strict-aliasing -fno-common -Werror-implicit-function-declaration -Wno-format-security -fno-delete-null-pointer-checks -Os -marm -fno-dwarf2-cfi-asm -fstack-protector -mabi=aapcs-linux -mno-thumb-interwork -funwind-tables -D__LINUX_ARM_ARCH__=7 -march=armv7-a -msoft-float -Uarm -Wframe-larger-than=1024 -fomit-frame-pointer -g -Wdeclaration-after-statement -Wno-pointer-sign -fno-strict-overflow -fconserve-stack -fpic -fno-builtin -Iarch/arm/boot/compressed    -D"KBUILD_STR(s)=\#s" -D"KBUILD_BASENAME=KBUILD_STR(misc)"  -D"KBUILD_MODNAME=KBUILD_STR(misc)" -c -o arch/arm/boot/compressed/.tmp_misc.o arch/arm/boot/compressed/misc.c
+cmd_arch/arm/boot/compressed/misc.o := /mnt/sdb1/kernel/projects/jewel/213/scripts/gcc-wrapper.py /home/zarboz/android/arm-eabi-4.4.3/bin/arm-eabi-gcc -Wp,-MD,arch/arm/boot/compressed/.misc.o.d  -nostdinc -isystem /home/zarboz/android/arm-eabi-4.4.3/bin/../lib/gcc/arm-eabi/4.4.3/include -I/mnt/sdb1/kernel/projects/jewel/213/arch/arm/include -Iarch/arm/include/generated -Iinclude  -include include/generated/autoconf.h -D__KERNEL__ -mlittle-endian -Iarch/arm/mach-msm/include -Wall -Wundef -Wstrict-prototypes -Wno-trigraphs -fno-strict-aliasing -fno-common -Werror-implicit-function-declaration -Wno-format-security -fno-delete-null-pointer-checks -Os -marm -fno-dwarf2-cfi-asm -fstack-protector -mabi=aapcs-linux -mno-thumb-interwork -funwind-tables -D__LINUX_ARM_ARCH__=7 -march=armv7-a -msoft-float -Uarm -Wframe-larger-than=1024 -fomit-frame-pointer -g -Wdeclaration-after-statement -Wno-pointer-sign -fno-strict-overflow -fconserve-stack -fpic -fno-builtin -Iarch/arm/boot/compressed    -D"KBUILD_STR(s)=\#s" -D"KBUILD_BASENAME=KBUILD_STR(misc)"  -D"KBUILD_MODNAME=KBUILD_STR(misc)" -c -o arch/arm/boot/compressed/.tmp_misc.o arch/arm/boot/compressed/misc.c
 
 source_arch/arm/boot/compressed/misc.o := arch/arm/boot/compressed/misc.c
 
@@ -24,28 +24,28 @@ deps_arch/arm/boot/compressed/misc.o := \
     $(wildcard include/config/arch/dma/addr/t/64bit.h) \
     $(wildcard include/config/phys/addr/t/64bit.h) \
     $(wildcard include/config/64bit.h) \
-  /home/zarboz/kernel/projects/jewel/213/arch/arm/include/asm/types.h \
+  /mnt/sdb1/kernel/projects/jewel/213/arch/arm/include/asm/types.h \
   include/asm-generic/int-ll64.h \
-  /home/zarboz/kernel/projects/jewel/213/arch/arm/include/asm/bitsperlong.h \
+  /mnt/sdb1/kernel/projects/jewel/213/arch/arm/include/asm/bitsperlong.h \
   include/asm-generic/bitsperlong.h \
   include/linux/posix_types.h \
   include/linux/stddef.h \
-  /home/zarboz/kernel/projects/jewel/213/arch/arm/include/asm/posix_types.h \
+  /mnt/sdb1/kernel/projects/jewel/213/arch/arm/include/asm/posix_types.h \
   include/linux/linkage.h \
-  /home/zarboz/kernel/projects/jewel/213/arch/arm/include/asm/linkage.h \
+  /mnt/sdb1/kernel/projects/jewel/213/arch/arm/include/asm/linkage.h \
   arch/arm/mach-msm/include/mach/uncompress.h \
     $(wildcard include/config/msm/has/debug/uart/hs.h) \
   include/linux/io.h \
     $(wildcard include/config/mmu.h) \
     $(wildcard include/config/has/ioport.h) \
-  /home/zarboz/kernel/projects/jewel/213/arch/arm/include/asm/io.h \
+  /mnt/sdb1/kernel/projects/jewel/213/arch/arm/include/asm/io.h \
     $(wildcard include/config/arm/dma/mem/bufferable.h) \
-  /home/zarboz/kernel/projects/jewel/213/arch/arm/include/asm/byteorder.h \
+  /mnt/sdb1/kernel/projects/jewel/213/arch/arm/include/asm/byteorder.h \
   include/linux/byteorder/little_endian.h \
   include/linux/swab.h \
-  /home/zarboz/kernel/projects/jewel/213/arch/arm/include/asm/swab.h \
+  /mnt/sdb1/kernel/projects/jewel/213/arch/arm/include/asm/swab.h \
   include/linux/byteorder/generic.h \
-  /home/zarboz/kernel/projects/jewel/213/arch/arm/include/asm/memory.h \
+  /mnt/sdb1/kernel/projects/jewel/213/arch/arm/include/asm/memory.h \
     $(wildcard include/config/page/offset.h) \
     $(wildcard include/config/thumb2/kernel.h) \
     $(wildcard include/config/highmem.h) \
@@ -69,13 +69,13 @@ deps_arch/arm/boot/compressed/misc.o := \
     $(wildcard include/config/arch/msm/scorpion.h) \
     $(wildcard include/config/arch/msm/krait.h) \
     $(wildcard include/config/arch/msm7x27.h) \
-  /home/zarboz/kernel/projects/jewel/213/arch/arm/include/asm/sizes.h \
+  /mnt/sdb1/kernel/projects/jewel/213/arch/arm/include/asm/sizes.h \
   include/asm-generic/sizes.h \
   include/asm-generic/memory_model.h \
     $(wildcard include/config/flatmem.h) \
     $(wildcard include/config/discontigmem.h) \
     $(wildcard include/config/sparsemem/vmemmap.h) \
-  /home/zarboz/kernel/projects/jewel/213/arch/arm/include/asm/system.h \
+  /mnt/sdb1/kernel/projects/jewel/213/arch/arm/include/asm/system.h \
     $(wildcard include/config/cpu/32v6k.h) \
     $(wildcard include/config/cpu/xsc3.h) \
     $(wildcard include/config/cpu/fa526.h) \
@@ -89,19 +89,19 @@ deps_arch/arm/boot/compressed/misc.o := \
     $(wildcard include/config/preempt/tracer.h) \
     $(wildcard include/config/trace/irqflags/support.h) \
   include/linux/typecheck.h \
-  /home/zarboz/kernel/projects/jewel/213/arch/arm/include/asm/irqflags.h \
-  /home/zarboz/kernel/projects/jewel/213/arch/arm/include/asm/ptrace.h \
+  /mnt/sdb1/kernel/projects/jewel/213/arch/arm/include/asm/irqflags.h \
+  /mnt/sdb1/kernel/projects/jewel/213/arch/arm/include/asm/ptrace.h \
     $(wildcard include/config/cpu/endian/be8.h) \
     $(wildcard include/config/arm/thumb.h) \
-  /home/zarboz/kernel/projects/jewel/213/arch/arm/include/asm/hwcap.h \
-  /home/zarboz/kernel/projects/jewel/213/arch/arm/include/asm/outercache.h \
+  /mnt/sdb1/kernel/projects/jewel/213/arch/arm/include/asm/hwcap.h \
+  /mnt/sdb1/kernel/projects/jewel/213/arch/arm/include/asm/outercache.h \
     $(wildcard include/config/outer/cache/sync.h) \
     $(wildcard include/config/outer/cache.h) \
   include/asm-generic/cmpxchg-local.h \
   arch/arm/mach-msm/include/mach/msm_rtb.h \
     $(wildcard include/config/msm/rtb.h) \
   arch/arm/mach-msm/include/mach/io.h \
-  /home/zarboz/kernel/projects/jewel/213/arch/arm/include/asm/page.h \
+  /mnt/sdb1/kernel/projects/jewel/213/arch/arm/include/asm/page.h \
     $(wildcard include/config/cpu/copy/v3.h) \
     $(wildcard include/config/cpu/copy/v4wt.h) \
     $(wildcard include/config/cpu/copy/v4wb.h) \
@@ -110,9 +110,9 @@ deps_arch/arm/boot/compressed/misc.o := \
     $(wildcard include/config/cpu/copy/v6.h) \
     $(wildcard include/config/have/arch/pfn/valid.h) \
     $(wildcard include/config/memory/hotplug/sparse.h) \
-  /home/zarboz/kernel/projects/jewel/213/arch/arm/include/asm/glue.h \
+  /mnt/sdb1/kernel/projects/jewel/213/arch/arm/include/asm/glue.h \
   include/asm-generic/getorder.h \
-  /home/zarboz/kernel/projects/jewel/213/arch/arm/include/asm/mach-types.h \
+  /mnt/sdb1/kernel/projects/jewel/213/arch/arm/include/asm/mach-types.h \
   include/generated/mach-types.h \
     $(wildcard include/config/arch/ebsa110.h) \
     $(wildcard include/config/arch/rpc.h) \
@@ -3939,10 +3939,10 @@ deps_arch/arm/boot/compressed/misc.o := \
     $(wildcard include/config/mach/k2/ul.h) \
     $(wildcard include/config/mach/k2/cl.h) \
     $(wildcard include/config/mach/valente/wx/c9.h) \
-  /home/zarboz/kernel/projects/jewel/213/arch/arm/include/asm/processor.h \
+  /mnt/sdb1/kernel/projects/jewel/213/arch/arm/include/asm/processor.h \
     $(wildcard include/config/have/hw/breakpoint.h) \
     $(wildcard include/config/arm/errata/754327.h) \
-  /home/zarboz/kernel/projects/jewel/213/arch/arm/include/asm/hw_breakpoint.h \
+  /mnt/sdb1/kernel/projects/jewel/213/arch/arm/include/asm/hw_breakpoint.h \
   arch/arm/mach-msm/include/mach/msm_iomap.h \
     $(wildcard include/config/arch/apq8064.h) \
     $(wildcard include/config/arch/msm8930.h) \

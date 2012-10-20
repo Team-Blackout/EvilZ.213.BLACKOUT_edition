@@ -13,7 +13,7 @@
 @	compiled by GNU C version 4.4.3, GMP version 4.2.4, MPFR version 2.4.1.
 @ GGC heuristics: --param ggc-min-expand=100 --param ggc-min-heapsize=131072
 @ options passed:  -nostdinc
-@ -I/home/zarboz/kernel/projects/jewel/213/arch/arm/include
+@ -I/mnt/sdb1/kernel/projects/jewel/213/arch/arm/include
 @ -Iarch/arm/include/generated -Iinclude -Iarch/arm/mach-msm/include
 @ -iprefix
 @ /home/zarboz/android/arm-eabi-4.4.3/bin/../lib/gcc/arm-eabi/4.4.3/
@@ -517,8 +517,8 @@ foo:
 	.ascii	"PG_swapbacked\000"
 .LASF34:
 	.ascii	"PG_checked\000"
-.LASF56:
-	.ascii	"/home/zarboz/kernel/projects/jewel/213\000"
+.LASF1:
+	.ascii	"unsigned char\000"
 .LASF55:
 	.ascii	"kernel/bounds.c\000"
 .LASF26:
@@ -527,10 +527,10 @@ foo:
 	.ascii	"pageflags\000"
 .LASF46:
 	.ascii	"PCG_LOCK\000"
+.LASF56:
+	.ascii	"/mnt/sdb1/kernel/projects/jewel/213\000"
 .LASF43:
 	.ascii	"ZONE_HIGHMEM\000"
-.LASF1:
-	.ascii	"unsigned char\000"
 .LASF4:
 	.ascii	"unsigned int\000"
 .LASF12:

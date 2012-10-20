@@ -1,1 +1,1 @@
-cmd_crypto/ansi_cprng.ko := /home/zarboz/android/arm-eabi-4.4.3/bin/arm-eabi-ld -EL -r  -T /home/zarboz/kernel/projects/jewel/213/scripts/module-common.lds --build-id  -o crypto/ansi_cprng.ko crypto/ansi_cprng.o crypto/ansi_cprng.mod.o
+cmd_crypto/ansi_cprng.ko := /home/zarboz/android/arm-eabi-4.4.3/bin/arm-eabi-ld -EL -r  -T /mnt/sdb1/kernel/projects/jewel/213/scripts/module-common.lds --build-id  -o crypto/ansi_cprng.ko crypto/ansi_cprng.o crypto/ansi_cprng.mod.o

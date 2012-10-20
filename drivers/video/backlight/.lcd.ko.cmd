@@ -1,1 +1,1 @@
-cmd_drivers/video/backlight/lcd.ko := /home/zarboz/android/arm-eabi-4.4.3/bin/arm-eabi-ld -EL -r  -T /home/zarboz/kernel/projects/jewel/213/scripts/module-common.lds --build-id  -o drivers/video/backlight/lcd.ko drivers/video/backlight/lcd.o drivers/video/backlight/lcd.mod.o
+cmd_drivers/video/backlight/lcd.ko := /home/zarboz/android/arm-eabi-4.4.3/bin/arm-eabi-ld -EL -r  -T /mnt/sdb1/kernel/projects/jewel/213/scripts/module-common.lds --build-id  -o drivers/video/backlight/lcd.ko drivers/video/backlight/lcd.o drivers/video/backlight/lcd.mod.o

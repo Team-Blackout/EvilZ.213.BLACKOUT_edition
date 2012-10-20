@@ -13,7 +13,7 @@
 @	compiled by GNU C version 4.4.3, GMP version 4.2.4, MPFR version 2.4.1.
 @ GGC heuristics: --param ggc-min-expand=100 --param ggc-min-heapsize=131072
 @ options passed:  -nostdinc
-@ -I/home/zarboz/kernel/projects/jewel/213/arch/arm/include
+@ -I/mnt/sdb1/kernel/projects/jewel/213/arch/arm/include
 @ -Iarch/arm/include/generated -Iinclude -Iarch/arm/mach-msm/include
 @ -iprefix
 @ /home/zarboz/android/arm-eabi-4.4.3/bin/../lib/gcc/arm-eabi/4.4.3/
@@ -417,15 +417,15 @@ main:
 	.text
 .Letext0:
 	.file 2 "include/asm-generic/int-ll64.h"
-	.file 3 "/home/zarboz/kernel/projects/jewel/213/arch/arm/include/asm/posix_types.h"
+	.file 3 "/mnt/sdb1/kernel/projects/jewel/213/arch/arm/include/asm/posix_types.h"
 	.file 4 "include/linux/types.h"
 	.file 5 "include/linux/capability.h"
 	.file 6 "include/linux/thread_info.h"
 	.file 7 "include/linux/time.h"
 	.file 8 "include/linux/sched.h"
-	.file 9 "/home/zarboz/kernel/projects/jewel/213/arch/arm/include/asm/spinlock_types.h"
+	.file 9 "/mnt/sdb1/kernel/projects/jewel/213/arch/arm/include/asm/spinlock_types.h"
 	.file 10 "include/linux/spinlock_types.h"
-	.file 11 "/home/zarboz/kernel/projects/jewel/213/arch/arm/include/asm/processor.h"
+	.file 11 "/mnt/sdb1/kernel/projects/jewel/213/arch/arm/include/asm/processor.h"
 	.file 12 "include/asm-generic/atomic-long.h"
 	.file 13 "include/linux/rbtree.h"
 	.file 14 "include/linux/cpumask.h"
@@ -435,15 +435,15 @@ main:
 	.file 18 "include/linux/wait.h"
 	.file 19 "include/linux/kernel.h"
 	.file 20 "include/linux/completion.h"
-	.file 21 "/home/zarboz/kernel/projects/jewel/213/arch/arm/include/asm/page.h"
+	.file 21 "/mnt/sdb1/kernel/projects/jewel/213/arch/arm/include/asm/page.h"
 	.file 22 "include/linux/mm_types.h"
-	.file 23 "/home/zarboz/kernel/projects/jewel/213/arch/arm/include/asm/mmu.h"
-	.file 24 "/home/zarboz/kernel/projects/jewel/213/arch/arm/include/asm/system.h"
+	.file 23 "/mnt/sdb1/kernel/projects/jewel/213/arch/arm/include/asm/mmu.h"
+	.file 24 "/mnt/sdb1/kernel/projects/jewel/213/arch/arm/include/asm/system.h"
 	.file 25 "include/linux/mm.h"
 	.file 26 "include/asm-generic/cputime.h"
 	.file 27 "include/linux/rcupdate.h"
 	.file 28 "include/linux/sem.h"
-	.file 29 "/home/zarboz/kernel/projects/jewel/213/arch/arm/include/asm/signal.h"
+	.file 29 "/mnt/sdb1/kernel/projects/jewel/213/arch/arm/include/asm/signal.h"
 	.file 30 "include/asm-generic/signal-defs.h"
 	.file 31 "include/asm-generic/siginfo.h"
 	.file 32 "include/linux/signal.h"
@@ -461,14 +461,14 @@ main:
 	.file 44 "include/linux/task_io_accounting.h"
 	.file 45 "include/linux/key.h"
 	.file 46 "include/linux/cred.h"
-	.file 47 "/home/zarboz/kernel/projects/jewel/213/arch/arm/include/asm/tlbflush.h"
+	.file 47 "/mnt/sdb1/kernel/projects/jewel/213/arch/arm/include/asm/tlbflush.h"
 	.file 48 "include/linux/vmstat.h"
 	.file 49 "include/linux/ioport.h"
 	.file 50 "include/linux/jump_label.h"
 	.file 51 "include/linux/tracepoint.h"
 	.file 52 "include/linux/dma-mapping.h"
-	.file 53 "/home/zarboz/kernel/projects/jewel/213/arch/arm/include/asm/cacheflush.h"
-	.file 54 "/home/zarboz/kernel/projects/jewel/213/arch/arm/include/asm/hwcap.h"
+	.file 53 "/mnt/sdb1/kernel/projects/jewel/213/arch/arm/include/asm/cacheflush.h"
+	.file 54 "/mnt/sdb1/kernel/projects/jewel/213/arch/arm/include/asm/hwcap.h"
 	.file 55 "include/linux/printk.h"
 	.file 56 "include/linux/timex.h"
 	.file 57 "arch/arm/mach-msm/include/mach/memory.h"
@@ -476,7 +476,7 @@ main:
 	.file 59 "include/linux/percpu_counter.h"
 	.file 60 "include/linux/debug_locks.h"
 	.file 61 "include/trace/events/module.h"
-	.file 62 "/home/zarboz/kernel/projects/jewel/213/arch/arm/include/asm/cachetype.h"
+	.file 62 "/mnt/sdb1/kernel/projects/jewel/213/arch/arm/include/asm/cachetype.h"
 	.section	.debug_info
 	.4byte	0x363f
 	.2byte	0x2
@@ -8493,8 +8493,8 @@ main:
 	.ascii	"time_t\000"
 .LASF34:
 	.ascii	"next\000"
-.LASF710:
-	.ascii	"/home/zarboz/kernel/projects/jewel/213\000"
+.LASF33:
+	.ascii	"counter\000"
 .LASF619:
 	.ascii	"prev_sum_exec_runtime\000"
 .LASF72:
@@ -8741,6 +8741,8 @@ main:
 	.ascii	"ptrace\000"
 .LASF219:
 	.ascii	"vm_ops\000"
+.LASF710:
+	.ascii	"/mnt/sdb1/kernel/projects/jewel/213\000"
 .LASF358:
 	.ascii	"inotify_watches\000"
 .LASF403:
@@ -9209,8 +9211,6 @@ main:
 	.ascii	"console_printk\000"
 .LASF662:
 	.ascii	"DMA_NONE\000"
-.LASF33:
-	.ascii	"counter\000"
 .LASF402:
 	.ascii	"lru_lock\000"
 .LASF487:

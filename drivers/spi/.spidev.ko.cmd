@@ -1,1 +1,0 @@
-cmd_drivers/spi/spidev.ko := /home/zarboz/android/arm-eabi-4.4.3/bin/arm-eabi-ld -EL -r  -T /mnt/sdb1/kernel/projects/jewel/213/scripts/module-common.lds --build-id  -o drivers/spi/spidev.ko drivers/spi/spidev.o drivers/spi/spidev.mod.o

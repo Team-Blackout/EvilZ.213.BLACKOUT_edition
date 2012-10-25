@@ -1483,7 +1483,7 @@ static void synaptics_ts_finger_func(struct synaptics_ts_data *ts)
 {
 	int ret;
 	uint8_t buf[((ts->finger_support * 21 + 3) / 4)];
-	uint8_t data;
+//	uint8_t data;
 #ifdef CONFIG_TOUCHSCREEN_SYNAPTICS_SWEEP2WAKE
 	int prevx = 0, nextx = 0;
 #endif
@@ -2614,29 +2614,25 @@ static int synaptics_ts_suspend(struct i2c_client *client, pm_message_t mesg)
 #ifdef CONFIG_TOUCHSCREEN_SYNAPTICS_SWEEP2WAKE
 		if (s2w_switch == 0) {
 #endif
-			disable_irq(client->irq);
-			ts->irq_enabled = 0;
+		disable_irq(client->irq);
+		ts->irq_enabled = 0;
 #ifdef CONFIG_TOUCHSCREEN_SYNAPTICS_SWEEP2WAKE
 		}
 #endif
 	} else {
 		hrtimer_cancel(&ts->timer);
 		ret = cancel_work_sync(&ts->work);
+#ifdef CONFIG_TOUCHSCREEN_SYNAPTICS_SWEEP2WAKE
+	if (s2w_switch == 0) {
+		if (ret && ts->use_irq) /* if work was pending disable-count is now 2 */
+			enable_irq(client->irq);
+	}
+#endif
 	}
 
 	if (ts->psensor_status == 0) {
 		ts->pre_finger_data[0][0] = 0;
 		ts->first_pressed = 0;
-
-#ifdef CONFIG_TOUCHSCREEN_SYNAPTICS_SWEEP2WAKE
-	if (s2w_switch == 0) {
-		if (ret && ts->use_irq) /* if work was pending disable-count is now 2 */
-			enable_irq(client->irq);
-#endif
-
-	ts->pre_finger_data[0][0] = 0;
-	ts->pre_finger_data[0][1] = 0;
-	ts->first_pressed = 0;
 
 #ifdef SYN_CALIBRATION_CONTROL
 		if (ts->mfg_flag != 1) {
@@ -2706,26 +2702,11 @@ static int synaptics_ts_suspend(struct i2c_client *client, pm_message_t mesg)
 		}
 	}
 
-
-	if (ts->power)
-		ts->power(0);
-	else {
-		if (ts->psensor_status > 0) {
-			ret = i2c_syn_write_byte_data(client,
-				get_address_base(ts, 0x01, CONTROL_BASE), 0x02); /* sleep without calibration*/
-			if (ret < 0)
-				i2c_syn_error_handler(ts, ts->i2c_err_handler_en, "sleep: 0x02", __func__);
-		} else {
-			ret = i2c_syn_write_byte_data(client,
-				get_address_base(ts, 0x01, CONTROL_BASE), 0x01); /* sleep */
-			if (ret < 0)
-				i2c_syn_error_handler(ts, ts->i2c_err_handler_en, "sleep: 0x01", __func__);
-		}
-	}
-
 #ifdef CONFIG_TOUCHSCREEN_SYNAPTICS_SWEEP2WAKE
 	if (s2w_switch == 0) {
 #endif
+
+#ifdef SYN_SUSPEND_RESUME_POWEROFF
 		if (ts->power)
 			ts->power(0);
 		else 
@@ -2747,12 +2728,13 @@ static int synaptics_ts_suspend(struct i2c_client *client, pm_message_t mesg)
 	return 0;
 }
 
+
 static int synaptics_ts_resume(struct i2c_client *client)
 {
 	int ret;
 	struct synaptics_ts_data *ts = i2c_get_clientdata(client);
 	printk(KERN_INFO "[TP] %s: enter\n", __func__);
-	
+
 #ifdef CONFIG_TOUCHSCREEN_SYNAPTICS_SWEEP2WAKE
 	if (s2w_switch == 0) {
 #endif
@@ -2775,17 +2757,6 @@ static int synaptics_ts_resume(struct i2c_client *client)
 #ifdef CONFIG_TOUCHSCREEN_SYNAPTICS_SWEEP2WAKE
 	}
 #endif
-
-
-/*	i2c_syn_write_byte_data(ts->client,
-		get_address_base(ts, 0x54, CONTROL_BASE) + 0x10, ts->relaxation);
-	i2c_syn_write_byte_data(ts->client,
-		get_address_base(ts, 0x54, COMMAND_BASE), 0x04);
-	printk("[%x]%d, [%x]",
-		get_address_base(ts, 0x54, CONTROL_BASE) + 0x10, ts->relaxation,
-		get_address_base(ts, 0x54, COMMAND_BASE));
-*/
-
 	if (ts->htc_event == SYN_AND_REPORT_TYPE_A) {
 		if (ts->support_htc_event) {
 			input_report_abs(ts->input_dev, ABS_MT_AMPLITUDE, 0);
@@ -2799,15 +2770,17 @@ static int synaptics_ts_resume(struct i2c_client *client)
 		input_report_abs(ts->input_dev, ABS_MT_POSITION, 1 << 31);
 	}
 
+
 #ifdef CONFIG_TOUCHSCREEN_SYNAPTICS_SWEEP2WAKE
 	if (s2w_switch == 0) {
 #endif
-		if (ts->use_irq) {
-			enable_irq(client->irq);
-			ts->irq_enabled = 1;
-		}
-		else
-			hrtimer_start(&ts->timer, ktime_set(1, 0), HRTIMER_MODE_REL);
+
+	if (ts->use_irq) {
+		enable_irq(client->irq);
+		ts->irq_enabled = 1;
+	}
+	else
+		hrtimer_start(&ts->timer, ktime_set(1, 0), HRTIMER_MODE_REL);
 #ifdef CONFIG_TOUCHSCREEN_SYNAPTICS_SWEEP2WAKE
 	}
 #endif

@@ -1572,10 +1572,7 @@ static void synaptics_ts_finger_func(struct synaptics_ts_data *ts)
 				}
 #endif
 
-			if( (ts->notifyFinger != NULL) && (ts->withFinger==true) ) {
-				ts->notifyFinger(0);
-				ts->withFinger = false;
-			}
+			
 		}
 
 		if (ts->pre_finger_data[0][0] < 2 || finger_pressed) {
@@ -2630,14 +2627,7 @@ static int synaptics_ts_suspend(struct i2c_client *client, pm_message_t mesg)
 	if (ts->psensor_status == 0) {
 		ts->pre_finger_data[0][0] = 0;
 		ts->first_pressed = 0;
-#ifdef SYN_CABLE_CONTROL
-	if (ts->cable_support) {
-		ret = cancel_work_sync(&ts->noise_work);
-		hrtimer_cancel(&ts->noise_timer);
-		printk(KERN_INFO "[TP] cancel noise timer due to suspend\n");
-	}
-#endif
-	ret = cancel_work_sync(&ts->work);
+
 #ifdef CONFIG_TOUCHSCREEN_SYNAPTICS_SWEEP2WAKE
 	if (s2w_switch == 0) {
 		if (ret && ts->use_irq) /* if work was pending disable-count is now 2 */
@@ -2733,13 +2723,6 @@ static int synaptics_ts_suspend(struct i2c_client *client, pm_message_t mesg)
 		}
 	}
 
-	ret = i2c_syn_write_byte_data(client,
-			get_address_base(ts, 0x11, CONTROL_BASE) + 41, data);
-	if (ret < 0)
-		i2c_syn_error_handler(ts, 0, "w:0", __func__);
-        printk("[TP] disable palm supression\n");
-*/
-#ifdef SYN_SUSPEND_RESUME_POWEROFF
 #ifdef CONFIG_TOUCHSCREEN_SYNAPTICS_SWEEP2WAKE
 	if (s2w_switch == 0) {
 #endif
@@ -2769,7 +2752,10 @@ static int synaptics_ts_resume(struct i2c_client *client)
 	int ret;
 	struct synaptics_ts_data *ts = i2c_get_clientdata(client);
 	printk(KERN_INFO "[TP] %s: enter\n", __func__);
-
+	
+#ifdef CONFIG_TOUCHSCREEN_SYNAPTICS_SWEEP2WAKE
+	if (s2w_switch == 0) {
+#endif
 	if (ts->power) {
 		ts->power(1);
 		msleep(100);
@@ -2786,33 +2772,11 @@ static int synaptics_ts_resume(struct i2c_client *client)
 		if (ret < 0)
 			i2c_syn_error_handler(ts, ts->i2c_err_handler_en, "wake up", __func__);
 	}
-
-	int i;
-
-
-	printk(KERN_INFO "[TP] %s: enter\n", __func__);
-
-#ifdef CONFIG_TOUCHSCREEN_SYNAPTICS_SWEEP2WAKE
-	if (s2w_switch == 0) {
-#endif
-		if (ts->power)
-			ts->power(11);
-
-#ifdef SYN_SUSPEND_RESUME_POWEROFF
-		if (ts->power) {
-			ts->power(1);
-			msleep(100);
-		} else 
-#endif
-		{
-			ret = i2c_syn_write_byte_data(client,
-				get_address_base(ts, 0x01, CONTROL_BASE), 0x00); /* wake */
-			if (ret < 0)
-				i2c_syn_error_handler(ts, 1, "wake up", __func__);
-		}
 #ifdef CONFIG_TOUCHSCREEN_SYNAPTICS_SWEEP2WAKE
 	}
 #endif
+
+
 /*	i2c_syn_write_byte_data(ts->client,
 		get_address_base(ts, 0x54, CONTROL_BASE) + 0x10, ts->relaxation);
 	i2c_syn_write_byte_data(ts->client,
@@ -2821,9 +2785,6 @@ static int synaptics_ts_resume(struct i2c_client *client)
 		get_address_base(ts, 0x54, CONTROL_BASE) + 0x10, ts->relaxation,
 		get_address_base(ts, 0x54, COMMAND_BASE));
 */
-	ret = synaptics_init_panel(ts);
-	if (ret < 0)
-		printk(KERN_ERR "[TP]TOUCH_ERR: synaptics_ts_resume: synaptics init panel failed\n");
 
 	if (ts->htc_event == SYN_AND_REPORT_TYPE_A) {
 		if (ts->support_htc_event) {

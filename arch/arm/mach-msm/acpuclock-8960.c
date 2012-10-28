@@ -606,7 +606,6 @@ static struct acpu_level acpu_freq_tbl_8960_kraitv2_slow[] = {
 	{ 1, {  1728000, HFPLL, 1, 0, 0x3C }, L2(19), 1300000 },
 #ifndef CONFIG_MSM_CPU_MAX_CLK_1DOT7GHZ
 	{ 1, {  1809000, HFPLL, 1, 0, 0x3E }, L2(19), 1325000 },
-<<<<<<< HEAD
 	{ 1, {  1890000, HFPLL, 1, 0, 0x40 }, L2(19), 1350000 },
 #ifndef CONFIG_MSM_CPU_MAX_CLK_1DOT89GHZ
 	{ 1, {  1998000, HFPLL, 1, 0, 0x42 }, L2(19), 1350000 },
@@ -614,8 +613,7 @@ static struct acpu_level acpu_freq_tbl_8960_kraitv2_slow[] = {
 #endif
 #endif
 #endif
-=======
->>>>>>> d5752e8... trying_to_keep-2nd_cpu_from_sleeping_so_easy
+
 	{ 0, { 0 } }
 };
 
@@ -648,7 +646,6 @@ static struct acpu_level acpu_freq_tbl_8960_kraitv2_nom[] = {
 	{ 1, {  1728000, HFPLL, 1, 0, 0x3C }, L2(19), 1250000 },
 #ifndef CONFIG_MSM_CPU_MAX_CLK_1DOT7GHZ
 	{ 1, {  1809000, HFPLL, 1, 0, 0x3E }, L2(19), 1275000 },
-<<<<<<< HEAD
 	{ 1, {  1890000, HFPLL, 1, 0, 0x40 }, L2(19), 1300000 },
 #ifndef CONFIG_MSM_CPU_MAX_CLK_1DOT89GHZ
 	{ 1, {  1998000, HFPLL, 1, 0, 0x42 }, L2(19), 1325000 },
@@ -656,8 +653,6 @@ static struct acpu_level acpu_freq_tbl_8960_kraitv2_nom[] = {
 #endif
 #endif
 #endif
-=======
->>>>>>> d5752e8... trying_to_keep-2nd_cpu_from_sleeping_so_easy
 	{ 0, { 0 } }
 };
 
@@ -690,7 +685,6 @@ static struct acpu_level acpu_freq_tbl_8960_kraitv2_fast[] = {
 	{ 1, {  1728000, HFPLL, 1, 0, 0x3C }, L2(19), 1200000 },
 #ifndef CONFIG_MSM_CPU_MAX_CLK_1DOT7GHZ
 	{ 1, {  1809000, HFPLL, 1, 0, 0x3E }, L2(19), 1250000 },
-<<<<<<< HEAD
 	{ 1, {  1890000, HFPLL, 1, 0, 0x40 }, L2(19), 1275000 },
 #ifndef CONFIG_MSM_CPU_MAX_CLK_1DOT89GHZ
 	{ 1, {  1998000, HFPLL, 1, 0, 0x42 }, L2(19), 1300000 },
@@ -699,9 +693,6 @@ static struct acpu_level acpu_freq_tbl_8960_kraitv2_fast[] = {
 #endif
 #endif
         { 0, { 0 } }
-=======
-	{ 0, { 0 } }
->>>>>>> d5752e8... trying_to_keep-2nd_cpu_from_sleeping_so_easy
 };
 
 /* TODO: Update vdd_dig and vdd_mem when voltage data is available. */

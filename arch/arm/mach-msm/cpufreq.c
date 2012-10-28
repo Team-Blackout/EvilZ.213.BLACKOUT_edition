@@ -242,12 +242,6 @@ static int __cpuinit msm_cpufreq_init(struct cpufreq_policy *policy)
 	init_completion(&cpu_work->complete);
 #endif
 
-<<<<<<< HEAD
-=======
-		policy->min = 192000;
-		policy->max = 1890000;
-
->>>>>>> d5752e8... trying_to_keep-2nd_cpu_from_sleeping_so_easy
 	return 0;
 }
 

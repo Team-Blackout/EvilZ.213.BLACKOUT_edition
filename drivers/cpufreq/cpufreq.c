@@ -55,10 +55,6 @@
 #ifdef CONFIG_MSM_CPU_MAX_CLK_1DOT5GHZ
 #define FREQ_STEPS	22
 #endif
-
-=======
-#define FREQ_STEPS  29
->>>>>>> d5752e8... trying_to_keep-2nd_cpu_from_sleeping_so_easy
 static struct cpufreq_driver *cpufreq_driver;
 static DEFINE_PER_CPU(struct cpufreq_policy *, cpufreq_cpu_data);
 #ifdef CONFIG_HOTPLUG_CPU
@@ -701,16 +697,8 @@ ssize_t store_UV_mV_table(struct cpufreq_policy *policy,
 ssize_t store_UV_mV_table(struct cpufreq_policy *policy,
                                       const char *buf, size_t count)
 {
-<<<<<<< HEAD
 	unsigned int ret = -EINVAL;
-	int u[FREQ_STEPS];
-=======
-unsigned int ret = -EINVAL;
-int u[FREQ_STEPS];
-
-ret = sscanf(buf, "%d %d %d %d %d %d %d %d %d %d %d %d %d %d %d %d %d %d %d %d %d %d %d %d %d %d %d %d %d", &u[0], &u[1], &u[2], &u[3], &u[4], &u[5], &u[6], &u[7], &u[8], &u[9], &u[10], &u[11], &u[12], &u[13], &u[14], &u[15], &u[16], &u[17], &u[18], &u[19], &u[20], &u[21], &u[22], &u[23], &u[24], &u[25], &u[26], &u[27], &u[28]);
->>>>>>> d5752e8... trying_to_keep-2nd_cpu_from_sleeping_so_easy
-
+	int u[FREQ_STEPS]
 	ret = sscanf(buf, "%d %d %d %d %d %d %d %d %d %d %d %d %d %d %d %d %d %d %d %d %d %d %d %d %d", &u[0], &u[1], &u[2], &u[3], &u[4], &u[5], &u[6], &u[7], &u[8], &u[9], &u[10], &u[11], &u[12], &u[13], &u[14], &u[15], &u[16], &u[17], &u[18], &u[19], &u[20], &u[21], &u[22], &u[23], &u[24]);
 	if(ret != FREQ_STEPS) {
 		return -EINVAL;

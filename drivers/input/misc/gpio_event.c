@@ -1,5 +1,5 @@
 /* drivers/input/misc/gpio_event.c
- *
+ * Modified by Zarboz
  * Copyright (C) 2007 Google, Inc.
  *
  * This software is licensed under the terms of the GNU General Public
@@ -20,8 +20,8 @@
 #include <linux/hrtimer.h>
 #include <linux/platform_device.h>
 #include <linux/slab.h>
-#ifdef CONFIG_TOUCHSCREEN_VILLE_SWEEP2WAKE
-#include <linux/atmel_qt602240.h>
+#ifdef CONFIG_TOUCHSCREEN_SYNAPTICS_SWEEP2WAKE
+#include <linux/synaptics_i2c_rmi.h>
 #endif
 
 struct gpio_event {
@@ -169,7 +169,7 @@ static int gpio_event_probe(struct platform_device *pdev)
 					event_info->name : event_info->names[i];
 		input_dev->event = gpio_input_event;
 		ip->input_devs->dev[i] = input_dev;
-#ifdef CONFIG_TOUCHSCREEN_SYNAPTIC_SWEEP2WAKE
+#ifdef CONFIG_TOUCHSCREEN_SYNAPTICS_SWEEP2WAKE
 		if (!strcmp(input_dev->name, "keypad_8960")) {
 			sweep2wake_setdev(input_dev);
 			printk(KERN_INFO "[sweep2wake]: set device %s\n", input_dev->name);

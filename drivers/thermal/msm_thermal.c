@@ -22,11 +22,7 @@
 
 #define DEF_TEMP_SENSOR      0
 #define DEF_THERMAL_CHECK_MS 1000
-<<<<<<< HEAD
-#define DEF_ALLOWED_MAX_HIGH 60
-=======
 #define DEF_ALLOWED_MAX_HIGH 70
->>>>>>> 60fab08... pwning_2nd_cpu
 #define DEF_ALLOWED_MAX_FREQ 918000
 
 static int enabled;

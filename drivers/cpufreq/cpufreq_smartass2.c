@@ -52,11 +52,7 @@ static unsigned int awake_ideal_freq;
  * that practically when sleep_ideal_freq==0 the awake_ideal_freq is used
  * also when suspended).
  */
-<<<<<<< HEAD
 #define DEFAULT_SLEEP_IDEAL_FREQ 192000
-=======
-#define DEFAULT_SLEEP_IDEAL_FREQ 540000
->>>>>>> 60fab08... pwning_2nd_cpu
 static unsigned int sleep_ideal_freq;
 
 /*
@@ -105,11 +101,7 @@ static unsigned long down_rate_us;
  * The frequency to set when waking up from sleep.
  * When sleep_ideal_freq=0 this will have no effect.
  */
-<<<<<<< HEAD
-#define DEFAULT_SLEEP_WAKEUP_FREQ 118800
-=======
 #define DEFAULT_SLEEP_WAKEUP_FREQ 1188000
->>>>>>> 60fab08... pwning_2nd_cpu
 static unsigned int sleep_wakeup_freq;
 
 /*

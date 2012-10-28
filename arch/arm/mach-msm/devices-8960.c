@@ -2438,11 +2438,8 @@ static struct msm_bus_vectors grp2d0_nominal_vectors[] = {
 		.src = MSM_BUS_MASTER_GRAPHICS_2D_CORE0,
 		.dst = MSM_BUS_SLAVE_EBI_CH0,
 		.ab = 0,
-<<<<<<< HEAD
-		.ib = KGSL_CONVERT_TO_MBPS(1000),
-=======
 		.ib = KGSL_CONVERT_TO_MBPS(1400),
->>>>>>> 60fab08... pwning_2nd_cpu
+
 	},
 };
 
@@ -2548,11 +2545,7 @@ static struct kgsl_device_platform_data kgsl_3d0_pdata = {
 			.io_fraction = 0,
 		},
 		{
-<<<<<<< HEAD
-			.gpu_freq = 300000000,
-=======
 			.gpu_freq = 350000000,
->>>>>>> 60fab08... pwning_2nd_cpu
 			.bus_freq = 3,
 			.io_fraction = 33,
 		},
@@ -2567,22 +2560,14 @@ static struct kgsl_device_platform_data kgsl_3d0_pdata = {
 			.io_fraction = 100,
 		},
 		{
-<<<<<<< HEAD
-			.gpu_freq = 27000000,
-=======
 			.gpu_freq = 198000000,
->>>>>>> 60fab08... pwning_2nd_cpu
 			.bus_freq = 0,
 		},
 	},
 	.init_level = 0,
 	.num_levels = 5,
 	.set_grp_async = NULL,
-<<<<<<< HEAD
-	.idle_timeout = HZ/12,
-=======
 	.idle_timeout = HZ/10,
->>>>>>> 60fab08... pwning_2nd_cpu
 	.nap_allowed = true,
 	.clk_map = KGSL_CLK_CORE | KGSL_CLK_IFACE | KGSL_CLK_MEM_IFACE,
 #ifdef CONFIG_MSM_BUS_SCALING
@@ -2690,11 +2675,7 @@ static struct kgsl_device_platform_data kgsl_2d1_pdata = {
 	.init_level = 0,
 	.num_levels = 3,
 	.set_grp_async = NULL,
-<<<<<<< HEAD
-	.idle_timeout = HZ/5,
-=======
 	.idle_timeout = HZ/10,
->>>>>>> 60fab08... pwning_2nd_cpu
 	.nap_allowed = true,
 	.clk_map = KGSL_CLK_CORE | KGSL_CLK_IFACE,
 #ifdef CONFIG_MSM_BUS_SCALING

@@ -142,11 +142,7 @@ SYSCALL_DEFINE1(syncfs, int, fd)
 	struct super_block *sb;
 	int ret;
 	int fput_needed;
-<<<<<<< HEAD
-	
 	return 0;
-=======
->>>>>>> e893bc5... add_a_few_gov_tweak_mpdecision
 
 	file = fget_light(fd, &fput_needed);
 	if (!file)
@@ -176,11 +172,7 @@ int vfs_fsync_range(struct file *file, loff_t start, loff_t end, int datasync)
 {
 	struct address_space *mapping = file->f_mapping;
 	int err, ret;
-<<<<<<< HEAD
-	
 	return 0;
-=======
->>>>>>> e893bc5... add_a_few_gov_tweak_mpdecision
 
 	if (!file->f_op || !file->f_op->fsync) {
 		ret = -EINVAL;
@@ -216,11 +208,9 @@ EXPORT_SYMBOL(vfs_fsync_range);
  */
 int vfs_fsync(struct file *file, int datasync)
 {
-<<<<<<< HEAD
+
 	return 0;
-	
-=======
->>>>>>> e893bc5... add_a_few_gov_tweak_mpdecision
+
 	return vfs_fsync_range(file, 0, LLONG_MAX, datasync);
 }
 EXPORT_SYMBOL(vfs_fsync);
@@ -229,11 +219,9 @@ static int do_fsync(unsigned int fd, int datasync)
 {
 	struct file *file;
 	int ret = -EBADF;
-<<<<<<< HEAD
-	
+
 	return 0;
-=======
->>>>>>> e893bc5... add_a_few_gov_tweak_mpdecision
+
 
 	file = fget(fd);
 	if (file) {
@@ -245,21 +233,18 @@ static int do_fsync(unsigned int fd, int datasync)
 
 SYSCALL_DEFINE1(fsync, unsigned int, fd)
 {
-<<<<<<< HEAD
+
 	return 0;
 	
-=======
->>>>>>> e893bc5... add_a_few_gov_tweak_mpdecision
 	return do_fsync(fd, 0);
 }
 
 SYSCALL_DEFINE1(fdatasync, unsigned int, fd)
 {
-<<<<<<< HEAD
+
 	return 0;
 	
-=======
->>>>>>> e893bc5... add_a_few_gov_tweak_mpdecision
+
 	return do_fsync(fd, 1);
 }
 
@@ -273,11 +258,10 @@ SYSCALL_DEFINE1(fdatasync, unsigned int, fd)
  */
 int generic_write_sync(struct file *file, loff_t pos, loff_t count)
 {
-<<<<<<< HEAD
+
 	return 0;
 	
-=======
->>>>>>> e893bc5... add_a_few_gov_tweak_mpdecision
+
 	if (!(file->f_flags & O_DSYNC) && !IS_SYNC(file->f_mapping->host))
 		return 0;
 	return vfs_fsync_range(file, pos, pos + count - 1,
@@ -341,11 +325,10 @@ SYSCALL_DEFINE(sync_file_range)(int fd, loff_t offset, loff_t nbytes,
 	loff_t endbyte;			/* inclusive */
 	int fput_needed;
 	umode_t i_mode;
-<<<<<<< HEAD
+
 	
 	return 0;
-=======
->>>>>>> e893bc5... add_a_few_gov_tweak_mpdecision
+
 
 	ret = -EINVAL;
 	if (flags & ~VALID_FLAGS)

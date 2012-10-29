@@ -1,11 +1,7 @@
 VERSION = 3
 PATCHLEVEL = 0
 SUBLEVEL = 8
-<<<<<<< HEAD
 EXTRAVERSION =
-=======
-EXTRAVERSION =Komodo_04
->>>>>>> d5752e8... trying_to_keep-2nd_cpu_from_sleeping_so_easy
 NAME = Sneaky Weasel
 
 # *DOCUMENTATION*

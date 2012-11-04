@@ -57,22 +57,13 @@ void *return_address(unsigned int level)
 }
 
 #else /* if defined(CONFIG_FRAME_POINTER) && !defined(CONFIG_ARM_UNWIND) */
-<<<<<<< HEAD
 
-#if defined(CONFIG_ARM_UNWIND)
-#warning "TODO: return_address should use unwind tables"
-#endif
-=======
-<<<<<<< HEAD
-
-=======
 #if 0
 #if defined(CONFIG_ARM_UNWIND)
 #warning "TODO: return_address should use unwind tables"
 #endif
 #endif
->>>>>>> 8b6e8db... linaro compilable
->>>>>>> 4950382... linaro compilable
+
 
 void *return_address(unsigned int level)
 {

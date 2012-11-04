@@ -3426,11 +3426,6 @@ void vcd_handle_ind_info_output_reconfig(
 		 0, cctxt, cctxt->client_data);
 	}
 }
-<<<<<<< HEAD
-=======
-<<<<<<< HEAD
-=======
->>>>>>> 4950382... linaro compilable
 
 u32 vcd_set_num_slices(struct vcd_clnt_ctxt *cctxt)
 {
@@ -3438,11 +3433,7 @@ u32 vcd_set_num_slices(struct vcd_clnt_ctxt *cctxt)
 	struct vcd_property_slice_delivery_info slice_delivery_info;
 	u32 rc = VCD_S_SUCCESS;
 	prop_hdr.prop_id = VCD_I_SLICE_DELIVERY_MODE;
-<<<<<<< HEAD
-	prop_hdr.sz = prop_hdr.sz =
-=======
 	prop_hdr.sz =
->>>>>>> 4950382... linaro compilable
 		sizeof(struct vcd_property_slice_delivery_info);
 	rc = ddl_get_property(cctxt->ddl_handle, &prop_hdr,
 				&slice_delivery_info);
@@ -3456,7 +3447,4 @@ u32 vcd_set_num_slices(struct vcd_clnt_ctxt *cctxt)
 	}
 	return rc;
 }
-<<<<<<< HEAD
-=======
->>>>>>> 8b6e8db... linaro compilable
->>>>>>> 4950382... linaro compilable
+

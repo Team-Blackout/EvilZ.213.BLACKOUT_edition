@@ -137,19 +137,11 @@ static inline int current_has_network(void)
  */
 static struct list_head inetsw[SOCK_MAX];
 static DEFINE_SPINLOCK(inetsw_lock);
-<<<<<<< HEAD
-//++SSD_RIL
-inline void record_probe_data(struct sock *sk, int type, size_t size, unsigned long long t_pre);
-//--SSD_RIL
-=======
-<<<<<<< HEAD
 
-=======
 //++SSD_RIL
 void record_probe_data(struct sock *sk, int type, size_t size, unsigned long long t_pre);
 //--SSD_RIL
->>>>>>> 8b6e8db... linaro compilable
->>>>>>> 4950382... linaro compilable
+
 struct ipv4_config ipv4_config;
 EXPORT_SYMBOL(ipv4_config);
 

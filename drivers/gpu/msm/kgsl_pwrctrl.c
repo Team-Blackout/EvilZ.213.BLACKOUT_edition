@@ -651,7 +651,11 @@ int kgsl_pwrctrl_init(struct kgsl_device *device)
 	}
 	pwr->num_pwrlevels = pdata->num_levels;
 	pwr->active_pwrlevel = pdata->init_level;
+<<<<<<< HEAD
 	pwr->default_pwrlevel = pdata->init_level;
+=======
+	pwr->thermal_pwrlevel = pdata->max_level; 
+>>>>>>> 57f0202... 	modified:   Makefile
 	for (i = 0; i < pdata->num_levels; i++) {
 		pwr->pwrlevels[i].gpu_freq =
 		(pdata->pwrlevel[i].gpu_freq > 0) ?

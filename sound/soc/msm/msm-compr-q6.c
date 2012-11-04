@@ -112,7 +112,7 @@ static void compr_event_handler(uint32_t opcode,
 	struct audio_aio_write_param param;
 	struct audio_buffer *buf = NULL;
 	int i = 0;
-	pr_debug("[AUD]%s opcode =%08x, start %d +++\n", __func__, opcode, ((&prtd!=NULL)?atomic_read(&prtd->start):-1));
+
 	/*HTC AUDIO Start*/
 	if (!(prtd->substream && prtd->substream->runtime)) {
 		printk(KERN_WARNING "[AUD] compr_event_handler(), no substream instance, return\n");

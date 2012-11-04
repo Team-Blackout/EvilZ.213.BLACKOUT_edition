@@ -481,7 +481,7 @@ htc_attrs_failed:
 		device_remove_file(dev, &htc_battery_attrs[i]);
 htc_delta_attrs_failed:
 	while (j--)
-		device_remove_file(dev, &htc_set_delta_attrs[i]);
+		device_remove_file(dev, &htc_set_delta_attrs[j]);
 succeed:
 	return rc;
 }
@@ -775,6 +775,14 @@ int htc_battery_core_update_changed(void)
 		battery_core_info.rep.temp_fault = 0;
 	}
 
+	if (battery_core_info.rep.charging_source <= 0) {
+		/* ignore id fault if charger is not connected:
+		 * send fake valid if to userspace */
+		if (battery_core_info.rep.batt_id == 255) {
+			pr_info("[BATT] Ignore invalid id when no charging_source");
+			battery_core_info.rep.batt_id = 66;
+		}
+	}
 #if 0
 	battery_core_info.rep.batt_vol = new_batt_info_rep.batt_vol;
 	battery_core_info.rep.batt_id = new_batt_info_rep.batt_id;

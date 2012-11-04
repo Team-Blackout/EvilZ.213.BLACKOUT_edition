@@ -195,11 +195,7 @@ SUBARCH := arm
 SUBARCH := arm
 export KBUILD_BUILDHOST := $(SUBARCH)
 ARCH		?= $(SUBARCH)
-<<<<<<< HEAD
-CROSS_COMPILE	?= /home/zarboz/android/arm-eabi-4.4.3/bin/arm-eabi-
-=======
-CROSS_COMPILE	?= /home/zarboz/android/android-toolchain-eabi/bin/arm-eabi-
->>>>>>> d11dcdb... Linaro 4.7 compat
+CROSS_COMPILE	?= /home/zarboz/android/arm-eabi-linaro-4.6.2/bin/arm-eabi-
 CROSS_COMPILE	?= $(CONFIG_CROSS_COMPILE:"%"=%)
 
 # Architecture as present in compile.h

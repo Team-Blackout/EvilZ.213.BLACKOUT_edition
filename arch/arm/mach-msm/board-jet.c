@@ -1602,7 +1602,7 @@ static struct camera_flash_info msm_camera_sensor_s5k3h2yx_flash_info = {
 
 static struct camera_flash_cfg msm_camera_sensor_s5k3h2yx_flash_cfg = {
 	.low_temp_limit		= 5,
-	.low_cap_limit		= 15,
+	.low_cap_limit		= 5,
 	.flash_info             = &msm_camera_sensor_s5k3h2yx_flash_info,
 };
 /* Andrew_Cheng linear led 20111205 ME */
@@ -2885,9 +2885,9 @@ static void headset_init(void)
 		for (i = 0; i < 5; i++) {
 			rc = pm8xxx_gpio_config(headset_rx_xc[i].gpio,
 						&headset_rx_xc[i].config);
-			if (rc)
-				pr_info("[HS_BOARD] %s: Config ERROR: GPIO=%u, rc=%d\n",
-					__func__, headset_rx[i].gpio, rc);
+			//if (rc)
+			//	pr_info("[HS_BOARD] %s: Config ERROR: GPIO=%u, rc=%d\n",
+			//		__func__, headset_rx[i].gpio, rc);
 		}
 	}
 }
@@ -4405,7 +4405,7 @@ static int phy_init_seq_v3_2_1[] = { 0x5f, 0x81, 0x3c, 0x82, -1};
 
 static struct msm_otg_platform_data msm_otg_pdata = {
 	.phy_init_seq		= phy_init_seq_v3,
-	.mode			= USB_PERIPHERAL,
+	.mode			= USB_OTG,
 	.otg_control		= OTG_PMIC_CONTROL,
 	.phy_type		= SNPS_28NM_INTEGRATED_PHY,
 	.vbus_power		= msm_hsusb_vbus_power,
@@ -5531,7 +5531,7 @@ static struct pm8xxx_led_configure pm8921_led_info[] = {
 		.duites_size 	= 2,
 		.duty_time_ms 	= 16,
 		.lut_flag 	= PM_PWM_LUT_RAMP_UP | PM_PWM_LUT_PAUSE_HI_EN,
-		.out_current    = 40,
+		.out_current    = 2,
 		.duties		= {0, 50, 100, 100, 50, 0, 0, 0,
 				0, 0, 0, 0, 0, 0, 0, 0,
 				0, 0, 0, 0, 0, 0, 0, 0,

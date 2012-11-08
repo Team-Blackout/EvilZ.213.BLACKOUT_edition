@@ -1479,6 +1479,7 @@ iso_stream_schedule (
 	 * jump until after the queue is primed.
 	 */
 	else {
+	  int done = 0;
 		start = SCHEDULE_SLOP + (now & ~0x07);
 
 		/* NOTE:  assumes URB_ISO_ASAP, to limit complexity/bugs */
@@ -1490,6 +1491,7 @@ iso_stream_schedule (
 		 */
 		next = start;
 		start += period;
+
 		do {
 			start--;
 			/* check schedule: enough space? */

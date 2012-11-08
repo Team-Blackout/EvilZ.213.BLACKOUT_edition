@@ -1,7 +1,12 @@
 VERSION = 3
 PATCHLEVEL = 0
+<<<<<<< HEAD
 SUBLEVEL = 8
 EXTRAVERSION = EvilZ
+=======
+SUBLEVEL = 9
+EXTRAVERSION = -rc1
+>>>>>>> 2f04a5d... patching ot 3.0.9-rc1
 NAME = Sneaky Weasel
 
 # *DOCUMENTATION*

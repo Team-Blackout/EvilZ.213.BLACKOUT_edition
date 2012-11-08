@@ -770,6 +770,7 @@ journal_t * journal_init_dev(struct block_device *bdev,
 	journal_t *journal = journal_init_common();
 	struct buffer_head *bh;
 	int n;
+	unsigned int blocknr = 0;
 
 	if (!journal)
 		return NULL;

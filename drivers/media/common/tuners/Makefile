@@ -1,6 +1,7 @@
 #
 # Makefile for common V4L/DVB tuners
 #
+CFLAGS_xc5000.o += -O1
 
 tda18271-objs := tda18271-maps.o tda18271-common.o tda18271-fe.o
 

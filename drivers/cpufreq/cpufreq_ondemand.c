@@ -41,9 +41,6 @@
 #define MIN_FREQUENCY_UP_THRESHOLD		(11)
 #define MAX_FREQUENCY_UP_THRESHOLD		(100)
 #define MIN_FREQUENCY_DOWN_DIFFERENTIAL		(1)
-#define DEFAULT_FREQ_BOOST_TIME			(500000)
-#define MAX_FREQ_BOOST_TIME				(5000000)
-
 
 #ifdef CONFIG_CPU_FREQ_GOV_ONDEMAND_2_PHASE
 #define DBS_INPUT_EVENT_MIN_FREQ		(dbs_tuners_ins.two_phase_freq)
@@ -316,33 +313,6 @@ static ssize_t show_powersave_bias
 }
 
 static ssize_t store_sampling_rate(struct kobject *a, struct attribute *b,
-
-static ssize_t store_boostpulse(struct kobject *kobj, struct attribute *attr,
-				const char *buf, size_t count)
-{
-	int ret;
-	unsigned int input;
-
-	ret = sscanf(buf, "%u", &input);
-	if (ret < 0)
-		return ret;
-
-	if (input > 1 && input <= MAX_FREQ_BOOST_TIME)
-		dbs_tuners_ins.freq_boost_time = input;
-	else
-		dbs_tuners_ins.freq_boost_time = DEFAULT_FREQ_BOOST_TIME;
-
-	dbs_tuners_ins.boosted = 1;
-	freq_boosted_time = ktime_to_us(ktime_get());
-
-	if (sampling_rate_boosted) {
-		sampling_rate_boosted = 0;
-		dbs_tuners_ins.sampling_rate = current_sampling_rate;
-	}
-	return count;
-}
-
-static ssize_t store_boostfreq(struct kobject *a, struct attribute *b,
 				   const char *buf, size_t count)
 {
 	unsigned int input;

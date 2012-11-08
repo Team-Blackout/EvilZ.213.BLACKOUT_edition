@@ -41,11 +41,9 @@
 #define MIN_FREQUENCY_UP_THRESHOLD		(11)
 #define MAX_FREQUENCY_UP_THRESHOLD		(100)
 #define MIN_FREQUENCY_DOWN_DIFFERENTIAL		(1)
-<<<<<<< HEAD
-=======
 #define DEFAULT_FREQ_BOOST_TIME			(500000)
 #define MAX_FREQ_BOOST_TIME				(5000000)
->>>>>>> 7b1169b... drivers/cpufreq: Add max duration for boosting
+
 
 #ifdef CONFIG_CPU_FREQ_GOV_ONDEMAND_2_PHASE
 #define DBS_INPUT_EVENT_MIN_FREQ		(dbs_tuners_ins.two_phase_freq)
@@ -317,9 +315,8 @@ static ssize_t show_powersave_bias
 	return snprintf(buf, PAGE_SIZE, "%d\n", dbs_tuners_ins.powersave_bias);
 }
 
-<<<<<<< HEAD
 static ssize_t store_sampling_rate(struct kobject *a, struct attribute *b,
-=======
+
 static ssize_t store_boostpulse(struct kobject *kobj, struct attribute *attr,
 				const char *buf, size_t count)
 {
@@ -346,7 +343,6 @@ static ssize_t store_boostpulse(struct kobject *kobj, struct attribute *attr,
 }
 
 static ssize_t store_boostfreq(struct kobject *a, struct attribute *b,
->>>>>>> 7b1169b... drivers/cpufreq: Add max duration for boosting
 				   const char *buf, size_t count)
 {
 	unsigned int input;

@@ -1,6 +1,6 @@
 /*
  * Automatically generated C config: don't edit
- * Linux/arm 3.0.8EvilZ Kernel Configuration
+ * Linux/arm 3.0.22-rc1 Kernel Configuration
  */
 #define CONFIG_IP6_NF_MATCH_AH 1
 #define CONFIG_RING_BUFFER 1
@@ -175,6 +175,7 @@
 #define CONFIG_MSM_IPC_ROUTER 1
 #define CONFIG_IP_PNP 1
 #define CONFIG_USB_VIDEO_CLASS 1
+#define CONFIG_MSM_INSECURE_PIL_RIVA 1
 #define CONFIG_RTC_INTF_PROC 1
 #define CONFIG_HTC_BATT_8960 1
 #define CONFIG_MSM_LPASS_8960 1

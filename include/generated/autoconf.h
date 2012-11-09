@@ -1,6 +1,6 @@
 /*
  * Automatically generated C config: don't edit
- * Linux/arm 3.0.24-rc1 Kernel Configuration
+ * Linux/arm 3.0.25-rc1 Kernel Configuration
  */
 #define CONFIG_IP6_NF_MATCH_AH 1
 #define CONFIG_RING_BUFFER 1

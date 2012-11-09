@@ -83,7 +83,9 @@ static int xfrm4_mode_tunnel_input(struct xfrm_state *x, struct sk_buff *skb)
 	if (!(x->props.flags & XFRM_STATE_NOECN))
 		ipip_ecn_decapsulate(skb);
 
-	skb_reset_network_header(skb);
+	
+	
+	skb_mac_header_rebuild(skb);
 	skb_mac_header_rebuild(skb);
 
 	err = 0;

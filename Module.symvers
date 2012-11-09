@@ -710,6 +710,7 @@
 0xc5fb7271	sound_class	vmlinux	EXPORT_SYMBOL
 0x753b0753	filp_close	vmlinux	EXPORT_SYMBOL
 0x0b933816	truncate_setsize	vmlinux	EXPORT_SYMBOL
+0x966ab2a6	system_nrt_freezable_wq	vmlinux	EXPORT_SYMBOL_GPL
 0x0e3f0223	wait_for_completion_interruptible	vmlinux	EXPORT_SYMBOL
 0x88e3c693	svcauth_gss_flavor	vmlinux	EXPORT_SYMBOL_GPL
 0x8d1a827e	svcauth_gss_register_pseudoflavor	vmlinux	EXPORT_SYMBOL_GPL

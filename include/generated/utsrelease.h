@@ -1,1 +1,1 @@
-#define UTS_RELEASE "3.0.33-rc1-gb5a59bd-dirty"
+#define UTS_RELEASE "3.0.34-rc1-g3cd1ac1-dirty"

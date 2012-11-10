@@ -1,6 +1,6 @@
 /*
  * Automatically generated C config: don't edit
- * Linux/arm 3.0.36-rc1 Kernel Configuration
+ * Linux/arm 3.0.37-rc1 Kernel Configuration
  */
 #define CONFIG_IP6_NF_MATCH_AH 1
 #define CONFIG_RING_BUFFER 1
@@ -299,7 +299,6 @@
 #define CONFIG_NF_CONNTRACK_BROADCAST 1
 #define CONFIG_IR_RC5_SZ_DECODER 1
 #define CONFIG_PROC_PAGE_MONITOR 1
-#define CONFIG_CC_OPTIMIZE_FOR_SIZE 1
 #define CONFIG_NF_NAT_PROTO_DCCP 1
 #define CONFIG_USB_VIDEO_CLASS_INPUT_EVDEV 1
 #define CONFIG_DEBUG_GPIO 1
@@ -1044,6 +1043,7 @@
 #define CONFIG_MEDIA_TUNER_TEA5761 1
 #define CONFIG_USB_GADGET_SELECTED 1
 #define CONFIG_MOUSE_PS2_SYNAPTICS 1
+#define CONFIG_CC_OPTIMIZE_ALOT 1
 #define CONFIG_MSM_PIL_RIVA 1
 #define CONFIG_NETFILTER_TPROXY 1
 #define CONFIG_SCSI_MULTI_LUN 1

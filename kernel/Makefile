@@ -1,15 +1,10 @@
 #
 # Makefile for the linux kernel.
 #
-<<<<<<< HEAD
-ifdef CONFIG_CC_OPTIMIZE_ALOT
-CFLAGS_workque.o += -02
-endif
-=======
 CFLAGS_sysctl.o += -O1
 CFLAGS_workqueue.o += -O1
 
->>>>>>> e971743... starting to setup for -O3 compression
+
 obj-y     = sched.o fork.o exec_domain.o panic.o printk.o \
 	    cpu.o exit.o itimer.o time.o softirq.o resource.o \
 	    sysctl.o sysctl_binary.o capability.o ptrace.o timer.o user.o \

@@ -3,7 +3,7 @@
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License version 2 and
  * only version 2 as published by the Free Software Foundation.
- * Modified by Zarboz for OC tables and UV selection
+ *
  * This program is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
@@ -122,7 +122,7 @@ static void set_acpuclk_cpu_freq_foot_print(unsigned cpu, unsigned khz)
 	*status = khz;
 	mb();
 }
-//like a fucking boss
+
 static void set_acpuclk_L2_freq_foot_print(unsigned khz)
 {
 #ifdef CONFIG_MSM_CPU_MAX_CLK_1DOT89GHZ
@@ -172,7 +172,7 @@ static void set_acpuclk_L2_freq_foot_print(unsigned khz)
 #define STBY_KHZ		1
 
 #define MAX_VDD_SC    1350000 /* uV */	
-#define MIN_VDD_SC     200000 /* uV */
+#define MIN_VDD_SC     400000 /* uV */
 #define HFPLL_NOMINAL_VDD	1050000
 #define HFPLL_LOW_VDD		 800000
 #define HFPLL_LOW_VDD_PLL_L_MAX	0x28
@@ -490,6 +490,7 @@ static struct msm_bus_paths bw_level_tbl[] = {
 	[5] = BW_MBPS(3600), /* At least 450 MHz on bus. */
 	[6] = BW_MBPS(3936), /* At least 492 MHz on bus. */
 	[7] = BW_MBPS(4264), /* At least 533 MHz on bus. */
+	[8] = BW_MBPS(4532), /* At least 600 MHz on bus. */
 };
 
 static struct msm_bus_scale_pdata bus_client_pdata = {
@@ -575,6 +576,7 @@ static struct l2_level l2_freq_tbl_8960_kraitv2[] = {
 	[19] = { { 1458000, HFPLL, 1, 0, 0x32 }, 1150000, 1150000, 6 },
 	[20] = { { 1512000, HFPLL, 1, 0, 0x34 }, 1150000, 1150000, 7 },
 	[21] = { { 1674000, HFPLL, 1, 0, 0x36 }, 1150000, 1150000, 7 },
+	[22] = { { 1728000, HFPLL, 1, 0, 0x38 }, 1150000, 1150000, 7 },
 };
 
 static struct acpu_level acpu_freq_tbl_8960_kraitv2_slow[] = {
@@ -691,7 +693,7 @@ static struct acpu_level acpu_freq_tbl_8960_kraitv2_fast[] = {
 #endif
 #endif
 #endif
-        { 0, { 0 } }
+	{ 0, { 0 } }
 };
 
 /* TODO: Update vdd_dig and vdd_mem when voltage data is available. */
@@ -825,7 +827,7 @@ static struct acpu_level acpu_freq_tbl_8627[] = {
 	{ 0, { 0 } }
 };
 
-unsigned long acpuclk_8960_get_rate(int cpu)
+static unsigned long acpuclk_8960_get_rate(int cpu)
 {
 	return scalable[cpu].current_speed->khz;
 }
@@ -1337,7 +1339,7 @@ void acpuclk_set_vdd(unsigned int khz, int vdd_uv) {
 			new_vdd_uv = min(max((acpu_freq_tbl[i+1].vdd_core + vdd_uv), (unsigned int)MIN_VDD_SC), (unsigned int)MAX_VDD_SC);
 		else if ( acpu_freq_tbl[i+1].speed.khz == khz)
 			new_vdd_uv = min(max((unsigned int)vdd_uv, (unsigned int)MIN_VDD_SC), (unsigned int)MAX_VDD_SC);
-		else 
+		else
 			continue;
 
 		acpu_freq_tbl[i+1].vdd_core = new_vdd_uv;
@@ -1355,7 +1357,7 @@ void acpuclk_UV_mV_table(int cnt, int vdd_uv[]) {
 	if (vdd_uv[0] < vdd_uv[cnt-1])
 	{
 		for (i = 0; i < cnt; i++) {
-		    if ((vdd_uv[i]*1000) >= MIN_VDD_SC && (vdd_uv[i]*1000) <= MAX_VDD_SC)
+			if ((vdd_uv[i]*1000) >= MIN_VDD_SC && (vdd_uv[i]*1000) <= MAX_VDD_SC)
 			acpu_freq_tbl[i+1].vdd_core = vdd_uv[i]*1000;
 		}
 	}
@@ -1363,9 +1365,9 @@ void acpuclk_UV_mV_table(int cnt, int vdd_uv[]) {
 	{
 		j = cnt-1;
 		for (i = 0; i < cnt; i++) {
-		    if ((vdd_uv[j]*1000) >= MIN_VDD_SC && (vdd_uv[j]*1000) <= MAX_VDD_SC)
+			if ((vdd_uv[j]*1000) >= MIN_VDD_SC && (vdd_uv[j]*1000) <= MAX_VDD_SC)
 			acpu_freq_tbl[i+1].vdd_core = vdd_uv[j]*1000;
-		    j--;
+			j--;
 		}
 	}
 	mutex_unlock(&driver_lock);
@@ -1585,48 +1587,6 @@ static void kraitv2_apply_vmin(struct acpu_level *tbl)
 			tbl->vdd_core = MIN_VDD_SC;
 }
 
-/*#ifdef CONFIG_CMDLINE_OPTIONS
-uint32_t acpu_check_khz_value(unsigned long khz)
-{
-	struct acpu_level *f;
-
-	if (khz > 1944000)
-		return CONFIG_MSM_CPU_FREQ_MAX;
-
-	if (khz < 192)
-		return CONFIG_MSM_CPU_FREQ_MIN;
-
-	for (f = acpu_freq_tbl_8960_kraitv2_fast; f->speed.khz != 0; f++) {
-		if (khz < 192000) {
-			if (f->speed.khz == (khz*1000))
-				return f->speed.khz;
-			if ((khz*1000) > f->speed.khz) {
-				f++;
-				if ((khz*1000) < f->speed.khz) {
-					f--;
-					return f->speed.khz;
-				}
-				f--;
-			}
-		}
-		if (f->speed.khz == khz) {
-			return 1;
-		}
-		if (khz > f->speed.khz) {
-			f++;
-			if (khz < f->speed.khz) {
-				f--;
-				return f->speed.khz;
-			}
-			f--;
-		}
-	}
-
-	return 0;
-}
-EXPORT_SYMBOL(acpu_check_khz_value);
-#endif
-*/
 static struct acpu_level * __init select_freq_plan(void)
 {
 	struct acpu_level *l, *max_acpu_level = NULL;
